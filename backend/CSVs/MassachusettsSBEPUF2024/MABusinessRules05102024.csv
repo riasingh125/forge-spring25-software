@@ -1,0 +1,338 @@
+"BUSINESS YEAR","STATE CODE","ISSUER ID","SOURCE NAME","VERSION NUMBER","IMPORT DATE","PRODUCT ID","STANDARD COMPONENT ID","DEPENDENT MAX AGE RULE","AGE DETERMINATION RULE","MINIMUM TOBACCO FREE MONTHS RULE","COHABITATION RULE REQUIRED","COHABITATION RULE CODE","MARKET COVERAGE","DENTAL ONLY PLAN","MEDICAL OR DENTAL RULE","MAX CHILDREN IN POLICY"
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0030001,,,,No,"Stepson or Stepdaughter",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0030001,,,,No,Child,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0030001,,,,No,"Brother or Sister",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0030001,,,,Yes,Self,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0030001,,,,Yes,"Life Partner",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0030001,,,,No,Spouse,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0020001,,,,No,"Stepson or Stepdaughter",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0020001,,,,Yes,Self,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0020001,,,,No,"Brother or Sister",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0020001,,,,No,Child,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0020001,,,,Yes,"Life Partner",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0020001,,,,No,Spouse,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",Yes,Self,,,Dental,3
+2024,MA,11821,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Child,,,Dental,3
+2024,MA,11821,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Spouse,,,Dental,3
+2024,MA,11821,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",Yes,"Life Partner",,,Dental,3
+2024,MA,11821,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Dental,3
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0030001,,,,No,Spouse,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0030001,,,,No,Child,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0030001,,,,No,"Brother or Sister",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0030001,,,,Yes,Self,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0030001,,,,No,"Stepson or Stepdaughter",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0030001,,,,Yes,"Life Partner",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",Yes,"Life Partner",,,Dental,3
+2024,MA,11821,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Dental,3
+2024,MA,11821,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",Yes,Self,,,Dental,3
+2024,MA,11821,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Child,,,Dental,3
+2024,MA,11821,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Spouse,,,Dental,3
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0040001,,,,No,"Stepson or Stepdaughter",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0040001,,,,No,Spouse,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0040001,,,,Yes,Self,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0040001,,,,No,"Brother or Sister",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0040001,,,,No,Child,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0040001,,,,Yes,"Life Partner",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0020001,,,,No,"Stepson or Stepdaughter",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0020001,,,,Yes,Self,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0020001,,,,Yes,"Life Partner",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0020001,,,,No,Spouse,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0020001,,,,No,Child,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0020001,,,,No,"Brother or Sister",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0010001,,,,No,"Brother or Sister",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0010001,,,,No,Child,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0010001,,,,Yes,"Life Partner",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0010001,,,,No,"Stepson or Stepdaughter",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0010001,,,,Yes,Self,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0010001,,,,No,Spouse,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0010001,,,,No,Child,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0010001,,,,No,"Stepson or Stepdaughter",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0010001,,,,Yes,Self,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0010001,,,,No,"Brother or Sister",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0010001,,,,No,Spouse,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0010001,,,,Yes,"Life Partner",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0040001,,,,No,"Stepson or Stepdaughter",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0040001,,,,Yes,"Life Partner",,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0040001,,,,No,Spouse,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0040001,,,,Yes,Self,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0040001,,,,No,Child,,,Dental,
+2024,MA,11821,SERFF,1,02-12-2024,,11821MA0040001,,,,No,"Brother or Sister",,,Dental,
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Other Relative",,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Collateral Dependent",,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Life Partner",,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Sponsored Dependent",,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Spouse,,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Ex-Spouse,,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Ward,,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Child,,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Grandson or Granddaughter",,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Brother or Sister",,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Foster Child",,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,Self,,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Other Relationship",,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Nephew or Niece",,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Collateral Dependent",,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Child,,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Life Partner",,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Ex-Spouse,,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,Self,,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Other Relative",,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Other Relationship",,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Ward,,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Spouse,,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Nephew or Niece",,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Brother or Sister",,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Grandson or Granddaughter",,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Sponsored Dependent",,,Dental,"Not Applicable"
+2024,MA,18076,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Foster Child",,,Dental,"Not Applicable"
+2024,MA,24675,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Child,,,Dental,3
+2024,MA,24675,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Sponsored Dependent",,,Dental,3
+2024,MA,24675,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Foster Child",,,Dental,3
+2024,MA,24675,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Spouse,,,Dental,3
+2024,MA,24675,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Collateral Dependent",,,Dental,3
+2024,MA,24675,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Brother or Sister",,,Dental,3
+2024,MA,24675,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Life Partner",,,Dental,3
+2024,MA,24675,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Other Relative",,,Dental,3
+2024,MA,24675,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Other Relationship",,,Dental,3
+2024,MA,24675,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Dental,3
+2024,MA,24675,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Nephew or Niece",,,Dental,3
+2024,MA,24675,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Grandson or Granddaughter",,,Dental,3
+2024,MA,24675,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Ward,,,Dental,3
+2024,MA,24675,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Ex-Spouse,,,Dental,3
+2024,MA,24675,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,Self,,,Dental,3
+2024,MA,31779,SERFF,1,02-12-2024,,,25,"Age on effective date",12,Yes,Self,,,Medical,3
+2024,MA,31779,SERFF,1,02-12-2024,,,25,"Age on effective date",12,No,Ex-Spouse,,,Medical,3
+2024,MA,31779,SERFF,1,02-12-2024,,,25,"Age on effective date",12,No,Ward,,,Medical,3
+2024,MA,31779,SERFF,1,02-12-2024,,,25,"Age on effective date",12,No,Spouse,,,Medical,3
+2024,MA,31779,SERFF,1,02-12-2024,,,25,"Age on effective date",12,No,Child,,,Medical,3
+2024,MA,31779,SERFF,1,02-12-2024,,,25,"Age on effective date",12,No,"Grandson or Granddaughter",,,Medical,3
+2024,MA,31779,SERFF,1,02-12-2024,,,25,"Age on effective date",12,No,"Stepson or Stepdaughter",,,Medical,3
+2024,MA,31779,SERFF,1,02-12-2024,,,25,"Age on effective date",12,No,Ex-Spouse,,,Medical,3
+2024,MA,31779,SERFF,1,02-12-2024,,,25,"Age on effective date",12,Yes,Self,,,Medical,3
+2024,MA,31779,SERFF,1,02-12-2024,,,25,"Age on effective date",12,No,Child,,,Medical,3
+2024,MA,31779,SERFF,1,02-12-2024,,,25,"Age on effective date",12,No,"Grandson or Granddaughter",,,Medical,3
+2024,MA,31779,SERFF,1,02-12-2024,,,25,"Age on effective date",12,No,Ward,,,Medical,3
+2024,MA,31779,SERFF,1,02-12-2024,,,25,"Age on effective date",12,No,Spouse,,,Medical,3
+2024,MA,31779,SERFF,1,02-12-2024,,,25,"Age on effective date",12,No,"Stepson or Stepdaughter",,,Medical,3
+2024,MA,34484,SERFF,1,02-12-2024,,,"Not Applicable","Age on effective date","Not Applicable",Yes,Self,,,Medical,3
+2024,MA,34484,SERFF,1,02-12-2024,,,"Not Applicable","Age on effective date","Not Applicable",Yes,Self,,,Medical,3
+2024,MA,36046,SERFF,1,02-12-2024,,,25,"Age on effective date",6,No,Spouse,,,Medical,3
+2024,MA,36046,SERFF,1,02-12-2024,,,25,"Age on effective date",6,No,"Stepson or Stepdaughter",,,Medical,3
+2024,MA,36046,SERFF,1,02-12-2024,,,25,"Age on effective date",6,No,"Foster Child",,,Medical,3
+2024,MA,36046,SERFF,1,02-12-2024,,,25,"Age on effective date",6,Yes,Self,,,Medical,3
+2024,MA,36046,SERFF,1,02-12-2024,,,25,"Age on effective date",6,No,"Life Partner",,,Medical,3
+2024,MA,36046,SERFF,1,02-12-2024,,,25,"Age on effective date",6,No,Child,,,Medical,3
+2024,MA,36046,SERFF,1,02-12-2024,,,25,"Age on effective date",6,No,Ex-Spouse,,,Medical,3
+2024,MA,36046,SERFF,1,02-12-2024,,,25,"Age on effective date",6,No,Ward,,,Medical,3
+2024,MA,36046,SERFF,1,02-12-2024,,,25,"Age on effective date",6,No,"Stepson or Stepdaughter",,,Medical,3
+2024,MA,36046,SERFF,1,02-12-2024,,,25,"Age on effective date",6,No,"Foster Child",,,Medical,3
+2024,MA,36046,SERFF,1,02-12-2024,,,25,"Age on effective date",6,No,Spouse,,,Medical,3
+2024,MA,36046,SERFF,1,02-12-2024,,,25,"Age on effective date",6,No,Ward,,,Medical,3
+2024,MA,36046,SERFF,1,02-12-2024,,,25,"Age on effective date",6,No,Child,,,Medical,3
+2024,MA,36046,SERFF,1,02-12-2024,,,25,"Age on effective date",6,Yes,Self,,,Medical,3
+2024,MA,36046,SERFF,1,02-12-2024,,,25,"Age on effective date",6,No,"Life Partner",,,Medical,3
+2024,MA,36046,SERFF,1,02-12-2024,,,25,"Age on effective date",6,No,Ex-Spouse,,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Ex-Spouse,,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Spouse,,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Brother or Sister",,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Ward,,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Life Partner",,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Sponsored Dependent",,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Collateral Dependent",,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",Yes,Self,,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Grandson or Granddaughter",,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Other Relative",,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Foster Child",,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Child,,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Other Relationship",,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Collateral Dependent",,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",Yes,Self,,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Ex-Spouse,,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Other Relative",,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Other Relationship",,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Brother or Sister",,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Life Partner",,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Ward,,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Child,,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Grandson or Granddaughter",,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Foster Child",,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Spouse,,,Medical,3
+2024,MA,41304,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Sponsored Dependent",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Collateral Dependent",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Life Partner",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Brother or Sister",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Child,,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Spouse,,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Other Relationship",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Ward,,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Ex-Spouse,,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,Self,,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Grandson or Granddaughter",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Other Relative",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Nephew or Niece",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Sponsored Dependent",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Foster Child",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Foster Child",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Ward,,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Nephew or Niece",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Other Relationship",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Child,,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Collateral Dependent",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Brother or Sister",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Grandson or Granddaughter",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Ex-Spouse,,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Spouse,,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,Self,,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Sponsored Dependent",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Other Relative",,,Medical,3
+2024,MA,42690,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Life Partner",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Brother or Sister",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Child,,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Grandson or Granddaughter",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Foster Child",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Ex-Spouse,,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Ward,,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",Yes,Self,,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Spouse,,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Sponsored Dependent",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Other Relative",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Collateral Dependent",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Life Partner",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Other Relationship",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Nephew or Niece",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Nephew or Niece",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Sponsored Dependent",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Ex-Spouse,,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Ward,,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",Yes,Self,,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Spouse,,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Grandson or Granddaughter",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Brother or Sister",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Child,,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Other Relationship",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Foster Child",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Collateral Dependent",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Other Relative",,,Medical,3
+2024,MA,59763,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Life Partner",,,Medical,3
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010001,,,,No,"Stepson or Stepdaughter",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010001,,,,Yes,Self,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010001,,,,No,Spouse,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010001,,,,No,Child,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010001,,,,Yes,"Life Partner",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010001,,,,No,"Brother or Sister",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Dental,3
+2024,MA,80538,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",Yes,"Life Partner",,,Dental,3
+2024,MA,80538,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Spouse,,,Dental,3
+2024,MA,80538,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",Yes,Self,,,Dental,3
+2024,MA,80538,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Child,,,Dental,3
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020002,,,,Yes,"Life Partner",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020002,,,,Yes,Self,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020002,,,,No,"Stepson or Stepdaughter",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020002,,,,No,Spouse,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020002,,,,No,Child,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020002,,,,No,"Brother or Sister",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010001,,,,No,"Stepson or Stepdaughter",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010001,,,,No,Spouse,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010001,,,,No,Child,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010001,,,,Yes,"Life Partner",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010001,,,,No,"Brother or Sister",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010001,,,,Yes,Self,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010002,,,,No,"Brother or Sister",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010002,,,,Yes,"Life Partner",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010002,,,,Yes,Self,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010002,,,,No,Spouse,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010002,,,,No,Child,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010002,,,,No,"Stepson or Stepdaughter",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Spouse,,,Dental,3
+2024,MA,80538,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",Yes,"Life Partner",,,Dental,3
+2024,MA,80538,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Dental,3
+2024,MA,80538,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Child,,,Dental,3
+2024,MA,80538,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",Yes,Self,,,Dental,3
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020002,,,,Yes,Self,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020002,,,,No,"Stepson or Stepdaughter",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020002,,,,No,Child,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020002,,,,Yes,"Life Partner",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020002,,,,No,"Brother or Sister",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020002,,,,No,Spouse,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020001,,,,Yes,Self,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020001,,,,No,Spouse,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020001,,,,No,"Stepson or Stepdaughter",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020001,,,,No,Child,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020001,,,,Yes,"Life Partner",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020001,,,,No,"Brother or Sister",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010002,,,,No,Spouse,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010002,,,,Yes,Self,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010002,,,,No,Child,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010002,,,,Yes,"Life Partner",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010002,,,,No,"Stepson or Stepdaughter",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0010002,,,,No,"Brother or Sister",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020001,,,,No,Child,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020001,,,,Yes,"Life Partner",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020001,,,,No,"Stepson or Stepdaughter",,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020001,,,,No,Spouse,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020001,,,,Yes,Self,,,Dental,
+2024,MA,80538,SERFF,1,02-12-2024,,80538MA0020001,,,,No,"Brother or Sister",,,Dental,
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,Ex-Spouse,,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,"Nephew or Niece",,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,"Sponsored Dependent",,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,"Other Relative",,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,"Grandson or Granddaughter",,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,Ward,,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,Self,,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,Spouse,,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,"Other Relationship",,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,"Brother or Sister",,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,"Collateral Dependent",,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Foster Child",,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,"Life Partner",,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Child,,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Child,,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,Ward,,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,"Collateral Dependent",,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,"Other Relative",,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,"Grandson or Granddaughter",,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Foster Child",,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,Self,,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,"Brother or Sister",,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,"Life Partner",,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,"Other Relationship",,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,"Nephew or Niece",,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,Ex-Spouse,,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,Spouse,,,Medical,3
+2024,MA,82569,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,"Sponsored Dependent",,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Nephew or Niece",,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Grandson or Granddaughter",,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Life Partner",,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Spouse,,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Brother or Sister",,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Foster Child",,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,Self,,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Ward,,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Sponsored Dependent",,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Child,,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Ex-Spouse,,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Collateral Dependent",,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Ward,,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Collateral Dependent",,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Grandson or Granddaughter",,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Spouse,,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Sponsored Dependent",,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Ex-Spouse,,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Brother or Sister",,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Nephew or Niece",,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Foster Child",,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Life Partner",,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Child,,,Medical,3
+2024,MA,88806,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,Self,,,Medical,3
