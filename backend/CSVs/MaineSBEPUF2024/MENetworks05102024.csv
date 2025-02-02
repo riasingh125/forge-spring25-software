@@ -1,0 +1,11 @@
+"BUSINESS YEAR","STATE CODE","ISSUER ID","SOURCE NAME","VERSION NUMBER","IMPORT DATE","NETWORK ID","NETWORK NAME","NETWORK URL","MARKET COVERAGE","DENTAL PLAN ONLY"
+2024,ME,33653,SERFF,1,02-12-2024,MEN001,"Maine Statewide",,"SHOP (Small Group)",No
+2024,ME,33653,SERFF,1,02-12-2024,MEN001,"Maine Statewide",,Individual,No
+2024,ME,48396,SERFF,1,02-12-2024,MEN002,"Maine HMO Tiered Options and Rx Choice Tiered Network",,Individual,No
+2024,ME,48396,SERFF,1,02-12-2024,MEN003,"Blue Choice PPO, Dental Complete, and Rx Choice Tiered Network",,Individual,No
+2024,ME,48396,SERFF,1,02-12-2024,MEN004,"Dental Complete",,Individual,Yes
+2024,ME,50165,SERFF,1,02-12-2024,MEN001,"Delta Dental PPO",,Individual,Yes
+2024,ME,54879,SERFF,1,02-12-2024,MEN001,"Taro Health Maine DPC Network",,Individual,No
+2024,ME,54879,SERFF,1,02-12-2024,MEN002,"Taro Health Maine MP Network",,Individual,No
+2024,ME,96667,SERFF,1,02-12-2024,MEN001,HMO,,Individual,No
+2024,ME,96667,SERFF,1,02-12-2024,MEN002,"Maine's Choice Plus HMO",,Individual,No

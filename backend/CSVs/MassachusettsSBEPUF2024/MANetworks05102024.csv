@@ -1,0 +1,35 @@
+"BUSINESS YEAR","STATE CODE","ISSUER ID","SOURCE NAME","VERSION NUMBER","IMPORT DATE","NETWORK ID","NETWORK NAME","NETWORK URL","MARKET COVERAGE","DENTAL PLAN ONLY"
+2024,MA,11821,SERFF,1,02-12-2024,MAN001,"Delta Dental PPO",,Individual,Yes
+2024,MA,11821,SERFF,1,02-12-2024,MAN002,"Delta Dental Premier",,Individual,Yes
+2024,MA,11821,SERFF,1,02-12-2024,MAN004,"Delta Dental Premier",,"SHOP (Small Group)",Yes
+2024,MA,18076,SERFF,1,02-12-2024,MAN001,"Altus Dental Participating Dentists",,"SHOP (Small Group)",Yes
+2024,MA,18076,SERFF,1,02-12-2024,MAN001,"Altus Dental Participating Dentists",,Individual,Yes
+2024,MA,24675,SERFF,1,02-12-2024,MAN001,"Dental Blue",,"SHOP (Small Group)",Yes
+2024,MA,24675,SERFF,1,02-12-2024,MAN002,"Dental Blue PPO",,"SHOP (Small Group)",Yes
+2024,MA,31779,SERFF,1,02-12-2024,MAN001,"MA SG Navigate",,"SHOP (Small Group)",No
+2024,MA,31779,SERFF,1,02-12-2024,MAN001,"MA IND Navigate",,Individual,No
+2024,MA,31779,SERFF,1,02-12-2024,MAN002,"MA SG Choice Plus",,"SHOP (Small Group)",No
+2024,MA,31779,SERFF,1,02-12-2024,MAN003,"MA SG Choice",,"SHOP (Small Group)",No
+2024,MA,34484,SERFF,1,02-12-2024,MAN001,"HNE Commercial Network",,Individual,No
+2024,MA,34484,SERFF,1,02-12-2024,MAN001,"HNE Commercial Network",,"SHOP (Small Group)",No
+2024,MA,36046,SERFF,1,02-12-2024,MAN001,"Harvard Pilgrim Health Care Full Network - HMO",,Individual,No
+2024,MA,36046,SERFF,1,02-12-2024,MAN001,"Harvard Pilgrim Health Care Full Network - HMO",,"SHOP (Small Group)",No
+2024,MA,36046,SERFF,1,02-12-2024,MAN002,"Harvard Pilgrim Health Care Full Network - HMO - FLEX",,"SHOP (Small Group)",No
+2024,MA,36046,SERFF,1,02-12-2024,MAN002,"Harvard Pilgrim Health Care Full Network - HMO - FLEX",,Individual,No
+2024,MA,36046,SERFF,1,02-12-2024,MAN003,"Harvard Pilgrim Health Care Full Network - PPO - FLEX",,"SHOP (Small Group)",No
+2024,MA,41304,SERFF,1,02-12-2024,MAN001,"Complete HMO",,Individual,No
+2024,MA,41304,SERFF,1,02-12-2024,MAN001,"Complete HMO",,"SHOP (Small Group)",No
+2024,MA,41304,SERFF,1,02-12-2024,MAN002,"Complete PPO Plus",,"SHOP (Small Group)",No
+2024,MA,41304,SERFF,1,02-12-2024,MAN003,"Select HMO",,Individual,No
+2024,MA,42690,SERFF,1,02-12-2024,MAN001,"HMO BLUE",,"SHOP (Small Group)",No
+2024,MA,42690,SERFF,1,02-12-2024,MAN001,"HMO BLUE",,Individual,No
+2024,MA,42690,SERFF,1,02-12-2024,MAN002,PPO,,"SHOP (Small Group)",No
+2024,MA,59763,SERFF,1,02-12-2024,MAN001,"Tufts Health Direct Metallic Individual",,Individual,No
+2024,MA,59763,SERFF,1,02-12-2024,MAN002,"Tufts Health Direct Metallic Small Group",,"SHOP (Small Group)",No
+2024,MA,59763,SERFF,1,02-12-2024,MAN003,"Tufts Health Direct Silver Individual",,Individual,No
+2024,MA,80538,SERFF,1,02-12-2024,MAN001,"Delta Dental EPO",,Individual,Yes
+2024,MA,80538,SERFF,1,02-12-2024,MAN002,"Delta Dental EPO",,"SHOP (Small Group)",Yes
+2024,MA,82569,SERFF,1,02-12-2024,MAN001,"WellSense Clarity Network",,Individual,No
+2024,MA,82569,SERFF,1,02-12-2024,MAN001,"WellSense Clarity Network",,"SHOP (Small Group)",No
+2024,MA,88806,SERFF,1,02-12-2024,MAN001,"Community Care",,Individual,No
+2024,MA,88806,SERFF,1,02-12-2024,MAN002,"Community Care",,"SHOP (Small Group)",No

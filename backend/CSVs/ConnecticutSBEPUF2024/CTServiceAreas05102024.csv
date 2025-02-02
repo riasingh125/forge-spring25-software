@@ -1,0 +1,15 @@
+"BUSINESS YEAR","STATE CODE","ISSUER ID","SOURCE NAME","VERSION NUMBER","IMPORT DATE","SERVICE AREA ID","SERVICE AREA NAME","COVER ENTIRE STATE",COUNTY,"COUNTY NAME","PARTIAL COUNTY","ZIP CODE","PARTIAL COUNTY JUSTIFICATION","MARKET COVERAGE","DENTAL PLAN ONLY"
+2024,CT,76962,SERFF,1,02-12-2024,CTS001,"Service Area 1",true,,,,,,Individual,No
+2024,CT,86545,SERFF,1,02-12-2024,CTS001,"Anthem Health Plans Inc(Anthem BCBS)IND Medical",true,,,,,,Individual,Yes
+2024,CT,86545,SERFF,1,02-12-2024,CTS001,"Anthem Health Plans Inc(Anthem BCBS)IND Medical",true,,,,,,"SHOP (Small Group)",No
+2024,CT,86545,SERFF,1,02-12-2024,CTS001,"Anthem Health Plans Inc(Anthem BCBS)IND Medical",true,,,,,,Individual,No
+2024,CT,86545,SERFF,1,02-12-2024,CTS002,"Anthem Health Plans Inc(Anthem BCBS)IND Dental",true,,,,,,Individual,Yes
+2024,CT,86545,SERFF,1,02-12-2024,CTS002,"Anthem Health Plans Inc(Anthem BCBS)IND Dental",true,,,,,,"SHOP (Small Group)",No
+2024,CT,86545,SERFF,1,02-12-2024,CTS002,"Anthem Health Plans Inc(Anthem BCBS)IND Dental",true,,,,,,Individual,No
+2024,CT,86545,SERFF,1,02-12-2024,CTS004,"Anthem Health Plans Inc(Anthem BCBS)SG Medical",true,,,,,,Individual,No
+2024,CT,86545,SERFF,1,02-12-2024,CTS004,"Anthem Health Plans Inc(Anthem BCBS)SG Medical",true,,,,,,Individual,Yes
+2024,CT,86545,SERFF,1,02-12-2024,CTS004,"Anthem Health Plans Inc(Anthem BCBS)SG Medical",true,,,,,,"SHOP (Small Group)",No
+2024,CT,94815,SERFF,1,02-12-2024,CTS001,"Service Area 1 ",true,,,,,,Individual,Yes
+2024,CT,94815,SERFF,1,02-12-2024,CTS001,"Service Area 1 ",true,,,,,,Individual,No
+2024,CT,94815,SERFF,1,02-12-2024,CTS002,"Service Area 2 - Dental",true,,,,,,Individual,No
+2024,CT,94815,SERFF,1,02-12-2024,CTS002,"Service Area 2 - Dental",true,,,,,,Individual,Yes
