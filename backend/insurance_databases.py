@@ -7,4 +7,7 @@ me_plans = pd.read_csv('backend/CSVs/MaineSBEPUF2024/MEPlans05102024.csv')
 vt_plans = pd.read_csv('backend/CSVs/VermontSBEPUF2024/VTPlans05102024.csv')
 ri_plans = pd.read_csv('backend/CSVs/RhodeIslandSBEPUF2024/RIPlans05102024.csv')
 
-print(ma_plans.head())
+
+new_england_insurance_plans = pd.concat([ma_plans, ct_plans, me_plans,  vt_plans, ri_plans], ignore_index=True)
+
+print(new_england_insurance_plans.isnull().sum())
