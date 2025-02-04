@@ -1,0 +1,69 @@
+"BUSINESS YEAR","STATE CODE","ISSUER ID","SOURCE NAME","VERSION NUMBER","IMPORT DATE","PRODUCT ID","STANDARD COMPONENT ID","DEPENDENT MAX AGE RULE","AGE DETERMINATION RULE","MINIMUM TOBACCO FREE MONTHS RULE","COHABITATION RULE REQUIRED","COHABITATION RULE CODE","MARKET COVERAGE","DENTAL ONLY PLAN","MEDICAL OR DENTAL RULE","MAX CHILDREN IN POLICY"
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Dental,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Foster Child",,,Medical,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",Yes,Self,,,Medical,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Life Partner",,,Dental,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Ward,,,Dental,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",Yes,Self,,,Dental,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Foster Child",,,Dental,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Spouse,,,Dental,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Ex-Spouse,,,Dental,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Child,,,Medical,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Child,,,Dental,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",Yes,Self,,,Medical,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Ward,,,Medical,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Life Partner",,,Medical,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Ex-Spouse,,,Medical,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Spouse,,,Medical,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Medical,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Spouse,,,Medical,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Foster Child",,,Medical,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Spouse,,,Dental,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Foster Child",,,Dental,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Life Partner",,,Dental,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Dental,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Ex-Spouse,,,Dental,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",Yes,Self,,,Dental,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Ward,,,Dental,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Medical,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Child,,,Medical,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,"Life Partner",,,Medical,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Ex-Spouse,,,Medical,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Ward,,,Medical,3
+2024,RI,15287,SERFF,1,02-12-2024,,,25,"Age on effective date","Not Applicable",No,Child,,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Grandson or Granddaughter",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Nephew or Niece",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Foster Child",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Ex-Spouse,,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Collateral Dependent",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Brother or Sister",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Other Relative",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Life Partner",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Child,,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Other Relationship",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Sponsored Dependent",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Sponsored Dependent",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,Self,,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Ex-Spouse,,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Life Partner",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Grandson or Granddaughter",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Spouse,,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Stepson or Stepdaughter",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Ward,,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",Yes,Self,,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Child,,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Nephew or Niece",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Brother or Sister",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Other Relative",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Foster Child",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Other Relationship",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,"Collateral Dependent",,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Spouse,,,Dental,3
+2024,RI,74869,SERFF,1,02-12-2024,,,26,"Age on effective date","Not Applicable",No,Ward,,,Dental,3
+2024,RI,77514,SERFF,1,02-12-2024,,,"Not Applicable","Age on effective date","Not Applicable",Yes,Self,,,Medical,3
+2024,RI,77514,SERFF,1,02-12-2024,,,"Not Applicable","Age on effective date","Not Applicable",No,Child,,,Medical,3
+2024,RI,77514,SERFF,1,02-12-2024,,,"Not Applicable","Age on effective date","Not Applicable",Yes,Self,,,Medical,3
+2024,RI,77514,SERFF,1,02-12-2024,,,"Not Applicable","Age on effective date","Not Applicable",Yes,Spouse,,,Medical,3
+2024,RI,77514,SERFF,1,02-12-2024,,,"Not Applicable","Age on effective date","Not Applicable",No,Child,,,Medical,3
+2024,RI,77514,SERFF,1,02-12-2024,,,"Not Applicable","Age on effective date","Not Applicable",Yes,Spouse,,,Medical,3
