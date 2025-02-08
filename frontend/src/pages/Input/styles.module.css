@@ -1,0 +1,32 @@
+h1 {
+  text-align: left;
+}
+
+/* Container */
+.formContainer {
+}
+
+/* Form */
+.form {
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* Group each section (label + inputs) */
+.formLabelGroup {
+  width: 50%;
+  text-align: left;
+}
+
+/* Group each section (label + inputs) */
+.formInputGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
