@@ -1,27 +1,27 @@
-import { useState } from 'react'
+import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Input from './pages/Input';
-import Rankings from './pages/Rankings';
-import Results from './pages/Results';
+import Input from "./pages/Input/Input";
+import Rankings from "./pages/Rankings";
+import Results from "./pages/Results";
 
-import Navbar from './components/NavBar';
+import Navbar from "./components/NavBar";
 
-import './App.css'
+import "./App.css";
 
 function App() {
   return (
     <>
       <Router>
-      <Navbar></Navbar>
-      <Routes>
-        <Route path="/input" element={<Input />} />
-        <Route path="/rankings" element={<Rankings />} />
-        <Route path="/results" element={<Results />} />
-      </Routes>
-    </Router>
+        <Navbar></Navbar>
+        <Routes>
+          <Route path="/input" element={<Input />} />
+          <Route path="/rankings" element={<Rankings />} />
+          <Route path="/results" element={<Results />} />
+        </Routes>
+      </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
