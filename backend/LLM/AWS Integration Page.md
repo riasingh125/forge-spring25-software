@@ -54,3 +54,15 @@ This was off of Amazon, but describes general way indexes are created. After ind
 we can create custom fields for our data mapping the indexes to and let Kendra filter the search results for what we need. 
 With this, we can use the data to contact openAI API, train the model using chatGPT, so it knows what it'll be doing. We can just
 prompt it with our trained dataset, giving it examples using our current dataset. 
+
+Everytime a user inputs a new document, use Kendra to determine whether S3 already stores it. If not, parse the data using Python NLP libraries such as NLTK or Regex. We can then add the parsed data (likely in csv format) to S3.
+
+For S3, import our CSV files, connect it to Kendra and set up the parameters. 
+
+That means, for kkendra, use boto3 API in python. Kendra makes calls from the S3 storage, and with its query results, you can use Bedrock to generate LLM results. I think Kendra should also output the query results for the recommendation algorithm. 
+
+For the recommendation algorithm, I'm looking into applying sckit-learn in order to normalize the data. Currently determining how to get numerical data from our queries. Will likely use fuzzy string matching with the user's data in order to get similarity scores, which lets us categorize numerical data. There are several methods for this, but I'm most familiar with Tf-idf (NLTK and SKlearn) and Levenshtein distance (FuzzyWuzzy in Python)
+
+For Bedrock, can use Anthropic or Llama. If we're set on OpenAI, we might have to use AWS Lambda which enables us to make serverless calls to it. 
+
+So final schema for project is User Call -> Kendra-> Reader Script -> S3 -> Kendra -> Recommendation -> User Call -> Bedrock -> User.
