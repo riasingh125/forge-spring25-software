@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from "./rankings.module.css";
 import RankingRow from '../../components/RankingRow';
+
 const Rankings: React.FC = () => {
     const rankingItems = [
         "Affordability",
