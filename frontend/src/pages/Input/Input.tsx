@@ -28,7 +28,7 @@ const Input: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch("back end endpoint here", {
+      const response = await fetch("/form/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -54,7 +54,7 @@ const Input: React.FC = () => {
       </h3>
       <hr></hr>
       <div className={styles.formContainer}>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           {/* Contact Information */}
           <div className={styles.formGroup}>
             <div className={styles.formLabelGroup}>Contact Information</div>
@@ -138,7 +138,6 @@ const Input: React.FC = () => {
           <hr></hr>
 
           {/* Budget Information */}
-
           <div className={styles.formGroup}>
             <div className={styles.formLabelGroup}>Budget Information</div>
             <div className={styles.formInputGroup}>
