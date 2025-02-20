@@ -3,6 +3,15 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins (adjust for security)
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods
+    allow_headers=["*"],  # Allow all headers
+)
 
 # To run app:
 # fastapi dev root.py
@@ -34,8 +43,17 @@ async def send_message(data: ChatBotMessage):
 
 # Format for user form input
 class UserInputForm(BaseModel):
-    age: int
-    income: float
+    firstName: str
+    lastName: str
+    email: str
+    city: str
+    state: str
+    zip: str
+    country: str
+    salary: float
+    numHousehold: int
+    budget: float
+    concerns: str | None = None  # Optional field
 
 # Endpoint for sending user input from form
 # 'data' parameters corresponds to JSON body in POST request

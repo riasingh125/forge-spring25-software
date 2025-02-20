@@ -28,11 +28,14 @@ const Input: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch("/form/send", {
+      const response = await fetch("http://127.0.0.1:8000/form/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+
+      const data = await response.json();
+      console.log("Server response:", data);
 
       if (response.ok) {
         navigate("/rankings");
