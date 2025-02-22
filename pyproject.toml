@@ -1,16 +1,18 @@
 [project]
-name = "insurance-dataframes"
-version = "0.1.0"
+name = "spring_2025_backend"
+version = "0.1.1"
 description = "Project including pandas dataframes"
 authors = [
-    {name = "pdsl2005",email = "pdsl2005@gmail.com"}
+    {name = "Peter SantaLucia, Colin Wong",email = "pdsl2005@gmail.com"}
 ]
 license = {text = "MIT-License"}
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "pandas (>=2.2.3,<3.0.0)",
-    "numpy (>=2.2.2,<3.0.0)"
+    "numpy (>=2.2.2,<3.0.0)",
+    "fastapi (>=0.115.8,<0.116.0)",
+    "pydantic (>=2.10.6,<3.0.0)"
 
 ]
 

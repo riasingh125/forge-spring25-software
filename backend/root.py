@@ -1,6 +1,6 @@
 from fastapi import FastAPI, status
 from pydantic import BaseModel
-
+from rankings import RankingLogic
 app = FastAPI()
 
 from fastapi.middleware.cors import CORSMiddleware
@@ -36,30 +36,21 @@ def root():
 async def send_message(data: ChatBotMessage):
     return {"received": data.message, "response": "hi"}
 
-
-# ===========================
-# User Form Input / Results
-# ===========================
-
-# Format for user form input
-class UserInputForm(BaseModel):
-    firstName: str
-    lastName: str
-    email: str
-    city: str
-    state: str
-    zip: str
-    country: str
-    salary: float
-    numHousehold: int
-    budget: float
-    concerns: str | None = None  # Optional field
-
 # Endpoint for sending user input from form
 # 'data' parameters corresponds to JSON body in POST request
 @app.post("/form/send")
-def send_form(data: UserInputForm):
-    return {"message": "Form received", "data": data.dict()}
+async def send_form(data):
+    # Adds more stuff to actually recommend.
+    form_data = data.model_dump()
+
+    weights = {k: v for k, v in form_data.items() if "weight" in k}
+
+    ranking = RankingLogic(weights, form_data['insurance_id'])
+    ranking.ranking_logics()
+    ranking.pair_keys()
+    total_score = ranking.total_scores()
+
+    return {"total_score": total_score}
 
 # getting results
 @app.get("/results")
