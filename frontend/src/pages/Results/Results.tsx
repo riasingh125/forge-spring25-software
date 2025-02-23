@@ -1,9 +1,8 @@
 import React from 'react';
 import TextBox from '../../components/ResultsText';
 import { ResultsProps, Result } from '../../App';
-
-
-    
+import Chatbot from '../../components/Chatbot';
+import styles from './results.module.css';
 
 const Results: React.FC<ResultsProps> = ({results, setResults}) => {
 
@@ -23,11 +22,19 @@ const Results: React.FC<ResultsProps> = ({results, setResults}) => {
 
     return (
         <>
+        <div className={styles.resultspage}>
+            <h1>Results</h1>
+            <div className={styles.resultsdisplay}>
             {
             results.map((result) => (
                 displayResult(result)
             ))
             }
+            </div>
+            <div className={styles.chatbotdisplay}>
+                <Chatbot />
+            </div>
+        </div>
         </>
 
     )
