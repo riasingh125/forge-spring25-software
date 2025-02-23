@@ -51,10 +51,10 @@ const Input: React.FC = () => {
   return (
     <div>
       <h1>Welcome</h1>
-      <h3>
+      <h2>
         Let's get you set up to compare the best insurance plans. We'll need a
         few details to get started.
-      </h3>
+      </h2>
       <hr></hr>
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={handleSubmit}>
