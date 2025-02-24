@@ -47,7 +47,7 @@ const Chatbot: React.FC = () => {
         ))}
       </div>
       <div className={styles.chatinput}>
-        <input
+        <input className={styles.messageinput}
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}

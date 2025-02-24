@@ -23,13 +23,15 @@ const Results: React.FC<ResultsProps> = ({results, setResults}) => {
     return (
         <>
         <div className={styles.resultspage}>
-            <h1>Results</h1>
             <div className={styles.resultsdisplay}>
-            {
-            results.map((result) => (
-                displayResult(result)
-            ))
-            }
+                <br></br>
+                <h1>Results</h1>
+                <br></br>
+                {
+                results.map((result) => (
+                    displayResult(result)
+                ))
+                }
             </div>
             <div className={styles.chatbotdisplay}>
                 <Chatbot />

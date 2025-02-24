@@ -56,12 +56,13 @@
   border-bottom-left-radius: 2px; /* Creates a tail effect */
   }
   
-  input {
+  .messageinput {
     flex: 1;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-right: 5px;
+    width: 400px;
   }
   
   button {
