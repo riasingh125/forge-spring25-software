@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
+import { ResultsProps } from "../../App";
 
-const Input: React.FC = () => {
+const Input: React.FC<ResultsProps> = ({results, setResults}) => {
   const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -18,12 +18,13 @@ const Input: React.FC = () => {
     budget: "",
     concerns: "",
   });
+  
 
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,10 +34,9 @@ const Input: React.FC = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-
+      console.log("JSON body: ", formData);
       const data = await response.json();
       console.log("Server response:", data);
-
       if (response.ok) {
         navigate("/rankings");
       } else {
@@ -46,8 +46,27 @@ const Input: React.FC = () => {
       console.error("Submission error:", error);
       alert("Failed to connect to the server.");
     }
-  };
 
+    // update results
+    try {
+      const response = await fetch("http://127.0.0.1:8000/results", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await response.json();
+      if (response.ok) {
+        //console.log(data);
+        setResults(data.results);
+        navigate("/rankings");
+      } else {
+        alert("response not okay");
+      }
+    } catch (error) {
+      console.error("Get error:", error);
+      alert("Failed to connect to the server.");
+    }
+  };
+  
   return (
     <div>
       <h1>Welcome</h1>
@@ -92,9 +111,7 @@ const Input: React.FC = () => {
               </div>
             </div>
           </div>
-
           <hr></hr>
-
           {/* Address Information */}
           <div className={styles.formGroup}>
             <div className={styles.formLabelGroup}>Address</div>
@@ -137,9 +154,7 @@ const Input: React.FC = () => {
               </div>
             </div>
           </div>
-
           <hr></hr>
-
           {/* Budget Information */}
           <div className={styles.formGroup}>
             <div className={styles.formLabelGroup}>Budget Information</div>
@@ -181,9 +196,7 @@ const Input: React.FC = () => {
               </div>
             </div>
           </div>
-
           <hr></hr>
-
           {/* Submit Button */}
           <button type="submit" className={styles.submitButton}>
             Submit
@@ -193,5 +206,6 @@ const Input: React.FC = () => {
     </div>
   );
 };
-
 export default Input;
+
+   

@@ -56,7 +56,7 @@ async def send_form(data):
 @app.get("/results")
 async def get_results():
     return {
-        "best_insurance_options": [
+        "results": [
             {"name": "Plan A", "price": "$100"},
             {"name": "Plan B", "price": "$200"},
             {"name": "Plan C", "price": "$300"}
