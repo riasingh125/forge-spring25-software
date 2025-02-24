@@ -1,8 +1,9 @@
+
 .resultspage {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: flex-start;
     height: 100vh;
 }
 
@@ -11,8 +12,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: calc(100vw - 600px);
 }
 
 .chatbotdisplay {
     position: fixed;
+    right: 0;
+    bottom: 0;
 }

@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import styles from "./ChatbotStyles.module.css";
 
 const Chatbot: React.FC = () => {
-  const [messages, setMessages] = useState<{ text: string; sender: string }[]>([]);
+  const [messages, setMessages] = useState<{ text: string; sender: string }[]>([
+    { text: "Hello! Welcome to Parcel! How can I assist you today?", sender: "bot" } 
+  ]);
   const [input, setInput] = useState("");
 
   const sendMessage = async () => {
@@ -37,8 +39,10 @@ const Chatbot: React.FC = () => {
     <div className={styles.chatcontainer}>
       <div className={styles.chatbox}>
         {messages.map((msg, index) => (
-          <div key={index} className={`message ${msg.sender}`}>
-            <strong>{msg.sender === "user" ? "You" : "Bot"}:</strong> {msg.text}
+          <div key={index} className={`${styles.message} ${msg.sender === "user" ? styles.user : styles.bot}`}>
+            <div className={styles.bubble}>
+              <strong>{msg.sender === "user" ? "You" : "Bot"}:</strong> {msg.text}
+            </div>
           </div>
         ))}
       </div>
