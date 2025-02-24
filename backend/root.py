@@ -1,6 +1,10 @@
 from fastapi import FastAPI, status
 from pydantic import BaseModel
 from rankings import RankingLogic
+
+from models import UserInputForm
+from models import ChatBotMessage
+
 app = FastAPI()
 
 from fastapi.middleware.cors import CORSMiddleware
@@ -16,9 +20,6 @@ app.add_middleware(
 # To run app:
 # fastapi dev root.py
 
-# Format for messages sent - a single string
-class ChatBotMessage(BaseModel):
-    message: str
 
 
 @app.get("/")
@@ -36,10 +37,11 @@ def root():
 async def send_message(data: ChatBotMessage):
     return {"received": data.message, "response": "hi"}
 
+
 # Endpoint for sending user input from form
 # 'data' parameters corresponds to JSON body in POST request
 @app.post("/form/send")
-async def send_form(data):
+async def send_form(data: UserInputForm):
     # Adds more stuff to actually recommend.
     form_data = data.model_dump()
 
