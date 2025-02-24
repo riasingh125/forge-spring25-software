@@ -1,9 +1,9 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import { ResultsProps } from "../../App";
 
-const Input: React.FC<ResultsProps> = ({results, setResults}) => {
+const Input: React.FC<ResultsProps> = ({ results, setResults }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -18,36 +18,46 @@ const Input: React.FC<ResultsProps> = ({results, setResults}) => {
     budget: "",
     concerns: "",
   });
-  
 
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  
+
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     try {
       const response = await fetch("http://127.0.0.1:8000/form/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+
       console.log("JSON body: ", formData);
       const data = await response.json();
       console.log("Server response:", data);
+
       if (response.ok) {
+        updateResults();
         navigate("/rankings");
       } else {
-        alert("Error submitting the form. Please try again.");
+        const errorMessage = await response.text();
+        throw new Error(`Error ${response.status}: ${errorMessage}`);
       }
     } catch (error) {
       console.error("Submission error:", error);
-      alert("Failed to connect to the server.");
+      if (error instanceof Error) {
+        alert(`Failed to connect to the server. ${error.message}`);
+      } else {
+        alert("Failed to connect to the server. An unknown error occurred.");
+      }
     }
+  };
 
-    // update results
+  // Updates results from the server
+  const updateResults = async () => {
     try {
       const response = await fetch("http://127.0.0.1:8000/results", {
         method: "GET",
@@ -55,7 +65,6 @@ const Input: React.FC<ResultsProps> = ({results, setResults}) => {
       });
       const data = await response.json();
       if (response.ok) {
-        //console.log(data);
         setResults(data.results);
         navigate("/rankings");
       } else {
@@ -66,7 +75,7 @@ const Input: React.FC<ResultsProps> = ({results, setResults}) => {
       alert("Failed to connect to the server.");
     }
   };
-  
+
   return (
     <div>
       <h1>Welcome</h1>
@@ -207,5 +216,3 @@ const Input: React.FC<ResultsProps> = ({results, setResults}) => {
   );
 };
 export default Input;
-
-   
