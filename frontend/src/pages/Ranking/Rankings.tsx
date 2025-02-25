@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -38,13 +39,16 @@ const rankingItems = [
 
 export default function Rankings() {
     const navigate = useNavigate();
-    const [values, setValues] = React.useState<{ [key: string]: number | string }>(
+    const location = useLocation(); 
+    const { formData } = location.state || {};
+
+    const [rankings, setRankings] = React.useState<{ [key: string]: number | string }>(
         Object.fromEntries(rankingItems.map((item) => [item, 1]))
     );
 
     // Handle slider change
     const handleSliderChange = (category: string) => (event: Event, newValue: number | number[]) => {
-        setValues((prev) => ({
+        setRankings((prev) => ({
             ...prev,
             [category]: newValue as number,
         }));
@@ -55,29 +59,51 @@ export default function Rankings() {
         const newValue = event.target.value;
 
         if (newValue === "") {
-            setValues((prev) => ({ ...prev, [category]: "" }));
+            setRankings((prev) => ({ ...prev, [category]: "" }));
             return;
         }
 
         const parsedValue = Number(newValue);
         if (!isNaN(parsedValue) && parsedValue >= 1 && parsedValue <= 10) {
-            setValues((prev) => ({ ...prev, [category]: parsedValue }));
+            setRankings((prev) => ({ ...prev, [category]: parsedValue }));
         }
     };
 
     // Handle blur event to correct invalid values
     const handleBlur = (category: string) => () => {
-        let finalValue = Number(values[category]);
+        let finalValue = Number(rankings[category]);
         if (isNaN(finalValue) || finalValue < 1) finalValue = 1;
         if (finalValue > 10) finalValue = 10;
 
-        setValues((prev) => ({ ...prev, [category]: finalValue }));
+        setRankings((prev) => ({ ...prev, [category]: finalValue }));
     };
 
     //Handle Submit
-    const handleSubmit = () => {
-        navigate("/results", { state: { rankings: values } });
-    };
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        const fullUserData = { ...formData, ...rankings };
+
+        try {
+          const response = await fetch("http://127.0.0.1:8000/form/send", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(fullUserData),
+          });
+    
+          const data = await response.json();
+          console.log("Server response:", data);
+    
+          if (response.ok) {
+            navigate("/results");
+          } else {
+            alert("Error submitting the form. Please try again.");
+          }
+        } catch (error) {
+          console.error("Submission error:", error);
+          alert("Failed to connect to the server.");
+        }
+      };
 
     return (
         <Box sx={{ width: 400, margin: "auto" }}>
@@ -105,7 +131,7 @@ export default function Rankings() {
                     <Grid container spacing={2} sx={{ alignItems: "center" }}>
                         <Grid item xs>
                             <Slider
-                                value={typeof values[category] === "number" ? values[category] : 1}
+                                value={typeof rankings[category] === "number" ? rankings[category] : 1}
                                 onChange={handleSliderChange(category)}
                                 step={1}
                                 min={1}
@@ -117,7 +143,7 @@ export default function Rankings() {
                         </Grid>
                         <Grid item>
                             <Input
-                                value={values[category]}
+                                value={rankings[category]}
                                 size="small"
                                 onChange={handleInputChange(category)}
                                 onBlur={handleBlur(category)}
