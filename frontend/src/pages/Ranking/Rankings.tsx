@@ -7,6 +7,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
 import MuiInput from '@mui/material/Input';
+import { ResultsProps } from "../../App";
 
 const Input = styled(MuiInput)`
   width: 30px;
@@ -37,7 +38,7 @@ const rankingItems = [
 ];
 
 
-export default function Rankings() {
+const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
     const navigate = useNavigate();
     const location = useLocation(); 
     const { formData } = location.state || {};
@@ -85,24 +86,42 @@ export default function Rankings() {
         const fullUserData = { ...formData, ...rankings };
 
         try {
-          const response = await fetch("http://127.0.0.1:8000/form/send", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(fullUserData),
-          });
-    
-          const data = await response.json();
-          console.log("Server response:", data);
-    
-          if (response.ok) {
-            navigate("/results");
-          } else {
-            alert("Error submitting the form. Please try again.");
+            const response = await fetch("http://127.0.0.1:8000/form/send", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(fullUserData),
+            });
+            console.log("JSON body: ", fullUserData);
+            const data = await response.json();
+            console.log("Server response:", data);
+            if (response.ok) {
+              navigate("/results");
+            } else {
+              alert("Error submitting the form. Please try again.");
+            }
+          } catch (error) {
+            console.error("Submission error:", error);
+            alert("Failed to connect to the server.");
           }
-        } catch (error) {
-          console.error("Submission error:", error);
-          alert("Failed to connect to the server.");
-        }
+      
+          // update results
+          try {
+            const response = await fetch("http://127.0.0.1:8000/results", {
+              method: "GET",
+              headers: { "Content-Type": "application/json" },
+            });
+            const data = await response.json();
+            if (response.ok) {
+              //console.log(data);
+              setResults(data.results);
+              navigate("/results");
+            } else {
+              alert("response not okay");
+            }
+          } catch (error) {
+            console.error("Get error:", error);
+            alert("Failed to connect to the server.");
+          }
       };
 
     return (
@@ -169,3 +188,5 @@ export default function Rankings() {
         </Box>
     );
 }
+
+export default Rankings; 
