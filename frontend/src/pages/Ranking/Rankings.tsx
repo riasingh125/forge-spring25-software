@@ -9,6 +9,9 @@ import Slider from '@mui/material/Slider';
 import MuiInput from '@mui/material/Input';
 import { ResultsProps } from "../../App";
 
+import {sendInputData} from "../sendInputAPI.ts";
+import {getResults} from "../resultsAPI.ts";
+
 const Input = styled(MuiInput)`
   width: 30px;
   `;
@@ -38,7 +41,11 @@ const rankingItems = [
 ];
 
 
+<<<<<<< Updated upstream
 const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
+=======
+export default function Rankings({setResults}) {
+>>>>>>> Stashed changes
     const navigate = useNavigate();
     const location = useLocation(); 
     const { formData } = location.state || {};
@@ -83,8 +90,8 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        const fullUserData = { ...formData, ...rankings };
 
+<<<<<<< Updated upstream
         try {
             const response = await fetch("http://127.0.0.1:8000/form/send", {
               method: "POST",
@@ -122,6 +129,16 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
             console.error("Get error:", error);
             alert("Failed to connect to the server.");
           }
+=======
+        const fullUserData = { ...formData, ...rankings };
+        const success = await sendInputData(fullUserData);
+        if (success) {
+            navigate("/results");
+            getResults().then(newResults => {
+                setResults(newResults);
+            });
+        }
+>>>>>>> Stashed changes
       };
 
     return (
