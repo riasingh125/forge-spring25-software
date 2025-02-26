@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
-import Input from "./pages/Input/input";
+import Input from "./pages/Input/Input";
 import Rankings from "./pages/Ranking/Rankings";
 import Results from "./pages/Results/Results";
 
