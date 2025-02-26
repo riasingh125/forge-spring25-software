@@ -2,3 +2,4 @@
 .idea
 !/backend/insurance_databases.py
 !/backend/
+node_modules
