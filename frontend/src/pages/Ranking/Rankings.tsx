@@ -41,11 +41,9 @@ const rankingItems = [
 ];
 
 
-<<<<<<< Updated upstream
+
 const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
-=======
-export default function Rankings({setResults}) {
->>>>>>> Stashed changes
+
     const navigate = useNavigate();
     const location = useLocation(); 
     const { formData } = location.state || {};
@@ -89,56 +87,13 @@ export default function Rankings({setResults}) {
     //Handle Submit
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-
-
-<<<<<<< Updated upstream
-        try {
-            const response = await fetch("http://127.0.0.1:8000/form/send", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(fullUserData),
-            });
-            console.log("JSON body: ", fullUserData);
-            const data = await response.json();
-            console.log("Server response:", data);
-            if (response.ok) {
-              navigate("/results");
-            } else {
-              alert("Error submitting the form. Please try again.");
-            }
-          } catch (error) {
-            console.error("Submission error:", error);
-            alert("Failed to connect to the server.");
-          }
-      
-          // update results
-          try {
-            const response = await fetch("http://127.0.0.1:8000/results", {
-              method: "GET",
-              headers: { "Content-Type": "application/json" },
-            });
-            const data = await response.json();
-            if (response.ok) {
-              //console.log(data);
-              setResults(data.results);
-              navigate("/results");
-            } else {
-              alert("response not okay");
-            }
-          } catch (error) {
-            console.error("Get error:", error);
-            alert("Failed to connect to the server.");
-          }
-=======
         const fullUserData = { ...formData, ...rankings };
         const success = await sendInputData(fullUserData);
-        if (success) {
-            navigate("/results");
-            getResults().then(newResults => {
-                setResults(newResults);
-            });
-        }
->>>>>>> Stashed changes
+        // just updates results regardless
+        navigate("/results");
+        getResults().then(newResults => {
+            setResults(newResults);
+        });
       };
 
     return (
