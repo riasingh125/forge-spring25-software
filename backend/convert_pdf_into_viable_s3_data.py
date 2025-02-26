@@ -17,7 +17,7 @@ key = os.getenv("GENAI_API_KEY")
 
 client = genai.Client(api_key=key)
 
-doc_url = "https://www.cms.gov/cciio/resources/files/downloads/sbc-sample.pdf"  # Replace with the actual URL of your PDF
+doc_url = "https://www.opm.gov/healthcare-insurance/healthcare/plan-information/plans/pdf/2025/brochures/71-005.pdf"  # Replace with the actual URL of your PDF
 
 # Retrieve and encode the PDF byte
 filepath = pathlib.Path('file.pdf')
@@ -34,7 +34,16 @@ def generate(filepath):
         " a single data row that precisely follows the provided column structure, "
         "without including the column headers. Do not include any additional commentary,"
         " explanations, or meta-comments about your process. Simply output the CSV data "
-        "rows based solely on the information extracted from the PDF."
+        "rows based solely on the information extracted from the PDF. Each input in the"
+        "csv should be separated by a comma. If there is no input, simply leave that cell blank"
+        "and move on."
+        
+        'Note that there is an exception in our rules in terms of the first csv. '
+        'There are multiple benefits per plan, and there should be a row for each of them.'
+        'For each other csv given, output one row per plan.'
+        
+        'Be careful to ensure that the data is correctly formatted according to the examples for'
+        'each csv given. '
         
         'There are six CSVs you must output in total.'
         'CSV1 Columns: ""BUSINESS YEAR","STATE CODE","ISSUER ID","SOURCE NAME",'
@@ -173,7 +182,7 @@ def generate(filepath):
 
     generate_content_config = types.GenerateContentConfig(
         temperature=0.0,
-        top_p=0.95,
+        top_p=1.0,
         top_k=40,
         max_output_tokens=8192,
         response_mime_type="text/plain",
