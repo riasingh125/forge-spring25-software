@@ -20,6 +20,7 @@ app.add_middleware(
 )
 
 # To run app:
+# cd backend
 # fastapi dev root.py
 
 
