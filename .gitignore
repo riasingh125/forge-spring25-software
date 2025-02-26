@@ -1,5 +1,9 @@
 .DS_Store
 .idea
+<<<<<<< HEAD
 !/backend/insurance_databases.py
 !/backend/
 node_modules
+=======
+backend/__pycache__
+>>>>>>> origin/main

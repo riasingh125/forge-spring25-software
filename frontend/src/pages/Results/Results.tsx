@@ -17,7 +17,7 @@ const Results: React.FC<ResultsProps> = ({results}) => {
             title={results.name}
             content={`price: ${results.price}`}
             width= "500px"
-            height="250px" 
+            height="250px"
             />
 
 
@@ -45,7 +45,7 @@ const Results: React.FC<ResultsProps> = ({results}) => {
 
     )
     
-    
+
 }
 
 export default Results;
