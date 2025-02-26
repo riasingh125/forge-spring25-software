@@ -8,8 +8,6 @@ class ChatBotMessage(BaseModel):
 
 
 
-
-
 class Coverage(BaseModel):
     ages_of_people_needing_coverage: List[int]
     personal_health_concerns: str
@@ -22,15 +20,23 @@ class Contact(BaseModel):
 class Address(BaseModel):
     city: str
     state: str
+    country: str
     zip_code: str
 
 class Weights(BaseModel):
-    age: int
-    income: int
-    city: int
+    affordability: int
+    health_concerns: int
+    essential_services: int
+    plan_flexibility: int
+    geographic_coverage: int
+    dependencies: int
+    convenience: int
+    long_term_benefits: int
 
 # Main Pydantic format for JSON
 class UserInputForm(BaseModel):
+    first_name: str
+    last_name: str
     age: int
     income: float
     budget: float

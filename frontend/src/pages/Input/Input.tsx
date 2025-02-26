@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import { ResultsProps } from "../../App";
 
-const Input: React.FC<ResultsProps> = ({results, setResults}) => {
+
+
+
+const Input: React.FC<ResultsProps> = ({setResults}) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -18,54 +21,19 @@ const Input: React.FC<ResultsProps> = ({results, setResults}) => {
     budget: "",
     concerns: "",
   });
-  
+
+
 
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  
+
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      const response = await fetch("http://127.0.0.1:8000/form/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      console.log("JSON body: ", formData);
-      const data = await response.json();
-      console.log("Server response:", data);
-      if (response.ok) {
-        navigate("/rankings");
-      } else {
-        alert("Error submitting the form. Please try again.");
-      }
-    } catch (error) {
-      console.error("Submission error:", error);
-      alert("Failed to connect to the server.");
-    }
-
-    // update results
-    try {
-      const response = await fetch("http://127.0.0.1:8000/results", {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-      });
-      const data = await response.json();
-      if (response.ok) {
-        //console.log(data);
-        setResults(data.results);
-        navigate("/rankings");
-      } else {
-        alert("response not okay");
-      }
-    } catch (error) {
-      console.error("Get error:", error);
-      alert("Failed to connect to the server.");
-    }
-  };
+    navigate("/Rankings");
+  }
   
   return (
     <div>

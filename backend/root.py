@@ -1,5 +1,7 @@
 from fastapi import FastAPI, status
 from pydantic import BaseModel
+
+from models import UserInputForm, ChatBotMessage
 from rankings import RankingLogic
 
 from models import UserInputForm
@@ -18,7 +20,9 @@ app.add_middleware(
 )
 
 # To run app:
+# cd backend
 # fastapi dev root.py
+
 
 
 
@@ -43,16 +47,18 @@ async def send_message(data: ChatBotMessage):
 @app.post("/form/send")
 async def send_form(data: UserInputForm):
     # Adds more stuff to actually recommend.
-    form_data = data.model_dump()
 
-    weights = {k: v for k, v in form_data.items() if "weight" in k}
+    # form_data = data.model_dump()
+    #
+    # weights = {k: v for k, v in form_data.items() if "weight" in k}
+    #
+    # ranking = RankingLogic(weights, form_data['insurance_id'])
+    # ranking.ranking_logics()
+    # ranking.pair_keys()
+    # total_score = ranking.total_scores()
 
-    ranking = RankingLogic(weights, form_data['insurance_id'])
-    ranking.ranking_logics()
-    ranking.pair_keys()
-    total_score = ranking.total_scores()
-
-    return {"total_score": total_score}
+    #print(data)
+    return {"total_score": 100}
 
 # getting results
 @app.get("/results")
