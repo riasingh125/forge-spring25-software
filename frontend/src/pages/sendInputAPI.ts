@@ -4,14 +4,14 @@ import axios from "axios";
 function structureToJSON(data) {
 
     return {
-        "first_name": data.firstName || "",
-        "last_name": data.lastName || "",
+        "firstNiame": data.firstName || "",
+        "lastName": data.lastName || "",
         "age": parseInt(data.age) || 25,
         "income": parseFloat(data.salary) || 0,
         "budget": parseFloat(data.budget) || 0,
         "coverage": {
-            "ages_of_people_needing_coverage": [1, 2, 3, 4, 5],
-            "personal_health_concerns": data.concerns || "",
+            "agesOfDependencies": [1, 2, 3, 4, 5],
+            "personalHealthConcerns": data.concerns || "",
             "budget": parseFloat(data.budget) || 0
         },
         "contact": {
@@ -22,20 +22,21 @@ function structureToJSON(data) {
             "city": data.city || "",
             "state": data.state || "",
             "country": data.country || "",
-            "zip_code": data.zip || ""
+            "zipCode": data.zip || ""
         },
         "weights": {
             "affordability": parseFloat(data["Affordability"]) || 0,
-            "health_concerns": parseFloat(data["Personal Health Concerns"]) || 0,
-            "essential_services": parseFloat(data["Coverage of Essential Services"]) || 0,
-            "plan_flexibility": parseFloat(data["Plan Flexibility"]) || 0,
-            "geographic_coverage": parseFloat(data["Geographic Coverage"]) || 0,
+            "healthConcerns": parseFloat(data["Personal Health Concerns"]) || 0,
+            "essentialServices": parseFloat(data["Coverage of Essential Services"]) || 0,
+            "planFlexibility": parseFloat(data["Plan Flexibility"]) || 0,
+            "geographicCoverage": parseFloat(data["Geographic Coverage"]) || 0,
             "dependencies": parseFloat(data["Coverage for Family and Dependents"]) || 0,
             "convenience": parseFloat(data["Convenience/Ease of Use"]) || 0,
-            "long_term_benefits": parseFloat(data["Long-Term Benefits"]) || 0
+            "longTermBenefits": parseFloat(data["Long-Term Benefits"]) || 0
         }
     };
 }
+
 
 
 async function sendInputData(data) {
@@ -44,7 +45,6 @@ async function sendInputData(data) {
             structureToJSON(data),
             {headers: {"Content-Type": "application/json"}}
         );
-        //console.log("Server response:", response.data);
         return true;
     } catch (error) {
         console.error("Submission error:", error);
