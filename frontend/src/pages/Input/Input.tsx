@@ -2,7 +2,7 @@ import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import { ResultsProps } from "../../App";
-
+import FileUpload from "../../components/FileUpload";
 
 
 
@@ -162,6 +162,14 @@ const Input: React.FC<ResultsProps> = ({setResults}) => {
                   onChange={handleChange}
                 />
               </div>
+            </div>
+          </div>
+          <hr></hr>
+          {/* File Upload */}
+          <div className={styles.formGroup}>
+            <div className={styles.formLabelGroup}>Upload Files</div>
+            <div className={styles.formInputGroup}>
+              <FileUpload />
             </div>
           </div>
           <hr></hr>
