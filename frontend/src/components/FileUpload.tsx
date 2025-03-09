@@ -10,7 +10,11 @@ const FileUpload = () => {
 
     return (
         <div>
-            <input type="file" multiple onChange={handleFileChange} />
+            <input 
+            type="file" 
+            accept="application/pdf"
+            multiple 
+            onChange={handleFileChange} />
             <menu>
                 {files.map((file, index) => (
                     <li key={index}>{file.name}</li>
