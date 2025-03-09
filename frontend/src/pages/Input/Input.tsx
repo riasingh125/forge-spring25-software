@@ -167,7 +167,7 @@ const Input: React.FC<ResultsProps> = ({setResults}) => {
           <hr></hr>
           {/* File Upload */}
           <div className={styles.formGroup}>
-            <div className={styles.formLabelGroup}>Upload Files</div>
+            <div className={styles.formLabelGroup}>Upload PDFs</div>
             <div className={styles.formInputGroup}>
               <FileUpload />
             </div>
