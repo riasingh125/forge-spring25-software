@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import { ResultsProps } from "../../App";
+import FileUpload from "../../components/FileUpload";
 
-const Input: React.FC<ResultsProps> = ({ setResults }) => {
+
+
+const Input: React.FC<ResultsProps> = ({setResults}) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -162,8 +165,15 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
               </div>
             </div>
           </div>
-          <div className={styles.line}></div>
-          <br></br>
+          <hr></hr>
+          {/* File Upload */}
+          <div className={styles.formGroup}>
+            <div className={styles.formLabelGroup}>Upload PDFs</div>
+            <div className={styles.formInputGroup}>
+              <FileUpload />
+            </div>
+          </div>
+          <hr></hr>
           {/* Submit Button */}
           <button type="submit" className={styles.submitButton}>
             Submit

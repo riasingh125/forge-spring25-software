@@ -59,7 +59,28 @@ async function sendInputData(data) {
     }
 }
 
+// not sure of defining type os necessary
+async function uploadFiles(files: File[]) {
+    const formData = new FormData();
+
+    files.forEach((file) => {
+        formData.append("files", file);
+    });
+
+    try {
+        const response = await axios.post("http://127.0.0.1:8000/pdf-upload",
+            formData,
+            { headers: { "Content-Type": "multipart/form-data" } }
+        );
+        return true;
+    } catch (error) {
+        console.error("File upload error:", error);
+        alert("Failed to upload files.");
+        return false;
+    }
+}
 
 export {
     sendInputData,
-}
+    uploadFiles
+};
