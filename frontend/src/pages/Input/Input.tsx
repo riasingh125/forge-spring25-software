@@ -1,12 +1,9 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import { ResultsProps } from "../../App";
 
-
-
-
-const Input: React.FC<ResultsProps> = ({setResults}) => {
+const Input: React.FC<ResultsProps> = ({ setResults }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -22,8 +19,6 @@ const Input: React.FC<ResultsProps> = ({setResults}) => {
     concerns: "",
   });
 
-
-
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -33,8 +28,8 @@ const Input: React.FC<ResultsProps> = ({setResults}) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     navigate("/Rankings");
-  }
-  
+  };
+
   return (
     <div>
       <h1>Welcome</h1>
@@ -42,14 +37,14 @@ const Input: React.FC<ResultsProps> = ({setResults}) => {
         Let's get you set up to compare the best insurance plans. We'll need a
         few details to get started.
       </h2>
-      <hr></hr>
+      <div className={styles.line}></div>
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={handleSubmit}>
           {/* Contact Information */}
           <div className={styles.formGroup}>
             <div className={styles.formLabelGroup}>Contact Information</div>
             <div className={styles.formInputGroup}>
-              <div>
+              <div className={styles.inputsNextToEachOther}>
                 <input
                   type="text"
                   placeholder="First Name"
@@ -67,7 +62,7 @@ const Input: React.FC<ResultsProps> = ({setResults}) => {
                   required
                 />
               </div>
-              <div>
+              <div className={styles.inputsNextToEachOther}>
                 <input
                   type="email"
                   placeholder="Email"
@@ -79,12 +74,12 @@ const Input: React.FC<ResultsProps> = ({setResults}) => {
               </div>
             </div>
           </div>
-          <hr></hr>
+          <div className={styles.line}></div>
           {/* Address Information */}
           <div className={styles.formGroup}>
             <div className={styles.formLabelGroup}>Address</div>
             <div className={styles.formInputGroup}>
-              <div>
+              <div className={styles.inputsNextToEachOther}>
                 <input
                   type="text"
                   placeholder="City"
@@ -102,7 +97,7 @@ const Input: React.FC<ResultsProps> = ({setResults}) => {
                   required
                 />
               </div>
-              <div>
+              <div className={styles.inputsNextToEachOther}>
                 <input
                   type="text"
                   placeholder="Zip Code"
@@ -122,12 +117,12 @@ const Input: React.FC<ResultsProps> = ({setResults}) => {
               </div>
             </div>
           </div>
-          <hr></hr>
+          <div className={styles.line}></div>
           {/* Budget Information */}
           <div className={styles.formGroup}>
             <div className={styles.formLabelGroup}>Budget Information</div>
             <div className={styles.formInputGroup}>
-              <div>
+              <div className={styles.inputsNextToEachOther}>
                 <input
                   type="number"
                   placeholder="Salary"
@@ -138,7 +133,7 @@ const Input: React.FC<ResultsProps> = ({setResults}) => {
                 />
                 <input
                   type="number"
-                  placeholder="Number of People in Household"
+                  placeholder="# People in Household"
                   name="numHousehold"
                   value={formData.numHousehold}
                   onChange={handleChange}
@@ -153,7 +148,7 @@ const Input: React.FC<ResultsProps> = ({setResults}) => {
                   required
                 />
               </div>
-              <div>
+              <div className={styles.inputsNextToEachOther}>
                 <input
                   type="text"
                   placeholder="Health concerns/additional information"
@@ -164,7 +159,7 @@ const Input: React.FC<ResultsProps> = ({setResults}) => {
               </div>
             </div>
           </div>
-          <hr></hr>
+          <div className={styles.line}></div>
           {/* Submit Button */}
           <button type="submit" className={styles.submitButton}>
             Submit
@@ -175,5 +170,3 @@ const Input: React.FC<ResultsProps> = ({setResults}) => {
   );
 };
 export default Input;
-
-   
