@@ -59,7 +59,7 @@ async function sendInputData(data) {
     }
 }
 
-// not sure if defining type is necessary
+// not sure of defining type os necessary
 async function uploadFiles(files: File[]) {
     const formData = new FormData();
 
@@ -84,4 +84,3 @@ export {
     sendInputData,
     uploadFiles
 };
-
