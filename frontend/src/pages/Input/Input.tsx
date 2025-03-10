@@ -31,9 +31,9 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
   };
 
   return (
-    <div>
-      <h1>Welcome</h1>
-      <h2>
+    <div className={styles.inputPage}>
+      <h1 className={styles.title}>Welcome</h1>
+      <h2 className={styles.subtitle}>
         Let's get you set up to compare the best insurance plans. We'll need a
         few details to get started.
       </h2>

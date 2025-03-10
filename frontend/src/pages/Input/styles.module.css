@@ -1,19 +1,14 @@
-* {
+.inputPage * {
   padding: 0.5rem;
 }
 
-.inputPage {
-
-}
-
-h1 {
+.title {
   text-align: left;
   color: var(--gray);
   margin-top: 5rem;
 }
 
-
-h2 {
+.subititle {
   text-align: left;
   color: var(--burgundy);
   font-weight: 400;
@@ -34,6 +29,7 @@ input {
 .form {
   width: 100%;
 }
+
 
 .formGroup {
   display: flex;
