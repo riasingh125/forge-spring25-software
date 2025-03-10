@@ -33,10 +33,13 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
   return (
     <div className={styles.inputPage}>
       <h1 className={styles.title}>Welcome</h1>
-      <h2 className={styles.subtitle}>
-        Let's get you set up to compare the best insurance plans. We'll need a
-        few details to get started.
-      </h2>
+      <div className={styles.subtitle}>
+        <h2>
+          Let's get you set up to compare the best insurance plans. We'll need a
+          few details to get started.
+        </h2>
+      </div>
+
       <div className={styles.line}></div>
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={handleSubmit}>
@@ -160,6 +163,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
             </div>
           </div>
           <div className={styles.line}></div>
+          <br></br>
           {/* Submit Button */}
           <button type="submit" className={styles.submitButton}>
             Submit
