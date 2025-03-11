@@ -4,9 +4,7 @@ import styles from "./styles.module.css";
 import { ResultsProps } from "../../App";
 import FileUpload from "../../components/FileUpload";
 
-
-
-const Input: React.FC<ResultsProps> = ({setResults}) => {
+const Input: React.FC<ResultsProps> = ({ setResults }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -165,7 +163,7 @@ const Input: React.FC<ResultsProps> = ({setResults}) => {
               </div>
             </div>
           </div>
-          <hr></hr>
+          <div className={styles.line}></div>
           {/* File Upload */}
           <div className={styles.formGroup}>
             <div className={styles.formLabelGroup}>Upload PDFs</div>
@@ -173,7 +171,8 @@ const Input: React.FC<ResultsProps> = ({setResults}) => {
               <FileUpload />
             </div>
           </div>
-          <hr></hr>
+          <div className={styles.line}></div>
+          <br></br>
           {/* Submit Button */}
           <button type="submit" className={styles.submitButton}>
             Submit
