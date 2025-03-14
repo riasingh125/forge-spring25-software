@@ -81,7 +81,7 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
              padding: 11 }}>
 
             {/**<h1 style = {{}}> Rank the following factors by importance. </h1> */}
-            <h2 style={{fontStyle: "italic", marginBottom: 40}}>
+            <h2 style={{marginBottom: 40}}>
              Rank the following factors on a scale from <br></br>
              Least Important (1) » Most Important (10)
             </h2>
