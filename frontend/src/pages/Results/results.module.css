@@ -1,20 +1,55 @@
 
-.resultspage {
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    height: 100vh;
-    width: 100vw;
-}
-
 .resultsdisplay {
+    position: fixed;
+    left: 0;
+    top: 7vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    width: 60vw;
+    height: 93vh;
+    overflow-y: auto;
+    background-color: var(--background-off-white);
+    z-index: 0;
 }
 
-.chatbotdisplay {
-    position: fixed;
-    right: 0;
-    bottom: 0;
+.resultsCentered {
+    margin-top: 7vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.closeChat {
+    position: fixed; 
+    top: 2vh;
+    right: 3vw;
+    margin-top: 7vh;
+    background-color: var(--background-off-white);
+    color: var(--gray);
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    z-index: 9999; 
+}
+
+.closeChat:hover {
+    background: gray;
+}
+
+.openChat {
+    position: fixed; 
+    bottom: 2vh;
+    right: 3vw;
+    margin-top: 7vh;
+    background-color: var(--background-off-white);
+    color: var(--gray);
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    z-index: 9999; 
+}
+
+.openChat:hover {
+    background: gray;
 }

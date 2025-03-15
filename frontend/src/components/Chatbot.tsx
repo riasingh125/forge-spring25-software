@@ -36,12 +36,13 @@ const Chatbot: React.FC = () => {
   };
 
   return (
-    <div className={styles.chatcontainer}>
+    <div className={styles.chatcontainer}>    
+    <div className={styles.chatTitle}>CHAT</div>
       <div className={styles.chatbox}>
         {messages.map((msg, index) => (
           <div key={index} className={`${styles.message} ${msg.sender === "user" ? styles.user : styles.bot}`}>
             <div className={styles.bubble}>
-              <strong>{msg.sender === "user" ? "You" : "Bot"}:</strong> {msg.text}
+              <div className={styles.messages}>{msg.sender === "user" ? "You" : "Bot"}: {msg.text}</div> 
             </div>
           </div>
         ))}

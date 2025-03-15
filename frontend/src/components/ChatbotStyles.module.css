@@ -1,20 +1,36 @@
 .chatcontainer {
-    width: 600px;
-    height: 700px;
+    position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px;
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: var(--gray);  
+    right: 0;
+    bottom: 0;
+    width: 40vw;
+    height: 93vh;
+    padding: 10px;
+    z-index: 0;
+  }
+
+  .chatTitle {
+    color: var(--textbox-off-white);
+    font-family: Inter;
+    font-size: 30px;
+    margin: 1%;
+    text-align: left;
+    width: 100%;
+    padding-left: 8%;
   }
   
   .chatbox {
-    height: 600px;
-    width: 550px;
+    height: 82%;
+    width: 90%;
+    border-radius: 5px;
     overflow-y: auto;
     padding: 10px;
-    background-color: black;
+    background-color: var(--textbox-off-white);
     flex-direction: column;
     gap: 10px;
   }
@@ -22,14 +38,19 @@
   .chatinput {
     display: flex;
     padding: 10px;
+    width: 90%;
   }
 
   .bubble {
-    padding: 10px 15px;
-    border-radius: 15px;
+    padding: 3%;
+    border-radius: 20px;
     max-width: 90%;
     word-wrap: break-word;
     margin-bottom: 10px;
+  }
+
+  .messages {
+    color: var(--background-off-white)
   }
 
   /* User Messages */
@@ -39,7 +60,7 @@
   }
 
   .user .bubble {
-  background-color: #8a1313;
+  background-color: #9E9E9E;
   color: white;
   border-bottom-right-radius: 2px; /* Creates a tail effect */
   }
@@ -51,7 +72,7 @@
   }
 
   .bot .bubble {
-  background-color: #4480b1;
+  background-color: #1D1B20;
   color: black;
   border-bottom-left-radius: 2px; /* Creates a tail effect */
   }

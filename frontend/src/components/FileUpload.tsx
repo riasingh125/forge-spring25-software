@@ -14,6 +14,7 @@ const FileUpload = () => {
             type="file" 
             accept="application/pdf"
             multiple 
+            required
             onChange={handleFileChange} />
             <menu>
                 {files.map((file, index) => (
