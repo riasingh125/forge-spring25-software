@@ -13,7 +13,7 @@ import {getResults} from "../resultsAPI.ts";
 import styles from "./rankings.module.css"
 
 const Input = styled(MuiInput)`
-  width: 30px;
+  width: 42px;
   `;
 
 const marks = [
@@ -60,30 +60,6 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
         }));
     };
 
-    // Handle input change
-    const handleInputChange = (category: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-        const newValue = event.target.value;
-
-        if (newValue === "") {
-            setRankings((prev) => ({ ...prev, [category]: "" }));
-            return;
-        }
-
-        const parsedValue = Number(newValue);
-        if (!isNaN(parsedValue) && parsedValue >= 1 && parsedValue <= 10) {
-            setRankings((prev) => ({ ...prev, [category]: parsedValue }));
-        }
-    };
-
-    // Handle blur event to correct invalid values
-    const handleBlur = (category: string) => () => {
-        let finalValue = Number(rankings[category]);
-        if (isNaN(finalValue) || finalValue < 1) finalValue = 1;
-        if (finalValue > 10) finalValue = 10;
-
-        setRankings((prev) => ({ ...prev, [category]: finalValue }));
-    };
-
     //Handle Submit
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -97,29 +73,24 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
       };
 
     return (
-        <Box sx={{ width: 400, margin: "auto" }}>
-            <Typography variant="h5" gutterBottom>
-                Rank the following by importance
-            </Typography>
+        <div>
+        <Box sx={{ 
+            width: "60vw",
+            maxWidth: "100%",
+             margin: "auto", 
+             padding: 11 }}>
 
-            { /* Reference Slider */}
-            <Box sx={{ marginBottom: 4, textAlign: "center" }}>
-                <Typography variant="subtitle2">1 = Least Important, 10 = Most Important</Typography>
-                <Slider
-                    value={5}
-                    step={null} // Prevent interaction
-                    marks={marks}
-                    min={1}
-                    max={10}
-                    disabled
-                    sx={{ color: "gray" }}
-                />
-            </Box>
+            {/**<h1 style = {{}}> Rank the following factors by importance. </h1> */}
+            <h2 style={{marginBottom: 40}}>
+             Rank the following factors on a scale from <br></br>
+             Least Important (1) » Most Important (10)
+            </h2>
+            <hr></hr>
 
             {rankingItems.map((category) => (
-                <Box key={category} sx={{ marginBottom: 3 }}>
-                    <Typography variant="subtitle1">{category}</Typography>
-                    <Grid container spacing={2} sx={{ alignItems: "center" }}>
+                <Box key={category} sx={{ padding: 2 }}>
+                    <h3>{category}</h3>
+                    <Grid container spacing={2} sx={{ alignItems: "center", padding: 2 }}>
                         <Grid item xs>
                             <Slider
                                 value={typeof rankings[category] === "number" ? rankings[category] : 1}
@@ -130,20 +101,17 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
                                 marks={marks}
                                 valueLabelDisplay="auto"
                                 aria-labelledby={`slider-${category}`}
-                            />
-                        </Grid>
-                        <Grid item>
-                            <Input
-                                value={rankings[category]}
-                                size="small"
-                                onChange={handleInputChange(category)}
-                                onBlur={handleBlur(category)}
-                                inputProps={{
-                                    step: 1,
-                                    min: 1,
-                                    max: 10,
-                                    type: "number",
-                                    "aria-labelledby": `slider-${category}`,
+                                sx = {{ 
+                                    color: "var(--navy)",
+                                    "& .MuiSlider-thumb": {
+                                        backgroundColor: "white",
+                                        border: "2px solid var(--navy)",
+                                    },
+                                    "& .MuiSlider-markLabel": {
+                                        fontSize: "20px", 
+                                        fontWeight: "bold",
+                                    },
+                                    height: 15,
                                 }}
                             />
                         </Grid>
@@ -158,6 +126,7 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
                 </button>
             </Box>
         </Box>
+        </div>
     );
 }
 
