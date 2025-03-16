@@ -28,7 +28,6 @@ function App() {
       <Router>
         <Navbar></Navbar>
         <Routes>
-
           <Route path="/input" element={<Input results={results} setResults={setResults}/>} />
           <Route path="/rankings" element={<Rankings results={results} setResults={setResults}/>} />
           <Route path="/results" element={<Results results={results} setResults={setResults}/>} />

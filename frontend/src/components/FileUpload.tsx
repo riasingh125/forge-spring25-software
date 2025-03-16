@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import styles from "./FileUploadStyles.module.css";
 
 const FileUpload = () => {
-  const [files, setFiles] = useState<File[]>([]); // Define state as an array of File objects
+  const [files, setFiles] = useState<File[]>([]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newFiles = event.target.files ? Array.from(event.target.files) : [];
@@ -17,9 +18,11 @@ const FileUpload = () => {
         multiple
         onChange={handleFileChange}
       />
-      <menu>
+      <menu className={styles.menuContainer}>
         {files.map((file, index) => (
-          <li key={index}>{file.name}</li>
+          <ol key={index} className={styles.menuItem}>
+            {file.name}
+          </ol>
         ))}
       </menu>
     </div>
