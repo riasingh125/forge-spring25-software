@@ -28,10 +28,15 @@ h2 {
   color: var(--burgundy);
   -webkit-text-stroke-width: 0.3px;
   -webkit-text-stroke-color: #000;
-  font-family: Georgia;
-  font-style: italic;
-  font-weight: 400;
+  font-weight: 500;
   line-height: normal;
+  font-size: 32px; 
+}
+
+h3 {
+  color: black; 
+  font-weight: 550; 
+  font-size: 24px;
 }
 
 body {
