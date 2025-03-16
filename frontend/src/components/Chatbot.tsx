@@ -42,8 +42,9 @@ const Chatbot: React.FC = () => {
         {messages.map((msg, index) => (
           <div key={index} className={`${styles.message} ${msg.sender === "user" ? styles.user : styles.bot}`}>
             <div className={styles.bubble}>
-              <div className={styles.messages}>{msg.sender === "user" ? "You" : "Bot"}: {msg.text}</div> 
+              <div className={styles.messageText}>{msg.text}</div> 
             </div>
+            {msg.sender === "user" ? "You" : "Bot"}
           </div>
         ))}
       </div>

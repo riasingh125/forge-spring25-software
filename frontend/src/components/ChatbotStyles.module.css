@@ -41,15 +41,22 @@
     width: 90%;
   }
 
+  .message {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    color:#9E9E9E;
+  }
+
   .bubble {
     padding: 3%;
     border-radius: 20px;
     max-width: 90%;
     word-wrap: break-word;
-    margin-bottom: 10px;
   }
 
-  .messages {
+  /* actual text */
+  .messageText {
     color: var(--background-off-white)
   }
 
@@ -57,6 +64,7 @@
   .user {
     display: flex;
     justify-content: flex-end;
+    align-items: flex-end;
   }
 
   .user .bubble {
@@ -69,6 +77,7 @@
   .bot {
     display: flex;
     justify-content: flex-start;
+    align-items: flex-start;
   }
 
   .bot .bubble {
