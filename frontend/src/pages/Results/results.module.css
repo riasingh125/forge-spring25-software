@@ -26,9 +26,9 @@
     right: 3vw;
     margin-top: 7vh;
     background-color: var(--background-off-white);
+    border-color: var(--gray);
     color: var(--gray);
     padding: 10px 15px;
-    border: none;
     cursor: pointer;
     z-index: 9999; 
 }
@@ -43,9 +43,9 @@
     right: 3vw;
     margin-top: 7vh;
     background-color: var(--background-off-white);
+    border-color: var(--gray);
     color: var(--gray);
     padding: 10px 15px;
-    border: none;
     cursor: pointer;
     z-index: 9999; 
 }

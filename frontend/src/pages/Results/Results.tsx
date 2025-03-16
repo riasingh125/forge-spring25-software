@@ -30,6 +30,7 @@ function displayResult(results: Result, index: number, total: number) {
     return (
         <div> 
         <TextBox
+            key={index}
             rank={index}
             title={results.name}
             content={`price: ${results.price}`}
