@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import { ResultsProps } from "../../App";
+import FileUpload from "../../components/FileUpload";
 
-const Input: React.FC<ResultsProps> = ({ results, setResults }) => {
+
+
+const Input: React.FC<ResultsProps> = ({setResults}) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -19,6 +22,8 @@ const Input: React.FC<ResultsProps> = ({ results, setResults }) => {
     concerns: "",
   });
 
+
+
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -27,62 +32,16 @@ const Input: React.FC<ResultsProps> = ({ results, setResults }) => {
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    try {
-      const response = await fetch("http://127.0.0.1:8000/form/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      console.log("JSON body: ", formData);
-      const data = await response.json();
-      console.log("Server response:", data);
-
-      if (response.ok) {
-        updateResults();
-        navigate("/rankings");
-      } else {
-        const errorMessage = await response.text();
-        throw new Error(`Error ${response.status}: ${errorMessage}`);
-      }
-    } catch (error) {
-      console.error("Submission error:", error);
-      if (error instanceof Error) {
-        alert(`Failed to connect to the server. ${error.message}`);
-      } else {
-        alert("Failed to connect to the server. An unknown error occurred.");
-      }
-    }
-  };
-
-  // Updates results from the server
-  const updateResults = async () => {
-    try {
-      const response = await fetch("http://127.0.0.1:8000/results", {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-      });
-      const data = await response.json();
-      if (response.ok) {
-        setResults(data.results);
-        navigate("/rankings");
-      } else {
-        alert("response not okay");
-      }
-    } catch (error) {
-      console.error("Get error:", error);
-      alert("Failed to connect to the server.");
-    }
-  };
-
+    navigate("/Rankings");
+  }
+  
   return (
     <div>
       <h1>Welcome</h1>
-      <h3>
+      <h2>
         Let's get you set up to compare the best insurance plans. We'll need a
         few details to get started.
-      </h3>
+      </h2>
       <hr></hr>
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={handleSubmit}>
@@ -203,6 +162,14 @@ const Input: React.FC<ResultsProps> = ({ results, setResults }) => {
                   onChange={handleChange}
                 />
               </div>
+            </div>
+          </div>
+          <hr></hr>
+          {/* File Upload */}
+          <div className={styles.formGroup}>
+            <div className={styles.formLabelGroup}>Upload PDFs</div>
+            <div className={styles.formInputGroup}>
+              <FileUpload />
             </div>
           </div>
           <hr></hr>

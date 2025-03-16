@@ -4,19 +4,23 @@ import { ResultsProps, Result } from '../../App';
 import Chatbot from '../../components/Chatbot';
 import styles from './results.module.css';
 
-const Results: React.FC<ResultsProps> = ({results, setResults}) => {
+const Results: React.FC<ResultsProps> = ({results}) => {
 
-    function displayResult(results: Result) {
+
+
+
+
+    function displayResult(results: Result, index: number) {
         return (
-            <>
-            <TextBox 
+            <TextBox
+            key={index}
             title={results.name}
             content={`price: ${results.price}`}
             width= "500px"
-            height="250px" 
+            height="250px"
             />
-            <br></br>
-            </>
+
+
         )
     }
 
@@ -28,8 +32,8 @@ const Results: React.FC<ResultsProps> = ({results, setResults}) => {
                 <h1>Results</h1>
                 <br></br>
                 {
-                results.map((result) => (
-                    displayResult(result)
+                results.map((result, index) => (
+                    displayResult(result, index)
                 ))
                 }
             </div>
@@ -41,7 +45,7 @@ const Results: React.FC<ResultsProps> = ({results, setResults}) => {
 
     )
     
-    
+
 }
 
 export default Results;
