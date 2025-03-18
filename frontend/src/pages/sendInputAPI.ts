@@ -1,6 +1,10 @@
 import axios from "axios";
 
 
+/**
+ * Structure form data into JSON format
+ * @param data the unstructured user input data
+ */
 function structureToJSON(data) {
 
     return {
@@ -37,8 +41,10 @@ function structureToJSON(data) {
     };
 }
 
-
-
+/**
+ * Handles POST request to send form data to backend
+ * @param data the unstructured user input data
+ */
 async function sendInputData(data) {
     try {
         const response = await axios.post("http://127.0.0.1:8000/form/send",
