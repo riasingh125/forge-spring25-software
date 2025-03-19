@@ -18,13 +18,15 @@ const FileUpload = () => {
         multiple
         onChange={handleFileChange}
       />
-      <menu className={styles.menuContainer}>
-        {files.map((file, index) => (
-          <ol key={index} className={styles.menuItem}>
-            {file.name}
-          </ol>
-        ))}
-      </menu>
+      {files.length > 0 && (
+        <menu className={styles.menuContainer}>
+          {files.map((file, index) => (
+            <ol key={index} className={styles.menuItem}>
+              {file.name}
+            </ol>
+          ))}
+        </menu>
+      )}
     </div>
   );
 };
