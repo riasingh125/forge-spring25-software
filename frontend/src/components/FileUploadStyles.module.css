@@ -1,0 +1,16 @@
+.menuContainer {
+  border: 0.9px solid black;
+  border-radius: 5px;
+  margin-top: 16px;
+}
+
+.menuItem {
+  text-align: left;
+  font-size: 0.8rem;
+  display: list-item;
+  list-style-position: inside;
+}
+
+.line {
+  border-bottom: 0.9px solid black;
+}

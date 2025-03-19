@@ -11,7 +11,7 @@
   --navy: #203F72;
   color-scheme: light;
   color: black;
-  background-color: background-off-white;
+  background-color: var(--background-off-white);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

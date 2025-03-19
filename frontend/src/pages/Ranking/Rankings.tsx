@@ -8,9 +8,9 @@ import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
 import MuiInput from '@mui/material/Input';
 import { ResultsProps } from "../../App";
-
 import {sendInputData} from "../sendInputAPI.ts";
 import {getResults} from "../resultsAPI.ts";
+import styles from "./rankings.module.css"
 
 const Input = styled(MuiInput)`
   width: 42px;
