@@ -67,20 +67,23 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
   };
 
   return (
-    <div>
-      <h1>Welcome</h1>
-      <h2>
-        Let's get you set up to compare the best insurance plans. We'll need a
-        few details to get started.
-      </h2>
-      <hr></hr>
+    <div className={styles.inputPage}>
+      <h1 className={styles.title}>Welcome</h1>
+      <div className={styles.subtitle}>
+        <h2>
+          Let's get you set up to compare the best insurance plans. We'll need a
+          few details to get started.
+        </h2>
+      </div>
+
+      <div className={styles.line}></div>
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={handleSubmit}>
           {/* Contact Information */}
           <div className={styles.formGroup}>
             <div className={styles.formLabelGroup}>Contact Information</div>
             <div className={styles.formInputGroup}>
-              <div>
+              <div className={styles.inputsNextToEachOther}>
                 <input
                   type="text"
                   placeholder="First Name"
@@ -98,7 +101,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
                   required
                 />
               </div>
-              <div>
+              <div className={styles.inputsNextToEachOther}>
                 <input
                   type="email"
                   placeholder="Email"
@@ -110,12 +113,12 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
               </div>
             </div>
           </div>
-          <hr></hr>
+          <div className={styles.line}></div>
           {/* Address Information */}
           <div className={styles.formGroup}>
             <div className={styles.formLabelGroup}>Address</div>
             <div className={styles.formInputGroup}>
-              <div>
+              <div className={styles.inputsNextToEachOther}>
                 <input
                   type="text"
                   placeholder="City"
@@ -133,7 +136,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
                   required
                 />
               </div>
-              <div>
+              <div className={styles.inputsNextToEachOther}>
                 <input
                   type="text"
                   placeholder="Zip Code"
@@ -153,12 +156,12 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
               </div>
             </div>
           </div>
-          <hr></hr>
+          <div className={styles.line}></div>
           {/* Budget Information */}
           <div className={styles.formGroup}>
             <div className={styles.formLabelGroup}>Budget Information</div>
             <div className={styles.formInputGroup}>
-              <div>
+              <div className={styles.inputsNextToEachOther}>
                 <input
                   type="number"
                   placeholder="Salary"
@@ -169,7 +172,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
                 />
                 <input
                   type="number"
-                  placeholder="Number of People in Household"
+                  placeholder="# People in Household"
                   name="numHousehold"
                   value={formData.numHousehold}
                   onChange={handleChange}
@@ -184,7 +187,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
                   required
                 />
               </div>
-              <div>
+              <div className={styles.inputsNextToEachOther}>
                 <input
                   type="text"
                   placeholder="Health concerns/additional information"
@@ -195,7 +198,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
               </div>
             </div>
           </div>
-          <hr></hr>
+          <div className={styles.line}></div>
           {/* File Upload */}
           <div className={styles.formGroup}>
             <div className={styles.formLabelGroup}>Upload PDFs</div>
@@ -203,7 +206,8 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
               <FileUpload />
             </div>
           </div>
-          <hr></hr>
+          <div className={styles.line}></div>
+          <br></br>
           {/* Submit Button */}
           <button
             type="submit"

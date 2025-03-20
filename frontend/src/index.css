@@ -11,7 +11,7 @@
   --navy: #203F72;
   color-scheme: light;
   color: black;
-  background-color: background-off-white;
+  background-color: var(--background-off-white);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -28,16 +28,20 @@ h2 {
   color: var(--burgundy);
   -webkit-text-stroke-width: 0.3px;
   -webkit-text-stroke-color: #000;
-  font-family: Georgia;
-  font-style: italic;
-  font-weight: 400;
+  font-weight: 500;
   line-height: normal;
+  font-size: 32px; 
+}
+
+h3 {
+  color: black; 
+  font-weight: 550; 
+  font-size: 24px;
 }
 
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
