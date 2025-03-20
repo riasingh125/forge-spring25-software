@@ -7,6 +7,9 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
 import MuiInput from '@mui/material/Input';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import { SelectChangeEvent } from '@mui/material/Select';
 import { ResultsProps } from "../../App";
 
 import {sendInputData} from "../sendInputAPI.ts";
@@ -52,6 +55,14 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
         Object.fromEntries(rankingItems.map((item) => [item, 1]))
     );
 
+    const [selectedOption, setSelectedOption] = useState("");
+    const [dropdownError, setDropdownError] = useState(false);
+
+    const handleDropdownChange = (event: SelectChangeEvent<string>) => {
+        setSelectedOption(event.target.value);
+        setDropdownError(false);
+    };
+
     // Handle slider change
     const handleSliderChange = (category: string) => (event: Event, newValue: number | number[]) => {
         setRankings((prev) => ({
@@ -87,7 +98,14 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
     //Handle Submit
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const fullUserData = { ...formData, ...rankings };
+
+        // Check if dropdown is selected
+        if (!selectedOption) {
+            setDropdownError(true);
+            return; // Stop submission
+        }
+
+        const fullUserData = { ...formData, ...rankings, selectedOption };
         const success = await sendInputData(fullUserData);
         // just updates results regardless
         navigate("/results");
@@ -115,6 +133,7 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
                     sx={{ color: "gray" }}
                 />
             </Box>
+            
 
             {rankingItems.map((category) => (
                 <Box key={category} sx={{ marginBottom: 3 }}>
@@ -150,6 +169,19 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
                     </Grid>
                 </Box>
             ))}
+
+            {/* Dropdown Selection */}
+            <Box sx={{ marginTop: 4, textAlign: "center" }}>
+                <Typography variant="subtitle1">Select your level of familiarity with healthcare jargon.</Typography>
+                <Select value={selectedOption} onChange={handleDropdownChange} displayEmpty fullWidth error={dropdownError}>
+                    <MenuItem value="" disabled>Select an option</MenuItem>
+                    <MenuItem value="Option 1">Unfamiliar</MenuItem>
+                    <MenuItem value="Option 2">Slightly Familiar</MenuItem>
+                    <MenuItem value="Option 3">Moderately Familiar</MenuItem>
+                    <MenuItem value="Option 4">Pretty Familiar</MenuItem>
+                    <MenuItem value="Option 3">Extremely Familiar</MenuItem>
+                </Select>
+            </Box>
 
             {/* Submit Button */}
             <Box sx={{ textAlign: "center", marginTop: 4 }}>
