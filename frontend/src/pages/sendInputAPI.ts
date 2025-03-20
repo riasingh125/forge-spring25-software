@@ -8,7 +8,7 @@ import axios from "axios";
 function structureToJSON(data) {
 
     return {
-        "firstNiame": data.firstName || "",
+        "firstName": data.firstName || "",
         "lastName": data.lastName || "",
         "age": parseInt(data.age) || 25,
         "income": parseFloat(data.salary) || 0,
@@ -51,6 +51,8 @@ async function sendInputData(data) {
             structureToJSON(data),
             {headers: {"Content-Type": "application/json"}}
         );
+        console.log('DEBUG: CHECKING JSON INPUT SENT');
+        console.log(structureToJSON(data));
         return true;
     } catch (error) {
         console.error("Submission error:", error);

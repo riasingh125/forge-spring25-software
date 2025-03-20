@@ -6,10 +6,6 @@ import styles from './results.module.css';
 
 const Results: React.FC<ResultsProps> = ({results}) => {
 
-
-
-
-
     function displayResult(results: Result, index: number) {
         return (
             <TextBox
@@ -19,8 +15,6 @@ const Results: React.FC<ResultsProps> = ({results}) => {
             width= "500px"
             height="250px"
             />
-
-
         )
     }
 

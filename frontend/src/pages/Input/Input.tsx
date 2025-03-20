@@ -32,6 +32,8 @@ const Input: React.FC<ResultsProps> = ({setResults}) => {
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // We store the user form data in local storage on browser
+    localStorage.setItem("formData", JSON.stringify(formData));
     navigate("/Rankings");
   }
   

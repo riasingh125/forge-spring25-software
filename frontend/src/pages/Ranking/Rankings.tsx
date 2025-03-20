@@ -45,8 +45,8 @@ const rankingItems = [
 const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
 
     const navigate = useNavigate();
-    const location = useLocation(); 
-    const { formData } = location.state || {};
+
+
 
     const [rankings, setRankings] = React.useState<{ [key: string]: number | string }>(
         Object.fromEntries(rankingItems.map((item) => [item, 1]))
@@ -87,6 +87,11 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
     //Handle Submit
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        // Retrieve the formData from local storage
+        const storedFormData = localStorage.getItem("formData");
+        const formData = storedFormData ? JSON.parse(storedFormData) : {};
+
         const fullUserData = { ...formData, ...rankings };
         const success = await sendInputData(fullUserData);
         // just updates results regardless
