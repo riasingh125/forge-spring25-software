@@ -19,8 +19,6 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
     budget: "",
     concerns: "",
   });
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,40 +28,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!validate()) {
-      console.log(errors);
-      return;
-    }
-    try {
-      navigate("/Rankings");
-    } catch (error) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        submit: "Submission failed. Please try again.",
-      }));
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  // Validation function
-  const validate = () => {
-    const newErrors: { [key: string]: string } = {};
-
-    if (!formData.firstName.trim())
-      newErrors.firstName = "First name is required.";
-    if (!formData.lastName.trim())
-      newErrors.lastName = "Last name is required.";
-    if (!/\S+@\S+\.\S+/.test(formData.email))
-      newErrors.email = "Invalid email address.";
-    if (!/^\d{5}$/.test(formData.zip))
-      newErrors.zip = "Zip code must be 5 digits.";
-    if (Number(formData.salary) <= 0)
-      newErrors.salary = "Salary must be greater than zero.";
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    navigate("/Rankings");
   };
 
   return (
@@ -209,14 +174,9 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
           <div className={styles.line}></div>
           <br></br>
           {/* Submit Button */}
-          <button
-            type="submit"
-            className={styles.submitButton}
-            disabled={isSubmitting}
-          >
+          <button type="submit" className={styles.submitButton}>
             Submit
           </button>
-          {isSubmitting ? "Submitting..." : "Submit"}
         </form>
       </div>
     </div>
