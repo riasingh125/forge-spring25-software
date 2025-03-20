@@ -10,27 +10,13 @@ const FileUpload = () => {
     console.log(newFiles);
   };
 
-    return (
-        <div>
-            <input 
-            type="file" 
-            accept="application/pdf"
-            multiple 
-            required
-            onChange={handleFileChange} />
-            <menu>
-                {files.map((file, index) => (
-                    <li key={index}>{file.name}</li>
-                ))}
-            </menu>
-        </div>
-    );
   return (
     <div>
       <input
         type="file"
         accept="application/pdf"
         multiple
+        required
         onChange={handleFileChange}
       />
       {files.length > 0 && (

@@ -152,7 +152,6 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
           </Typography>
         )}
         {/* Submit Button */}
-        {/* Submit Button */}
         <Box sx={{ textAlign: "center", marginTop: 4 }}>
           <button type="submit" onClick={handleSubmit} disabled={loading}>
             {loading ? "Submitting..." : "Submit"}
