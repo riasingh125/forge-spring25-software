@@ -11,6 +11,7 @@ import { ResultsProps } from "../../App";
 import { sendInputData } from "../sendInputAPI.ts";
 import { getResults } from "../resultsAPI.ts";
 import styles from "./rankings.module.css";
+import { useFlow } from "../../context/FlowContext.tsx";
 
 const Input = styled(MuiInput)`
   width: 42px;
@@ -44,6 +45,7 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { formData } = location.state || {};
+  const { setHasCompletedRankings } = useFlow();
 
   const [rankings, setRankings] = React.useState<{
     [key: string]: number | string;
@@ -79,6 +81,7 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
         setResults(newResults);
       });
 
+      setHasCompletedRankings(true);
       navigate("/results");
     } catch (err) {
       console.error("Error submitting rankings:", err);

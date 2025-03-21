@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import { ResultsProps } from "../../App";
 import FileUpload from "../../components/FileUpload";
+import { useFlow } from "../../context/FlowContext";
 
 const Input: React.FC<ResultsProps> = ({ setResults }) => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
   });
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const { setHasSubmittedInput } = useFlow();
 
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +40,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
       if (validationError) {
         throw new Error(validationError);
       }
-
+      setHasSubmittedInput(true);
       navigate("/Rankings", { state: { formData } });
     } catch (err) {
       console.error("Submission error:", err);
