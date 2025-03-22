@@ -176,10 +176,8 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
                 <Select value={selectedOption} onChange={handleDropdownChange} displayEmpty fullWidth error={dropdownError}>
                     <MenuItem value="" disabled>Select an option</MenuItem>
                     <MenuItem value="Option 1">Unfamiliar</MenuItem>
-                    <MenuItem value="Option 2">Slightly Familiar</MenuItem>
-                    <MenuItem value="Option 3">Moderately Familiar</MenuItem>
-                    <MenuItem value="Option 4">Pretty Familiar</MenuItem>
-                    <MenuItem value="Option 3">Extremely Familiar</MenuItem>
+                    <MenuItem value="Option 2">Moderately Familiar</MenuItem>
+                    <MenuItem value="Option 3">Very Familiar</MenuItem> 
                 </Select>
             </Box>
 
