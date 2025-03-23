@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, constr
 from typing import List
 
 
@@ -9,34 +9,34 @@ class ChatBotMessage(BaseModel):
 
 
 class Coverage(BaseModel):
-    ages_of_people_needing_coverage: List[int]
-    personal_health_concerns: str
-    budget: float
+    ages_of_Dependencies: List[int] = Field(..., alias="agesOfDependencies")
+    personal_health_concerns: str = Field(..., alias="personalHealthConcerns")
+    budget: float = Field(..., ge = 0) # Should have to be greater than 0 ?
 
 class Contact(BaseModel):
     email: str
-    number: int
+    number: str
 
 class Address(BaseModel):
     city: str
     state: str
     country: str
-    zip_code: str
+    zip_code: str = Field(..., alias="zipCode")
 
 class Weights(BaseModel):
-    affordability: int
-    health_concerns: int
-    essential_services: int
-    plan_flexibility: int
-    geographic_coverage: int
-    dependencies: int
-    convenience: int
-    long_term_benefits: int
+    affordability: int = Field(..., ge=0, le=10)
+    health_concerns: int = Field(..., ge=0, le=10, alias="healthConcerns")
+    essential_services: int = Field(..., ge=0, le=10, alias="essentialServices")
+    plan_flexibility: int = Field(..., ge=0, le=10, alias="planFlexibility")
+    geographic_coverage: int = Field(..., ge=0, le=10, alias="geographicCoverage")
+    dependencies: int = Field(..., ge=0, le=10)
+    convenience: int = Field(..., ge=0, le=10)
+    long_term_benefits: int= Field(..., ge=0, le=10, alias="longTermBenefits")
 
 # Main Pydantic format for JSON
 class UserInputForm(BaseModel):
-    first_name: str
-    last_name: str
+    first_name: str = Field(..., alias="firstName")
+    last_name: str = Field(..., alias="lastName")
     age: int
     income: float
     budget: float

@@ -1,5 +1,7 @@
 import axios from "axios";
 
+
+
 export async function getResults() {
     try {
         const response = await axios.get("http://127.0.0.1:8000/results", {
@@ -14,5 +16,6 @@ export async function getResults() {
         } else {
             alert("Failed to connect to the server.");
         }
+       ;
     }
 }
