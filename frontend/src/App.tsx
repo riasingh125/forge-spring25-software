@@ -7,7 +7,11 @@ import Rankings from "./pages/Ranking/Rankings";
 import Results from "./pages/Results/Results";
 
 import Navbar from "./components/NavBar";
-
+//import Authenticator from amplify
+import { Authenticator } from '@aws-amplify/ui-react';
+import { Amplify } from 'aws-amplify';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 import "./App.css";
 
 export interface Result {
@@ -25,6 +29,8 @@ function App() {
 
   return (
     <>
+      <Authenticator>
+        <h1>Welcome to the App</h1>
       <Router>
         <Navbar></Navbar>
         <Routes>
@@ -33,6 +39,7 @@ function App() {
           <Route path="/results" element={<Results results={results} setResults={setResults}/>} />
         </Routes>
       </Router>
+      </Authenticator>
     </>
   );
 }
