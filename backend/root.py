@@ -60,6 +60,11 @@ async def send_form(data: UserInputForm):
     #print(data)
     return {"total_score": 100}
 
+@app.post("/form/upload-file")
+async def send_form():
+
+
+
 # getting results
 @app.get("/results")
 async def get_results():
