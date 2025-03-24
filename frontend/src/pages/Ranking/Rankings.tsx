@@ -7,6 +7,9 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
 import MuiInput from '@mui/material/Input';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import { SelectChangeEvent } from '@mui/material/Select';
 import { ResultsProps } from "../../App";
 import {sendInputData} from "../sendInputAPI.ts";
 import {getResults} from "../resultsAPI.ts";
@@ -52,6 +55,14 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
         Object.fromEntries(rankingItems.map((item) => [item, 1]))
     );
 
+    const [selectedOption, setSelectedOption] = useState("");
+    const [dropdownError, setDropdownError] = useState(false);
+
+    const handleDropdownChange = (event: SelectChangeEvent<string>) => {
+        setSelectedOption(event.target.value);
+        setDropdownError(false);
+    };
+
     // Handle slider change
     const handleSliderChange = (category: string) => (event: Event, newValue: number | number[]) => {
         setRankings((prev) => ({
@@ -63,7 +74,14 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
     //Handle Submit
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const fullUserData = { ...formData, ...rankings };
+
+        // Check if dropdown is selected
+        if (!selectedOption) {
+            setDropdownError(true);
+            return; // Stop submission
+        }
+
+        const fullUserData = { ...formData, ...rankings, selectedOption };
         const success = await sendInputData(fullUserData);
         // just updates results regardless
         navigate("/results");
@@ -79,8 +97,7 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
             maxWidth: "100%",
              margin: "auto", 
              padding: 11 }}>
-
-            {/**<h1 style = {{}}> Rank the following factors by importance. </h1> */}
+          
             <h2 style={{fontStyle: "italic", marginBottom: 40}}>
              Rank the following factors on a scale from <br></br>
              Least Important (1) » Most Important (10)
@@ -118,6 +135,17 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
                     </Grid>
                 </Box>
             ))}
+
+            {/* Dropdown Selection */}
+            <Box sx={{ marginTop: 4, textAlign: "center" }}>
+                <Typography variant="subtitle1">Select your level of familiarity with healthcare jargon.</Typography>
+                <Select value={selectedOption} onChange={handleDropdownChange} displayEmpty fullWidth error={dropdownError}>
+                    <MenuItem value="" disabled>Select an option</MenuItem>
+                    <MenuItem value="Option 1">Unfamiliar</MenuItem>
+                    <MenuItem value="Option 2">Moderately Familiar</MenuItem>
+                    <MenuItem value="Option 3">Very Familiar</MenuItem> 
+                </Select>
+            </Box>
 
             {/* Submit Button */}
             <Box sx={{ textAlign: "center", marginTop: 4 }}>
