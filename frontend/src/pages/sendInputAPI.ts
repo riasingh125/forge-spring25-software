@@ -82,5 +82,5 @@ async function uploadFiles(files: File[]) {
 
 export {
     sendInputData,
-    uploadFiles
+    uploadFiles,
 };

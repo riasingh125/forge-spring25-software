@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
 import MuiInput from '@mui/material/Input';
 import { ResultsProps } from "../../App";
-import {sendInputData} from "../sendInputAPI.ts";
+import {sendInputData, uploadFiles} from "../sendInputAPI.ts";
 import {getResults} from "../resultsAPI.ts";
 import styles from "./rankings.module.css"
 
@@ -70,6 +70,7 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
         getResults().then(newResults => {
             setResults(newResults);
         });
+        // uploadFiles()
       };
 
     return (
