@@ -6,31 +6,16 @@ const FileUpload = () => {
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newFiles = event.target.files ? Array.from(event.target.files) : [];
-    setFiles((prevFileList) => [...prevFileList, ...newFiles]);
-    console.log(newFiles);
+    setFiles(newFiles);
   };
 
-    return (
-        <div>
-            <input 
-            type="file" 
-            accept="application/pdf"
-            multiple 
-            required
-            onChange={handleFileChange} />
-            <menu>
-                {files.map((file, index) => (
-                    <li key={index}>{file.name}</li>
-                ))}
-            </menu>
-        </div>
-    );
   return (
     <div>
       <input
         type="file"
         accept="application/pdf"
         multiple
+        required
         onChange={handleFileChange}
       />
       {files.length > 0 && (

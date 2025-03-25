@@ -11,7 +11,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { SelectChangeEvent } from '@mui/material/Select';
 import { ResultsProps } from "../../App";
-import {sendInputData} from "../sendInputAPI.ts";
+import {sendInputData, uploadFiles} from "../sendInputAPI.ts";
 import {getResults} from "../resultsAPI.ts";
 import styles from "./rankings.module.css"
 

@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import styles from "./ChatbotStyles.module.css";
+import { Message } from "../App.tsx";
 
-const Chatbot: React.FC = () => {
-  const [messages, setMessages] = useState<{ text: string; sender: string }[]>([
-    { text: "Hello! Welcome to Parcel! How can I assist you today?", sender: "bot" } 
-  ]);
+interface ChatbotProps {
+  messages: Message[];
+  setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
+}
+
+const Chatbot: React.FC<ChatbotProps> = ({messages, setMessages}) => {
   const [input, setInput] = useState("");
 
   const sendMessage = async () => {
     if (!input.trim()) return;
-
-    const userMessage = { text: input, sender: "user" };
-    setMessages((prev) => [...prev, userMessage]);
+    
+    setMessages((prev) => [...prev, { message: input, sender: "user" }]);
 
     try {
       // Replace with your AI API (e.g., OpenAI, Rasa, Dialogflow, etc.)
@@ -26,10 +28,10 @@ const Chatbot: React.FC = () => {
       }
   
       const data = await response.json();
-      const botMessage = { text: data.response, sender: "bot" };
+      const botMessage = new Message(data.response, "bot");
       setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
-      setMessages((prev) => [...prev, { text: "Error: Unable to fetch response", sender: "bot" }]);
+      setMessages((prev) => [...prev, new Message("Error: Unable to fetch response", "bot")]);
     }
 
     setInput("");
@@ -42,7 +44,7 @@ const Chatbot: React.FC = () => {
         {messages.map((msg, index) => (
           <div key={index} className={`${styles.message} ${msg.sender === "user" ? styles.user : styles.bot}`}>
             <div className={styles.bubble}>
-              <div className={styles.messageText}>{msg.text}</div> 
+              <div className={styles.messageText}>{msg.message}</div> 
             </div>
             {msg.sender === "user" ? "You" : "Bot"}
           </div>

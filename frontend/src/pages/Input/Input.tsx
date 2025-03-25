@@ -28,7 +28,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/Rankings");
+    navigate("/Rankings", {state: formData});
   };
 
   return (
@@ -166,7 +166,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
           <div className={styles.line}></div>
           {/* File Upload */}
           <div className={styles.formGroup}>
-            <div className={styles.formLabelGroup}>Upload PDFs</div>
+            <div className={styles.formLabelGroup}>Upload PDFs (select multiple at once!)</div>
             <div className={styles.formInputGroup}>
               <FileUpload />
             </div>
