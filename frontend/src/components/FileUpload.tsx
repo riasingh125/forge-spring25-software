@@ -6,8 +6,7 @@ const FileUpload = () => {
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newFiles = event.target.files ? Array.from(event.target.files) : [];
-    setFiles((prevFileList) => [...prevFileList, ...newFiles]);
-    console.log(newFiles);
+    setFiles(newFiles);
   };
 
   return (
