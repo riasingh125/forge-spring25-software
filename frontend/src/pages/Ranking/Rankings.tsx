@@ -82,10 +82,12 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
 
     const fullUserData = { ...formData, ...rankings, selectedOption };
     console.log(files)
+    
     const success = await sendInputData(fullUserData);
     const sucessUploadFiles = await uploadFiles(files);
-    // just updates results regardless
+
     navigate("/results");
+
     getResults().then((newResults) => {
       setResults(newResults);
     });
@@ -139,7 +141,7 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
 
             {/* Dropdown Selection */}
             <Box sx={{ marginTop: 4, textAlign: "center" }}>
-                <Typography variant="subtitle1">Select your level of familiarity with healthcare jargon.</Typography>
+                <Typography >Select your level of familiarity with healthcare jargon.</Typography>
                 <Select value={selectedOption} onChange={handleDropdownChange} displayEmpty fullWidth error={dropdownError}>
                     <MenuItem value="" disabled>Select an option</MenuItem>
                     <MenuItem value="Option 1">Unfamiliar</MenuItem>
