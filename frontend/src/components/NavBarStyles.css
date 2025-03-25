@@ -1,6 +1,5 @@
 nav {
     background-color: var(--dark-blue);
-    padding: 10px;
     display: flex;
     z-index: 1; 
     position: fixed;
@@ -10,8 +9,38 @@ nav {
     height: 7vh;
     color: white;
     font-weight: 500;
+    justify-content: space-between;
+    align-items: center;
 }
 
 a{
-    color: white;
+    text-decoration: none;
+    color: #FFF;
+    text-align: center;
+    font-family: Georgia;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+a:hover {
+    color: rgb(187, 184, 184);
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 14%;
+    margin-left: 2%;
+}
+
+.pages {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 25%;
+    margin-right: 7%;
 }

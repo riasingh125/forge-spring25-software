@@ -53,7 +53,7 @@ const ResultsAndModalButton = (setOpen: () => void) => {
         placement="right-start">
             <button className={styles.openModal}> 
                 <img 
-                src={info} alt="my image" 
+                src={info} alt="info" 
                 onClick={setOpen}
                 className={styles.infoImage}/>
             </button>
