@@ -40,14 +40,13 @@
 .openChat {
     position: fixed; 
     bottom: 2vh;
-    right: 3vw;
+    right: 2vw;
     margin-top: 7vh;
-    background-color: var(--background-off-white);
-    border-color: var(--gray);
-    color: var(--gray);
+    background-color: var(--gray);
+    color: var(--textbox-off-white);
     padding: 10px 15px;
     cursor: pointer;
-    z-index: 9999; 
+    z-index: 10; 
 }
 
 .openChat:hover {

@@ -1,18 +1,50 @@
 .modalBoxOuter {
     padding: 5%;
+    padding-bottom: 3%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: left;
     height: 70vh;
     width: 70vw;
-    background-color: var(--dark-blue);
+    background-color: var(--burgundy);
     justify-self: center;
     margin-top: 15vh;
     color: var( --textbox-off-white);
   }
 
   .modalBoxInner {
+    display: flex;
+    padding: 5%;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    height: 100%;
+    width: 100%;
+    background-color: var(--textbox-off-white);
+    color: var(--gray);
+    overflow: scroll;
+  }
 
+  .modalButton {
+    background-color: var(--background-off-white);
+    color: var(--gray);
+    width: 10%;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    align-self: center;
+  }
+
+  .modalButton:hover {
+    background-color: rgb(195, 186, 186);
+  }
+
+  p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: larger;
+    color: var(--gray)
   }
 

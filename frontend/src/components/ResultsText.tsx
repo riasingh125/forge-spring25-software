@@ -11,7 +11,7 @@ interface TextBoxProps {
   expanded: boolean;
 }
 
-const dummyResult: Result = {
+export const dummyResult: Result = {
     name: "Sample Plan",
     totalScore: 7.2,
     affordability: 8,
@@ -24,6 +24,7 @@ const dummyResult: Result = {
     longTermBenefits: 9
   };
 
+// will use content once we have the actual data
 export default function TextBox({ rank, title, content, bgColor, expanded }: TextBoxProps) {
   if (expanded) {
     return (

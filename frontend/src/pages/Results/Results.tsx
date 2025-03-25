@@ -48,7 +48,7 @@ const ResultsAndModalButton = (setOpen: () => void) => {
     <div className={styles.resultsAndInfo}>
         <h1>Results</h1>
         <Tooltip 
-        title="What do my results mean?" 
+        title="How do I navigate this page?" 
         arrow 
         placement="right-start">
             <button className={styles.openModal}> 
