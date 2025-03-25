@@ -1,9 +1,8 @@
 .box-container {
-  background-color: #4a4a4a; 
-  color: white;
-  padding: 16px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   text-align: left;
 }
 
@@ -16,12 +15,56 @@ h6 {
   line-height: normal;
 }
 
+.results-content {
+  display: flex;
+  flex-direction: row;
+  height: 90%;
+  margin-top: 2%;
+  justify-content: space-between;
+}
+
 .inner-box {
-  background-color: #e0e0e0; 
+  display: flex;
+  background-color: var(--textbox-off-white); 
   color: black;
   padding: 16px;
-  border-radius: 10px;
-  flex-grow: 1;
-  overflow: hidden;
-  margin: 10px;
+  margin-top: 3%;
+  height: 80%;
+}
+
+.inner-box-expanded {
+  display: flex;
+  background-color: var(--textbox-off-white); 
+  color: black;
+  padding: 16px;
+  width: 60%;
+  height: 100%;
+}
+
+.score-tag {
+  background-color: var(--textbox-off-white);
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  width: 33%;
+  height: 10%;
+  align-self: center;
+  border-radius: 8px;
+  align-content: center;
+  justify-content: center;
+}
+
+.score-card {
+  background-color: var(--textbox-off-white);
+  display: flex;
+  line-height: 20px;
+  text-align: center;
+  width: 35%;
+  height: 100%;
+  align-content: center;
+  justify-content: center;
+}
+
+.line {
+  border-bottom: 1.5px solid var(--burgundy);
 }

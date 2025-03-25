@@ -28,7 +28,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/Rankings");
+    navigate("/Rankings", {state: formData});
   };
 
   return (
