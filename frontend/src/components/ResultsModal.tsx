@@ -4,9 +4,10 @@ import styles from './ModalStyles.module.css';
 interface ModalProps {
   isOpen: boolean;
   handleClose: () => void;
+  setNoOpenOnClick: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function ResultsModal({ isOpen, handleClose}: ModalProps) {
+export default function ResultsModal({ isOpen, handleClose, setNoOpenOnClick}: ModalProps) {
 
   return (
     <div>
@@ -16,7 +17,7 @@ export default function ResultsModal({ isOpen, handleClose}: ModalProps) {
           <h1>Here are your results! Hover over the radar chart vertexes to see exact values. 
             Feel free to use the chatbot for any questions you might have!</h1>
             <br></br>
-          <button onClick={handleClose}>X</button>
+          <button onClick={() => { handleClose(); setNoOpenOnClick(true); }}>X</button>
         </div>
       </Modal>
     </div>

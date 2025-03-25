@@ -62,8 +62,8 @@ const ResultsAndModalButton = (setOpen: () => void) => {
     </div>);
 };
 
-const Results: React.FC<ResultsProps> = ({results}) => {
-    const [isModalOpen, setIsModalOpen] = useState(true);
+const Results: React.FC<ResultsProps> = ({results, modalOpened, setModalOpened}) => {
+    const [isModalOpen, setIsModalOpen] = useState(!modalOpened);
     const setOpen = () => setIsModalOpen(true);
     const setClose = () => setIsModalOpen(false);
 
@@ -74,7 +74,8 @@ const Results: React.FC<ResultsProps> = ({results}) => {
             <div>
                 <Modal 
                 isOpen= {isModalOpen} 
-                handleClose= {setClose}/>
+                handleClose= {setClose}
+                setNoOpenOnClick={setModalOpened}/>
                 <button className={styles.closeChat} onClick={() => setIsChatOpen(false)}>✖</button>
                 <div className={styles.resultsdisplay}>
                     {ResultsAndModalButton(setOpen)}
