@@ -9,8 +9,7 @@ interface FileUploadProps {
 const FileUpload: React.FC<FileUploadProps> = ({ files, setFiles }) => {
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newFiles = event.target.files ? Array.from(event.target.files) : [];
-    setFiles((prevFileList) => [...prevFileList, ...newFiles]);
-    console.log(newFiles);
+    setFiles(newFiles);
   };
 
   return (
@@ -19,6 +18,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ files, setFiles }) => {
         type="file"
         accept="application/pdf"
         multiple
+        required
         onChange={handleFileChange}
       />
       {files.length > 0 && (
