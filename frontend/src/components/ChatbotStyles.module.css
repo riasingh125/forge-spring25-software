@@ -87,6 +87,7 @@
   }
   
   .messageinput {
+    display: flex;
     flex: 1;
     padding: 8px;
     border: 1px solid #ccc;

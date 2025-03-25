@@ -5,7 +5,7 @@ import './TextBoxStyles.css';
 
 interface SpiderChartProps {
     scores: Result;
-    color?: string;
+    color: string;
 }
 
 const transformData = (result: Result) => [

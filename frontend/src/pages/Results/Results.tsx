@@ -5,7 +5,6 @@ import Chatbot from '../../components/Chatbot';
 import styles from './results.module.css';
 import Modal from '../../components/ResultsModal'
 import info from '../../resources/info.png'
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 
 function interpolateColor(start: string, end: string, factor: number): string {
@@ -62,7 +61,7 @@ const ResultsAndModalButton = (setOpen: () => void) => {
     </div>);
 };
 
-const Results: React.FC<ResultsProps> = ({results, modalOpened, setModalOpened}) => {
+const Results: React.FC<ResultsProps> = ({results, modalOpened, setModalOpened, messages, setMessages}) => {
     const [isModalOpen, setIsModalOpen] = useState(!modalOpened);
     const setOpen = () => setIsModalOpen(true);
     const setClose = () => setIsModalOpen(false);
@@ -85,7 +84,7 @@ const Results: React.FC<ResultsProps> = ({results, modalOpened, setModalOpened})
                     ))
                     }
                 </div>
-                <Chatbot />
+                <Chatbot messages={messages} setMessages={setMessages}/>
             </div> 
     
         )
@@ -96,7 +95,8 @@ const Results: React.FC<ResultsProps> = ({results, modalOpened, setModalOpened})
             <div>
             <Modal 
             isOpen= {isModalOpen} 
-            handleClose= {setClose}/>
+            handleClose= {setClose}
+            setNoOpenOnClick={setModalOpened}/>
             <button className={styles.openChat} onClick={() => setIsChatOpen(true)}>
                 Chat
             </button>
