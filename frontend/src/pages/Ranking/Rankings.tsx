@@ -114,7 +114,6 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
       setResults(newResults);
     });
   };
-]
 
   return (
     <div>
