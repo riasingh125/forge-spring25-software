@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import { ResultsProps } from "../../App";
 import FileUpload from "../../components/FileUpload";
+import { useFlow } from "../../context/FlowContext";
 
 const Input: React.FC<ResultsProps> = ({ setResults }) => {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
     concerns: "",
   });
   const [files, setFiles] = useState<File[]>([]);
+  const { setHasSubmittedInput } = useFlow();
 
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,6 +31,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setHasSubmittedInput(true);
     navigate("/Rankings", { state: { formData, files } });
   };
 
@@ -167,7 +170,9 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
           <div className={styles.line}></div>
           {/* File Upload */}
           <div className={styles.formGroup}>
-            <div className={styles.formLabelGroup}>Upload PDFs (select multiple at once!)</div>
+            <div className={styles.formLabelGroup}>
+              Upload PDFs (select multiple at once!)
+            </div>
             <div className={styles.formInputGroup}>
               <FileUpload files={files} setFiles={setFiles} />
             </div>

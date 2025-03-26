@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
-import './NavBarStyles.css'
+import "./NavBarStyles.css";
+import { useFlow } from "../context/FlowContext";
 import logo from '../resources/parcel.png'
 
 const Navbar: React.FC = () => {
+  const { hasSubmittedInput } = useFlow();
+  const { hasCompletedRankings } = useFlow();
+
   return (
     <nav>
       <div className="logo">
@@ -10,7 +14,7 @@ const Navbar: React.FC = () => {
         <h1 style={{fontSize: "25px", fontFamily: "Georgia", fontStyle: "italic", fontWeight: "400"}}>parcel</h1>
       </div>
       <div className="pages">
-        <Link to="/input">Input</Link> <Link to="/rankings">Rankings</Link> <Link to="/results">Results</Link>
+        <Link to="/input" className="enabled">Input</Link> <Link to="/rankings" className={`nav-link ${hasSubmittedInput ? "enabled" : "disabled"}`}>Rankings</Link> <Link to="/results" className={`nav-link ${hasCompletedRankings ? "enabled" : "disabled"}`}>Results</Link>
       </div>
     </nav>
   );

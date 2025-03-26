@@ -44,3 +44,13 @@ a:hover {
     width: 25%;
     margin-right: 7%;
 }
+
+.disabled {
+  color: #aaa; 
+  pointer-events: none; 
+  cursor: not-allowed;
+}
+
+.enabled {
+  color: white;
+}
