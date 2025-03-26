@@ -12,25 +12,56 @@ import "./App.css";
 
 export interface Result {
   name : string;
-  price : string;
+  affordability : number;
+  personalHealth : number;
+  essentialServicesCoverage : number;
+  flexibility : number;
+  geographicCoverage : number;
+  familyCoverage : number;
+  convenience : number;
+  longTermBenefits : number;
+  totalScore : number;
 }
 
 export interface ResultsProps {
   results: Result[];
   setResults: React.Dispatch<React.SetStateAction<Result[]>>;
+  modalOpened: boolean;
+  setModalOpened: React.Dispatch<React.SetStateAction<boolean>>;
+  messages: Message[];
+  setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
+}
+
+export class Message {
+  message: string;
+  sender: "user" | "bot";
+
+  constructor(message: string, sender: "user" | "bot") {
+    this.message = message;
+    this.sender = sender;
+  }
 }
 
 function App() {
   const [results, setResults] = useState<Result[]>([]);
+  const [modalOpened, setModalOpened] = useState(false);
+  const [messages, setMessages] = useState<Message[]>(
+    [new Message("Hello! Welcome to Parcel! How can I assist you today?", "bot")]);
 
   return (
     <>
       <Router>
         <Navbar></Navbar>
         <Routes>
-          <Route path="/input" element={<Input results={results} setResults={setResults}/>} />
-          <Route path="/rankings" element={<Rankings results={results} setResults={setResults}/>} />
-          <Route path="/results" element={<Results results={results} setResults={setResults}/>} />
+          <Route path="/input" element={<Input results={results} setResults={setResults}
+          modalOpened={modalOpened} setModalOpened={setModalOpened}
+          messages={messages} setMessages={setMessages}/>} />
+          <Route path="/rankings" element={<Rankings results={results} setResults={setResults}
+          modalOpened={modalOpened} setModalOpened={setModalOpened}
+          messages={messages} setMessages={setMessages}/>} />
+          <Route path="/results" element={<Results results={results} setResults={setResults} 
+          modalOpened={modalOpened} setModalOpened={setModalOpened}
+          messages={messages} setMessages={setMessages}/>} />
         </Routes>
       </Router>
     </>
