@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { styled } from "@mui/material/styles";
@@ -8,18 +7,17 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
 import MuiInput from "@mui/material/Input";
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import { SelectChangeEvent } from '@mui/material/Select';
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import { SelectChangeEvent } from "@mui/material/Select";
 import { ResultsProps } from "../../App";
-import {  sendInputData, uploadFiles  } from "../sendInputAPI.ts";
-import {  getResults  } from "../resultsAPI.ts";
-import styles from "./rankings.module.css";;
+import { sendInputData, uploadFiles } from "../sendInputAPI.ts";
+import { getResults } from "../resultsAPI.ts";
+import styles from "./rankings.module.css";
 import { useFlow } from "../../context/FlowContext.tsx";
 
 const Input = styled(MuiInput)`
   width: 42px;
-`;
 `;
 
 const marks = [
@@ -90,18 +88,8 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
         ...prev,
         [category]: newValue as number,
       }));
-  // Handle slider change
-  const handleSliderChange =
-    (category: string) => (event: Event, newValue: number | number[]) => {
-      setRankings((prev) => ({
-        ...prev,
-        [category]: newValue as number,
-      }));
     };
 
-  //Handle Submit
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
   //Handle Submit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -111,10 +99,10 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
       setDropdownError(true);
       return; // Stop submission
     }
-
+    setHasCompletedRankings(true);
     const fullUserData = { ...formData, ...rankings, selectedOption };
-    console.log(files)
-    
+    console.log(files);
+
     const success = await sendInputData(fullUserData);
     const sucessUploadFiles = await uploadFiles(files);
 
@@ -181,16 +169,26 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
           </Box>
         ))}
 
-            {/* Dropdown Selection */}
-            <Box sx={{ marginTop: 4, textAlign: "center" }}>
-                <Typography >Select your level of familiarity with healthcare jargon.</Typography>
-                <Select value={selectedOption} onChange={handleDropdownChange} displayEmpty fullWidth error={dropdownError}>
-                    <MenuItem value="" disabled>Select an option</MenuItem>
-                    <MenuItem value="Option 1">Unfamiliar</MenuItem>
-                    <MenuItem value="Option 2">Moderately Familiar</MenuItem>
-                    <MenuItem value="Option 3">Very Familiar</MenuItem> 
-                </Select>
-            </Box>
+        {/* Dropdown Selection */}
+        <Box sx={{ marginTop: 4, textAlign: "center" }}>
+          <Typography>
+            Select your level of familiarity with healthcare jargon.
+          </Typography>
+          <Select
+            value={selectedOption}
+            onChange={handleDropdownChange}
+            displayEmpty
+            fullWidth
+            error={dropdownError}
+          >
+            <MenuItem value="" disabled>
+              Select an option
+            </MenuItem>
+            <MenuItem value="Option 1">Unfamiliar</MenuItem>
+            <MenuItem value="Option 2">Moderately Familiar</MenuItem>
+            <MenuItem value="Option 3">Very Familiar</MenuItem>
+          </Select>
+        </Box>
 
         {/* Submit Button */}
         <Box sx={{ textAlign: "center", marginTop: 4 }}>

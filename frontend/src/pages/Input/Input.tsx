@@ -31,6 +31,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setHasSubmittedInput(true);
     navigate("/Rankings", { state: { formData, files } });
   };
 
@@ -169,28 +170,18 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
           <div className={styles.line}></div>
           {/* File Upload */}
           <div className={styles.formGroup}>
-            <div className={styles.formLabelGroup}>Upload PDFs (select multiple at once!)</div>
+            <div className={styles.formLabelGroup}>
+              Upload PDFs (select multiple at once!)
+            </div>
             <div className={styles.formInputGroup}>
               <FileUpload files={files} setFiles={setFiles} />
             </div>
           </div>
           <div className={styles.line}></div>
           <br></br>
-          {/* Show Errors */}
-          {error && (
-            <div
-              style={{ color: "red", textAlign: "center", marginTop: "1rem" }}
-            >
-              {error}
-            </div>
-          )}
           {/* Submit Button */}
-          <button
-            type="submit"
-            className={styles.submitButton}
-            disabled={loading}
-          >
-            {loading ? "Submitting..." : "Submit"}
+          <button type="submit" className={styles.submitButton}>
+            Submit
           </button>
         </form>
       </div>
