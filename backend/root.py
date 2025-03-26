@@ -1,9 +1,5 @@
-from fastapi import FastAPI, status
-from pydantic import BaseModel
-
-from models import UserInputForm, ChatBotMessage
-from rankings import RankingLogic
-
+from fastapi import FastAPI, File, UploadFile
+from typing import List
 from models import UserInputForm
 from models import ChatBotMessage
 
@@ -23,27 +19,14 @@ app.add_middleware(
 # cd backend
 # fastapi dev root.py
 
-
-
-
 @app.get("/")
 def root():
     return {"Hello": "World"}
 
-
-# ===========================
-# ChatBot
-# ===========================
-
-# Endpoint for sending a message to chatbot and receiving response
-# 'data' parameter corresponds to JSON body in POST request
 @app.post("/chat/message")
 async def send_message(data: ChatBotMessage):
     return {"received": data.message, "response": "hi"}
 
-
-# Endpoint for sending user input from form
-# 'data' parameters corresponds to JSON body in POST request
 @app.post("/form/send")
 async def send_form(data: UserInputForm):
     # Adds more stuff to actually recommend.
@@ -60,7 +43,15 @@ async def send_form(data: UserInputForm):
     #print(data)
     return {"total_score": 100}
 
-# getting results
+@app.post("/form/upload-pdfs")
+async def upload_pdfs(files: List[UploadFile] = File(...)):
+    pdf_info = []
+    for file in files:
+        if file.content_type != 'application/pdf':
+            return {"error" : "file is not of type pdf"}
+        pdf_info.append({"filename": file.filename, "size": len(await file.read())})
+    return {"message" : "successfully uploaded files", "pdf_info": pdf_info}
+
 @app.get("/results")
 async def get_results():
     return {
