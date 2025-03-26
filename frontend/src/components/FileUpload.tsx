@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import styles from "./FileUploadStyles.module.css";
 
-const FileUpload = () => {
-  const [files, setFiles] = useState<File[]>([]);
+interface FileUploadProps {
+  files: File[];
+  setFiles: React.Dispatch<React.SetStateAction<File[]>>;
+}
 
+const FileUpload: React.FC<FileUploadProps> = ({ files, setFiles }) => {
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newFiles = event.target.files ? Array.from(event.target.files) : [];
     setFiles(newFiles);

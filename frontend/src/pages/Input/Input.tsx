@@ -19,6 +19,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
     budget: "",
     concerns: "",
   });
+  const [files, setFiles] = useState<File[]>([]);
 
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,7 +29,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/Rankings", {state: formData});
+    navigate("/Rankings", { state: { formData, files } });
   };
 
   return (
@@ -168,7 +169,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
           <div className={styles.formGroup}>
             <div className={styles.formLabelGroup}>Upload PDFs (select multiple at once!)</div>
             <div className={styles.formInputGroup}>
-              <FileUpload />
+              <FileUpload files={files} setFiles={setFiles} />
             </div>
           </div>
           <div className={styles.line}></div>

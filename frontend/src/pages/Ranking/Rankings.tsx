@@ -1,59 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import Slider from '@mui/material/Slider';
-import MuiInput from '@mui/material/Input';
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import Slider from "@mui/material/Slider";
+import MuiInput from "@mui/material/Input";
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { SelectChangeEvent } from '@mui/material/Select';
 import { ResultsProps } from "../../App";
-import {sendInputData, uploadFiles} from "../sendInputAPI.ts";
-import {getResults} from "../resultsAPI.ts";
-import styles from "./rankings.module.css"
+import { sendInputData, uploadFiles } from "../sendInputAPI.ts";
+import { getResults } from "../resultsAPI.ts";
+import styles from "./rankings.module.css";
 
 const Input = styled(MuiInput)`
   width: 42px;
-  `;
+`;
 
 const marks = [
-    { value: 1, label: "1" },
-    { value: 2, label: "2" },
-    { value: 3, label: "3" },
-    { value: 4, label: "4" },
-    { value: 5, label: "5" },
-    { value: 6, label: "6" },
-    { value: 7, label: "7" },
-    { value: 8, label: "8" },
-    { value: 9, label: "9" },
-    { value: 10, label: "10" },
+  { value: 1, label: "1" },
+  { value: 2, label: "2" },
+  { value: 3, label: "3" },
+  { value: 4, label: "4" },
+  { value: 5, label: "5" },
+  { value: 6, label: "6" },
+  { value: 7, label: "7" },
+  { value: 8, label: "8" },
+  { value: 9, label: "9" },
+  { value: 10, label: "10" },
 ];
 
 const rankingItems = [
-    "Affordability",
-    "Personal Health Concerns",
-    "Coverage of Essential Services",
-    "Plan Flexibility",
-    "Geographic Coverage",
-    "Coverage for Family and Dependents",
-    "Convenience/Ease of Use",
-    "Long-Term Benefits",
+  "Affordability",
+  "Personal Health Concerns",
+  "Coverage of Essential Services",
+  "Plan Flexibility",
+  "Geographic Coverage",
+  "Coverage for Family and Dependents",
+  "Convenience/Ease of Use",
+  "Long-Term Benefits",
 ];
 
+const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { formData } = location.state || {};
+  const { files } = location.state || {};
 
-
-const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
-
-    const navigate = useNavigate();
-    const location = useLocation(); 
-    const { formData } = location.state || {};
-
-    const [rankings, setRankings] = React.useState<{ [key: string]: number | string }>(
-        Object.fromEntries(rankingItems.map((item) => [item, 1]))
-    );
+  const [rankings, setRankings] = React.useState<{
+    [key: string]: number | string;
+  }>(Object.fromEntries(rankingItems.map((item) => [item, 1])));
 
     const [selectedOption, setSelectedOption] = useState("");
     const [dropdownError, setDropdownError] = useState(false);
@@ -63,17 +61,18 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
         setDropdownError(false);
     };
 
-    // Handle slider change
-    const handleSliderChange = (category: string) => (event: Event, newValue: number | number[]) => {
-        setRankings((prev) => ({
-            ...prev,
-            [category]: newValue as number,
-        }));
+  // Handle slider change
+  const handleSliderChange =
+    (category: string) => (event: Event, newValue: number | number[]) => {
+      setRankings((prev) => ({
+        ...prev,
+        [category]: newValue as number,
+      }));
     };
 
-    //Handle Submit
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
+  //Handle Submit
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
         // Check if dropdown is selected
         if (!selectedOption) {
@@ -81,14 +80,18 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
             return; // Stop submission
         }
 
-        const fullUserData = { ...formData, ...rankings, selectedOption };
-        const success = await sendInputData(fullUserData);
-        // just updates results regardless
-        navigate("/results");
-        getResults().then(newResults => {
-            setResults(newResults);
-        });
-      };
+    const fullUserData = { ...formData, ...rankings, selectedOption };
+    console.log(files)
+    
+    const success = await sendInputData(fullUserData);
+    const sucessUploadFiles = await uploadFiles(files);
+
+    navigate("/results");
+
+    getResults().then((newResults) => {
+      setResults(newResults);
+    });
+  };
 
     return (
         <div>
@@ -138,7 +141,7 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
 
             {/* Dropdown Selection */}
             <Box sx={{ marginTop: 4, textAlign: "center" }}>
-                <Typography variant="subtitle1">Select your level of familiarity with healthcare jargon.</Typography>
+                <Typography >Select your level of familiarity with healthcare jargon.</Typography>
                 <Select value={selectedOption} onChange={handleDropdownChange} displayEmpty fullWidth error={dropdownError}>
                     <MenuItem value="" disabled>Select an option</MenuItem>
                     <MenuItem value="Option 1">Unfamiliar</MenuItem>
@@ -147,15 +150,15 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
                 </Select>
             </Box>
 
-            {/* Submit Button */}
-            <Box sx={{ textAlign: "center", marginTop: 4 }}>
-                <button type="submit" onClick={handleSubmit}>
-                    Submit
-                </button>
-            </Box>
+        {/* Submit Button */}
+        <Box sx={{ textAlign: "center", marginTop: 4 }}>
+          <button type="submit" onClick={handleSubmit}>
+            Submit
+          </button>
         </Box>
-        </div>
-    );
-}
+      </Box>
+    </div>
+  );
+};
 
 export default Rankings; 
