@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60vw;
+    width: 55vw;
     height: 93vh;
     overflow-y: auto;
     background-color: var(--background-off-white);
@@ -30,7 +30,7 @@
     border-color: var(--gray);
     color: var(--gray);
     cursor: pointer;
-    z-index: 9999; 
+    z-index: 10; 
 }
 
 .closeChat:hover {
@@ -40,16 +40,56 @@
 .openChat {
     position: fixed; 
     bottom: 2vh;
-    right: 3vw;
+    right: 2vw;
     margin-top: 7vh;
-    background-color: var(--background-off-white);
-    border-color: var(--gray);
-    color: var(--gray);
+    background-color: var(--gray);
+    color: var(--textbox-off-white);
     padding: 10px 15px;
     cursor: pointer;
-    z-index: 9999; 
+    z-index: 10; 
 }
 
 .openChat:hover {
     background: gray;
+}
+
+.resultsAndInfo {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+    justify-content: center;
+}
+
+.openModal {
+    margin: 5px;
+    background-color: transparent;
+    border-color: transparent;
+    outline: none;
+}
+
+.openModal:hover {
+    margin: 5px;
+    background-color: transparent;
+    border-color: transparent;
+    outline: none;
+}
+
+.openModal:active {
+    margin: 5px;
+    background-color: transparent;
+    border-color: transparent;
+    outline: none;
+}
+
+.openModal:focus, .openModal:focus-visible {
+    margin: 5px;
+    background-color: transparent;
+    border-color: transparent;
+    outline: none;
+}
+
+.infoImage {
+    width: 20px;
+    height: 20px;
 }

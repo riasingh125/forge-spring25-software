@@ -20,8 +20,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
     budget: "",
     concerns: "",
   });
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [files, setFiles] = useState<File[]>([]);
   const { setHasSubmittedInput } = useFlow();
 
   // Handle input changes
@@ -32,87 +31,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
-    setLoading(true);
-    try {
-      const validationError = validateFormData(formData);
-
-      if (validationError) {
-        throw new Error(validationError);
-      }
-      setHasSubmittedInput(true);
-      navigate("/Rankings", { state: { formData } });
-    } catch (err) {
-      console.error("Submission error:", err);
-      setError(
-        err instanceof Error
-          ? err.message
-          : "Unexpected error. Please try again."
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  type FormDataType = {
-    firstName: string;
-    lastName: string;
-    email: string;
-    city: string;
-    state: string;
-    zip: string;
-    country: string;
-    salary: string;
-    numHousehold: string;
-    budget: string;
-    concerns: string;
-  };
-
-  const validateFormData = (data: FormDataType): string | null => {
-    const trimmedData = Object.fromEntries(
-      Object.entries(data).map(([key, value]) => [key, value.trim()])
-    );
-
-    const requiredFields = [
-      "firstName",
-      "lastName",
-      "email",
-      "city",
-      "state",
-      "zip",
-      "country",
-      "salary",
-      "numHousehold",
-      "budget",
-    ];
-
-    for (let field of requiredFields) {
-      if (!trimmedData[field as keyof FormDataType]) {
-        return `Please fill out the "${field}" field.`;
-      }
-    }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(trimmedData.email)) {
-      return "Please enter a valid email address.";
-    }
-
-    // Zip code validation
-    if (!/^\d{5}(-\d{4})?$/.test(trimmedData.zip)) {
-      return "Please enter a valid zip code.";
-    }
-
-    // Salary, numHousehold, and budget should be positive numbers
-    const numericFields = ["salary", "numHousehold", "budget"];
-    for (let field of numericFields) {
-      const value = parseFloat(trimmedData[field as keyof FormDataType]);
-      if (isNaN(value) || value <= 0) {
-        return `Please enter a valid positive number for "${field}".`;
-      }
-    }
-
-    return null;
+    navigate("/Rankings", { state: { formData, files } });
   };
 
   return (
@@ -250,9 +169,9 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
           <div className={styles.line}></div>
           {/* File Upload */}
           <div className={styles.formGroup}>
-            <div className={styles.formLabelGroup}>Upload PDFs</div>
+            <div className={styles.formLabelGroup}>Upload PDFs (select multiple at once!)</div>
             <div className={styles.formInputGroup}>
-              <FileUpload />
+              <FileUpload files={files} setFiles={setFiles} />
             </div>
           </div>
           <div className={styles.line}></div>

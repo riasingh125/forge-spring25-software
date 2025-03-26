@@ -8,7 +8,7 @@
     background-color: var(--gray);  
     right: 0;
     bottom: 0;
-    width: 40vw;
+    width: 45vw;
     height: 93vh;
     padding: 10px;
     z-index: 0;
@@ -87,6 +87,7 @@
   }
   
   .messageinput {
+    display: flex;
     flex: 1;
     padding: 8px;
     border: 1px solid #ccc;
