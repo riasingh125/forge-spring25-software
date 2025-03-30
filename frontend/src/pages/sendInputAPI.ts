@@ -62,13 +62,12 @@ async function sendInputData(data) {
 // not sure if defining type is necessary
 async function uploadFiles(files: File[]) {
     const formData = new FormData();
-
     files.forEach((file) => {
         formData.append("files", file);
     });
 
     try {
-        const response = await axios.post("http://127.0.0.1:8000/pdf-upload",
+        const response = await axios.post("http://127.0.0.1:8000/form/upload-pdfs",
             formData,
             { headers: { "Content-Type": "multipart/form-data" } }
         );

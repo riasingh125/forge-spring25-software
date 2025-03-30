@@ -51,7 +51,6 @@ async def upload_pdfs(files: List[UploadFile] = File(...)):
             return {"error" : "file is not of type pdf"}
         pdf_info.append({"filename": file.filename, "size": len(await file.read())})
     return {"message" : "successfully uploaded files", "pdf_info": pdf_info}
-
 @app.get("/results")
 async def get_results():
     return {

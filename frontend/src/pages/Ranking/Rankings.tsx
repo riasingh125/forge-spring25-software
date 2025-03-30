@@ -131,8 +131,8 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
         </h2>
         <hr></hr>
 
-        {rankingItems.map((category) => (
-          <Box key={category} sx={{ padding: 2 }}>
+        {rankingItems.map((category, index) => (
+          <Box key={category + index} sx={{ padding: 2 }}>
             <h3>{category}</h3>
             <Grid
               container
