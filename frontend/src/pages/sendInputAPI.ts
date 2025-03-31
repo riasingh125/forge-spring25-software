@@ -71,6 +71,7 @@ async function uploadFiles(files: File[]) {
             formData,
             { headers: { "Content-Type": "multipart/form-data" } }
         );
+        console.log(response);
         return true;
     } catch (error) {
         console.error("File upload error:", error);

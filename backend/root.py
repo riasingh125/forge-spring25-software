@@ -4,7 +4,7 @@ from models import UserInputForm
 from models import ChatBotMessage
 
 # import function to upload files to s3
-from s3_upload import upload_to_s3
+from upload_extract import upload_and_extract
 
 app = FastAPI()
 
@@ -48,16 +48,18 @@ async def send_form(data: UserInputForm):
 
 @app.post("/form/upload-pdfs")
 async def upload_pdfs(files: List[UploadFile] = File(...)):
-    pdf_info = []
+
     for file in files:
         if file.content_type != 'application/pdf':
             return {"error" : "file is not of type pdf"}
-        pdf_info.append({"filename": file.filename, "size": len(await file.read())})
 
-        # upload file to s3
-        upload_to_s3(file, "insurance-plans-pdfs",file.filename)
+    results = await upload_and_extract(files)
+    for result in results:
+        print(result)
 
-    return {"message" : "successfully uploaded files", "pdf_info": pdf_info}
+    return {"message" : "successfully uploaded files", "textract": results}
+
+
 @app.get("/results")
 async def get_results():
     return {
