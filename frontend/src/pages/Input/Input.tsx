@@ -4,25 +4,26 @@ import styles from "./styles.module.css";
 import { ResultsProps } from "../../App";
 import FileUpload from "../../components/FileUpload";
 import { useFlow } from "../../context/FlowContext";
+import { useFlow as formUseFlow } from "../../context/FormContext";
+import ContactInfo from "../../components/form/ContactInfo";
+import Address from "../../components/form/Address";
+import BudgetInfo from "../../components/form/BudgetInfo";
+import UploadPdfs from "../../components/form/UploadPdfs";
+import Welcome from "../../components/form/Welcome";
 
-const Input: React.FC<ResultsProps> = ({ setResults }) => {
+const Input: React.FC<ResultsProps> = ({
+  results,
+  setResults,
+  modalOpened,
+  setModalOpened,
+  messages,
+  setMessages,
+}) => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    city: "",
-    state: "",
-    zip: "",
-    country: "",
-    salary: "",
-    numHousehold: "",
-    budget: "",
-    concerns: "",
-  });
+  const { formData, setFormData } = formUseFlow();
   const [files, setFiles] = useState<File[]>([]);
-  const [planCost, setPlanCost] = useState<number[]>([]);
   const { setHasSubmittedInput } = useFlow();
+  const [step, setStep] = useState(0);
 
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,157 +34,92 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setHasSubmittedInput(true);
-    navigate("/Rankings", { state: { formData, files, planCost } });
+    navigate("/Rankings", { state: { formData, files } });
   };
+
+  const nextStep = () =>
+    setStep((prev) => Math.min(prev + 1, SubForms.length - 1));
+  const prevStep = () => setStep((prev) => Math.max(prev - 1, 0));
+
+  const SubForms = [
+    <Welcome
+      key="welcome"
+      results={results}
+      setResults={setResults}
+      modalOpened={modalOpened}
+      setModalOpened={setModalOpened}
+      messages={messages}
+      setMessages={setMessages}
+    />,
+    <ContactInfo
+      key="contact"
+      results={results}
+      setResults={setResults}
+      modalOpened={modalOpened}
+      setModalOpened={setModalOpened}
+      messages={messages}
+      setMessages={setMessages}
+    />,
+    <Address
+      key="welcome"
+      results={results}
+      setResults={setResults}
+      modalOpened={modalOpened}
+      setModalOpened={setModalOpened}
+      messages={messages}
+      setMessages={setMessages}
+    />,
+    <BudgetInfo
+      key="budget"
+      results={results}
+      setResults={setResults}
+      modalOpened={modalOpened}
+      setModalOpened={setModalOpened}
+      messages={messages}
+      setMessages={setMessages}
+    />,
+    <UploadPdfs
+      key="upload"
+      results={results}
+      setResults={setResults}
+      modalOpened={modalOpened}
+      setModalOpened={setModalOpened}
+      messages={messages}
+      setMessages={setMessages}
+    />,
+  ];
 
   return (
     <div className={styles.inputPage}>
-      <h1 className={styles.title}>Welcome</h1>
-      <div className={styles.subtitle}>
-        <h2>
-          Let's get you set up to compare the best insurance plans. We'll need a
-          few details to get started.
-        </h2>
-      </div>
-
-      <div className={styles.line}></div>
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={handleSubmit}>
-          {/* Contact Information */}
-          <div className={styles.formGroup}>
-            <div className={styles.formLabelGroup}>Contact Information</div>
-            <div className={styles.formInputGroup}>
-              <div className={styles.inputsNextToEachOther}>
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className={styles.inputsNextToEachOther}>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
+          {/* Render current step */}
+          <div>{SubForms[step]}</div>
+          {/* Navigation Buttons */}
+          <div className={styles.buttonGroup}>
+            {step > 0 && (
+              <button
+                type="button"
+                onClick={prevStep}
+                className={styles.navButton}
+              >
+                Previous
+              </button>
+            )}
+            {step < SubForms.length - 1 ? (
+              <button
+                type="button"
+                onClick={nextStep}
+                className={styles.navButton}
+              >
+                Next
+              </button>
+            ) : (
+              <button type="submit" className={styles.submitButton}>
+                Submit
+              </button>
+            )}
           </div>
-          <div className={styles.line}></div>
-          {/* Address Information */}
-          <div className={styles.formGroup}>
-            <div className={styles.formLabelGroup}>Address</div>
-            <div className={styles.formInputGroup}>
-              <div className={styles.inputsNextToEachOther}>
-                <input
-                  type="text"
-                  placeholder="City"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="text"
-                  placeholder="State/Province/Region"
-                  name="state"
-                  value={formData.state}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className={styles.inputsNextToEachOther}>
-                <input
-                  type="text"
-                  placeholder="Zip Code"
-                  name="zip"
-                  value={formData.zip}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="text"
-                  placeholder="Country"
-                  name="country"
-                  value={formData.country}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-          </div>
-          <div className={styles.line}></div>
-          {/* Budget Information */}
-          <div className={styles.formGroup}>
-            <div className={styles.formLabelGroup}>Budget Information</div>
-            <div className={styles.formInputGroup}>
-              <div className={styles.inputsNextToEachOther}>
-                <input
-                  type="number"
-                  placeholder="Salary"
-                  name="salary"
-                  value={formData.salary}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="number"
-                  placeholder="# People in Household"
-                  name="numHousehold"
-                  value={formData.numHousehold}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="number"
-                  placeholder="Budget"
-                  name="budget"
-                  value={formData.budget}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className={styles.inputsNextToEachOther}>
-                <input
-                  type="text"
-                  placeholder="Health concerns/additional information"
-                  name="concerns"
-                  value={formData.concerns}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-          </div>
-          <div className={styles.line}></div>
-          {/* File Upload */}
-          <div className={styles.formGroup}>
-            <div className={styles.formLabelGroup}>
-              Upload PDFs (select multiple at once!)
-            </div>
-            <div className={styles.formInputGroup}>
-              <FileUpload files={files} setFiles={setFiles} planCost={planCost} setPlanCost={setPlanCost}/>
-            </div>
-          </div>
-          <div className={styles.line}></div>
-          <br></br>
-          {/* Submit Button */}
-          <button type="submit" className={styles.submitButton}>
-            Submit
-          </button>
         </form>
       </div>
     </div>
