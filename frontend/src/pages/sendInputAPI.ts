@@ -37,14 +37,22 @@ function structureToJSON(data) {
     };
 }
 
-
-async function sendInputData(data) {
+/**
+ * POST request to backend to send user input and get back results
+ * @param data the user's filled out form data
+ * @param files the uploaded pdfs of the insurance plans
+ */
+async function sendInputData(data: object, files: File[]) {
     try {
-        const response = await axios.post("http://127.0.0.1:8000/form/send",
-            structureToJSON(data),
-            {headers: {"Content-Type": "application/json"}}
-        );
-        //console.log("Server response:", response.data);
+        const formData = new FormData();
+        // add the user form data
+        formData.append("form_data", JSON.stringify(data));
+        // add all the uploaded files
+        files.forEach((file) => {
+            formData.append("files", file);
+        });
+        const response = await axios.post("http://127.0.0.1:8000/form/submit", formData);
+        console.log("Server response:", response.data);
         return true;
     } catch (error) {
         console.error("Submission error:", error);
@@ -59,28 +67,8 @@ async function sendInputData(data) {
     }
 }
 
-// not sure if defining type is necessary
-async function uploadFiles(files: File[]) {
-    const formData = new FormData();
-    files.forEach((file) => {
-        formData.append("files", file);
-    });
-
-    try {
-        const response = await axios.post("http://127.0.0.1:8000/form/upload-pdfs",
-            formData,
-            { headers: { "Content-Type": "multipart/form-data" } }
-        );
-        console.log(response);
-        return true;
-    } catch (error) {
-        console.error("File upload error:", error);
-        alert("Failed to upload files.");
-        return false;
-    }
-}
 
 export {
-    sendInputData,
-    uploadFiles,
+    sendInputData
+
 };

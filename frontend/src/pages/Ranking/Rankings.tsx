@@ -103,10 +103,10 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
     }
     setHasCompletedRankings(true);
     const fullUserData = { ...formData, ...rankings, selectedOption };
-    console.log(files);
 
-    const success = await sendInputData(fullUserData);
-    const sucessUploadFiles = await uploadFiles(files);
+    // success = true, if form upload worked someone handle that..
+    const success = await sendInputData(fullUserData, files);
+
 
     navigate("/results");
 
