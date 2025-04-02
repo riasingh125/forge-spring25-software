@@ -29,7 +29,7 @@ def root():
 
 @app.post("/chat/message")
 async def send_message(data: ChatBotMessage):
-    return {"received": data.message, "response": "hi"}
+    return {"received": data.message, "response": data.message}
 
 
 @app.post("/form/submit")
@@ -39,7 +39,7 @@ async def upload_pdfs(form_data:str = Form(...), files: List[UploadFile] = File(
     form_dict = json.loads(form_data)
 
     # Check against Pydantic Model
-    #user_input = UserInputForm(**form_dict)
+    user_input = UserInputForm(**form_dict)
 
     # check files for right type:
     for file in files:
@@ -48,6 +48,10 @@ async def upload_pdfs(form_data:str = Form(...), files: List[UploadFile] = File(
 
     # upload to s3 and textract
     results = await upload_and_extract(files)
+
+    # The weights:
+    weights = user_input.weights
+    print(weights)
 
     return {"userInput" : form_dict, "textract": results}
 

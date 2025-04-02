@@ -46,6 +46,7 @@ async function sendInputData(data: object, files: File[]) {
     try {
         const formData = new FormData();
         // add the user form data
+        data = structureToJSON(data)
         formData.append("form_data", JSON.stringify(data));
         // add all the uploaded files
         files.forEach((file) => {
