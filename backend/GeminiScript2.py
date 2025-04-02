@@ -15,6 +15,7 @@ class AssignRankings:
 		self.rankings = rankings
 		self.plan = user_plan
 
+	# Assigns a 1-10 score to the plan based on the coverage of all benefits in the plan. Is effectively a void method, returns None, but updates a rankings dictionary.
 	def assign_benefit_rankings(self):
 		response = self.client.models.generate_content(
 			model=self.model,
@@ -36,11 +37,13 @@ class AssignRankings:
 		self.rankings["benefit_score"] = int(response.text)
 		return None
 
+	# Evaluates affordability of the plan in the greater context of the plan's premium and user budget, compared to what plans of this caliber should typically cost.
 	def assign_cost_rankings(self, cost: float, budget: Budget):
 		response = self.client.models.generate_content(
 			model=self.model,
 			config=types.GenerateContentConfig(
-				system_instruction=f"Compared to the monthly premium of ${cost} per month, evaluate the cost of the healthcare insurance plan."
+				system_instruction=f"Compared to the monthly premium of ${cost} per month and a user given budget given as {budget} where the desired budget is in the range of {budget.value} "
+								   f", evaluate the cost of the healthcare insurance plan."
 								   f"The object of this is to not evaluate the benefits, but the cost of the plan in the wider context of the plan premium."
 								   f"Thus, this plan should be compared to what plans with these benefit costs would typically cost for their premium. "
 								   f"Note that there is no reason to artificially inflate or deflate the score, as accuracy is critical."
@@ -56,6 +59,7 @@ class AssignRankings:
 		self.rankings['cost_score'] = int(response.text)
 		return None
 
+	# Evaluates the plan based on the user's personal health concerns, and assigns a score from 1-10 based on how well the plan covers these concerns.
 	def assign_personalized_rankings(self, user_input: str):
 		response = self.client.models.generate_content(
 			model=self.model,
@@ -76,6 +80,7 @@ class AssignRankings:
 		self.rankings['personalized_score'] = int(response.text)
 		return None
 
+	# Evaluates the plan based on the user's age, and assigns a score from 1-10 based on how well the plan covers the most common diseases and injuries for this age group.
 	def assign_plan_flexibility(self, age: int):
 		response = self.client.models.generate_content(
 			model=self.model,
@@ -96,6 +101,7 @@ class AssignRankings:
 		self.rankings['flexibility_score'] = int(response.text)
 		return None
 
+	# Evaluates the plan based on how easy it'll be for user to access the coverage in their area, based on the provided zip code, city, and state.
 	def assign_convenience_rankings(self, zip_code: int, city: str, state: str,
 									user_input: str):
 		response = self.client.models.generate_content(
@@ -115,6 +121,7 @@ class AssignRankings:
 		self.rankings['convenience_score'] = int(response.text)
 		return None
 
+	# Evaluates the plan based on how well it'll cover the user while traveling.
 	def assign_geographic_rankings(self):
 		response = self.client.models.generate_content(
 			model=self.model,
@@ -131,5 +138,6 @@ class AssignRankings:
 		self.rankings['geographic_score'] = int(response.text)
 		return None
 
+	# Returns the current dictionary of 1-10 rankings.
 	def get_rankings(self):
 		return self.rankings
