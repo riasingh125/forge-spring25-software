@@ -95,6 +95,7 @@ class AssignRankings:
 		)
 		self.rankings['emergency_coverage'] = int(response.text)
 		return None
+
 	# Evaluates the plan based on the user's age, and assigns a score from 1-10 based on how well the plan covers the most common diseases and injuries for this age group.
 	def assign_plan_flexibility(self, age: int):
 		response = self.client.models.generate_content(
