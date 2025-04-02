@@ -103,10 +103,10 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
     }
     setHasCompletedRankings(true);
     const fullUserData = { ...formData, ...rankings, selectedOption };
-    console.log(files);
 
-    const success = await sendInputData(fullUserData);
-    const sucessUploadFiles = await uploadFiles(files);
+    // success = true, if form upload worked someone handle that..
+    const success = await sendInputData(fullUserData, files);
+
 
     navigate("/results");
 
@@ -131,8 +131,8 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
         </h2>
         <hr></hr>
 
-        {rankingItems.map((category) => (
-          <Box key={category} sx={{ padding: 2 }}>
+        {rankingItems.map((category, index) => (
+          <Box key={category + index} sx={{ padding: 2 }}>
             <h3>{category}</h3>
             <Grid
               container
