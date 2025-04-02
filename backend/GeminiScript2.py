@@ -2,7 +2,6 @@ import base64
 import os
 from google import genai
 from google.genai import types
-
 from backend.Budget import Budget
 
 
@@ -80,6 +79,22 @@ class AssignRankings:
 		self.rankings['personalized_coverage'] = int(response.text)
 		return None
 
+	# Evaluates the plan based on how well it covers the user in emergency situations, and assigns a score from 1-10 based on how well it covers the user in these situations.
+	def assign_plan_viability_in_emergency(self):
+		response = self.client.models.generate_content(
+			model=self.model,
+			config=types.GenerateContentConfig(
+				system_instruction="Evaluate the healthcare insurance plan's viability in emergency situations. "
+								   "Consider the plan's coverage for emergencies, including hospital visits, ambulances, urgent care, and "
+								   "specialist consultations. Assign a score from 1 to 10, where 1 indicates poor viability and "
+								   "10 indicates excellent viability. Provide only the numerical score, without any additional "
+								   "reasoning or commentary. Wait for further instructions after providing the score.",
+				temperature=0
+			),
+			contents=self.plan
+		)
+		self.rankings['emergency_coverage'] = int(response.text)
+		return None
 	# Evaluates the plan based on the user's age, and assigns a score from 1-10 based on how well the plan covers the most common diseases and injuries for this age group.
 	def assign_plan_flexibility(self, age: int):
 		response = self.client.models.generate_content(
