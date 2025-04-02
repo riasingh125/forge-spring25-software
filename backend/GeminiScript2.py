@@ -34,7 +34,7 @@ class AssignRankings:
 			),
 			contents=self.plan
 		)
-		self.rankings["benefit_score"] = int(response.text)
+		self.rankings["coverage_of_all_benefits"] = int(response.text)
 		return None
 
 	# Evaluates affordability of the plan in the greater context of the plan's premium and user budget, compared to what plans of this caliber should typically cost.
@@ -56,7 +56,7 @@ class AssignRankings:
 			),
 			contents=self.plan
 		)
-		self.rankings['cost_score'] = int(response.text)
+		self.rankings['affordability'] = int(response.text)
 		return None
 
 	# Evaluates the plan based on the user's personal health concerns, and assigns a score from 1-10 based on how well the plan covers these concerns.
@@ -77,7 +77,7 @@ class AssignRankings:
 			),
 			contents=self.plan
 		)
-		self.rankings['personalized_score'] = int(response.text)
+		self.rankings['personalized_coverage'] = int(response.text)
 		return None
 
 	# Evaluates the plan based on the user's age, and assigns a score from 1-10 based on how well the plan covers the most common diseases and injuries for this age group.
@@ -98,7 +98,7 @@ class AssignRankings:
 			),
 			contents=self.plan
 		)
-		self.rankings['flexibility_score'] = int(response.text)
+		self.rankings['flexibility_of_coverage'] = int(response.text)
 		return None
 
 	# Evaluates the plan based on how easy it'll be for user to access the coverage in their area, based on the provided zip code, city, and state.
@@ -118,7 +118,7 @@ class AssignRankings:
 			),
 			contents=self.plan
 		)
-		self.rankings['convenience_score'] = int(response.text)
+		self.rankings['convenience_of_coverage'] = int(response.text)
 		return None
 
 	# Evaluates the plan based on how well it'll cover the user while traveling.
@@ -135,7 +135,7 @@ class AssignRankings:
 			),
 			contents=self.plan
 		)
-		self.rankings['geographic_score'] = int(response.text)
+		self.rankings['geographic_coverage'] = int(response.text)
 		return None
 
 	# Returns the current dictionary of 1-10 rankings.
