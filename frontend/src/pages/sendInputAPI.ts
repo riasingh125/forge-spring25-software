@@ -43,6 +43,7 @@ function structureToJSON(data) {
  */
 async function sendInputData(data: object, files: File[]) {
     try {
+        console.log('Trying POST Request to backend')
         const formData = new FormData();
         // add the user form data
         data = structureToJSON(data)
