@@ -8,7 +8,7 @@ import json
 # import function to upload files to s3
 from upload_extract import upload_and_extract
 # import function to get chabot response
-# from chatbot import get_chatbot_response
+from chatbot import get_chatbot_response
 import asyncio
 
 app = FastAPI()
@@ -16,12 +16,11 @@ app = FastAPI()
 from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
-	CORSMiddleware,
-	allow_origins=["http://localhost:5173"],
-	# Allow frontend in React to conncet
-	allow_credentials=True,
-	allow_methods=["*"],  # Allow all methods
-	allow_headers=["*"],  # Allow all headers
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # Allow frontend in React to conncet
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods
+    allow_headers=["*"],  # Allow all headers
 )
 
 # To run app:
@@ -38,9 +37,8 @@ def root():
 
 @app.post("/chat/message")
 async def send_message(data: ChatBotMessage):
-    print('HISTORY')
-    print(history)
-    response = get_chatbot_response(data.message, history['plans'])
+
+    response = get_chatbot_response(data.message, history)
     return {"received": data.message, "response": response}
 
 
