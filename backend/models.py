@@ -24,14 +24,13 @@ class Address(BaseModel):
     zip_code: str
 
 class Weights(BaseModel):
+    coverage_of_all_benefits: int
     affordability: int
-    health_concerns: int
-    essential_services: int
-    plan_flexibility: int
+    personalized_coverage: int
+    emergency_coverage: int
+    flexibility_of_coverage: int
+    convenience_of_coverage: int
     geographic_coverage: int
-    dependencies: int
-    convenience: int
-    long_term_benefits: int
 
 # Main Pydantic format for JSON
 class UserInputForm(BaseModel):

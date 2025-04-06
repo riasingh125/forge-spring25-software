@@ -39,7 +39,7 @@ async def upload_pdfs(form_data:str = Form(...), files: List[UploadFile] = File(
     form_dict = json.loads(form_data)
 
     # Check against Pydantic Model
-    user_input = UserInputForm(**form_dict)
+    #user_input = UserInputForm(**form_dict)
 
     # check files for right type:
     for file in files:
@@ -50,8 +50,8 @@ async def upload_pdfs(form_data:str = Form(...), files: List[UploadFile] = File(
     results = await upload_and_extract(files)
 
     # The weights:
-    weights = user_input.weights
-    print(weights)
+    #weights = user_input.weights
+    print(form_dict)
 
     return {"userInput" : form_dict, "textract": results}
 

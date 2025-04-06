@@ -26,13 +26,12 @@ function structureToJSON(data) {
         },
         "weights": {
             "affordability": parseFloat(data["Affordability"]) || 0,
-            "health_concerns": parseFloat(data["Personal Health Concerns"]) || 0,
-            "essential_services": parseFloat(data["Coverage of Essential Services"]) || 0,
-            "plan_flexibility": parseFloat(data["Plan Flexibility"]) || 0,
-            "geographic_coverage": parseFloat(data["Geographic Coverage"]) || 0,
-            "dependencies": parseFloat(data["Coverage for Family and Dependents"]) || 0,
-            "convenience": parseFloat(data["Convenience/Ease of Use"]) || 0,
-            "long_term_benefits": parseFloat(data["Long-Term Benefits"]) || 0
+            "coverage_of_all_benefits": parseFloat(data["Coverage of ALl Benefits"]) || 0,
+            "personalized_coverage": parseFloat(data["Coverage of Personal Health Concerns"]) || 0,
+            "flexibility_of_coverage": parseFloat(data["Plan Flexibility"]) || 0,
+            "emergency_coverage": parseFloat(data["Coverage in Emergencies"]) || 0,
+            "convenience_of_coverage": parseFloat(data["Convenience of using plan"]) || 0,
+            "geographic_coverage": parseFloat(data["Geographic coverage"]) || 0,
         }
     };
 }

@@ -1,20 +1,18 @@
-import base64
-import os
 from google import genai
 from google.genai import types
 from backend.Budget import Budget
+import copy
 
-
-class AssignRankings:
+class UnweightedPlanRankings:
 	def __init__(self, rankings: dict, user_plan: str):
 		self.client = genai.Client(
-			api_key="",
+			api_key="AIzaSyCuBim30wS6w5a03y_lKuQ8Ln6eW0_XAmA",
 		)
 		self.model = "gemini-2.5-pro-exp-03-25"
-		self.rankings = rankings
+		self.__rankings = rankings
 		self.plan = user_plan
 
-	# Assigns a 1-10 score to the plan based on the coverage of all benefits in the plan. Is effectively a void method, returns None, but updates a rankings dictionary.
+	# Assigns a 1-10 score to the plan based on the coverage of all benefits in the plan. Is effectively a void method, returns None, but updates a __rankings dictionary.
 	def assign_benefit_rankings(self):
 		response = self.client.models.generate_content(
 			model=self.model,
@@ -29,11 +27,10 @@ class AssignRankings:
 								   "reasoning or ANY other information than the number. Wait for the "
 								   "next instruction before proceeding.",
 				temperature=0
-
 			),
 			contents=self.plan
 		)
-		self.rankings["coverage_of_all_benefits"] = int(response.text)
+		self.__rankings["coverage_of_all_benefits"] = int(response.text)
 		return None
 
 	# Evaluates affordability of the plan in the greater context of the plan's premium and user budget, compared to what plans of this caliber should typically cost.
@@ -55,7 +52,7 @@ class AssignRankings:
 			),
 			contents=self.plan
 		)
-		self.rankings['affordability'] = int(response.text)
+		self.__rankings['affordability'] = int(response.text)
 		return None
 
 	# Evaluates the plan based on the user's personal health concerns, and assigns a score from 1-10 based on how well the plan covers these concerns.
@@ -76,7 +73,7 @@ class AssignRankings:
 			),
 			contents=self.plan
 		)
-		self.rankings['personalized_coverage'] = int(response.text)
+		self.__rankings['personalized_coverage'] = int(response.text)
 		return None
 
 	# Evaluates the plan based on how well it covers the user in emergency situations, and assigns a score from 1-10 based on how well it covers the user in these situations.
@@ -93,7 +90,7 @@ class AssignRankings:
 			),
 			contents=self.plan
 		)
-		self.rankings['emergency_coverage'] = int(response.text)
+		self.__rankings['emergency_coverage'] = int(response.text)
 		return None
 
 	# Evaluates the plan based on the user's age, and assigns a score from 1-10 based on how well the plan covers the most common diseases and injuries for this age group.
@@ -114,7 +111,7 @@ class AssignRankings:
 			),
 			contents=self.plan
 		)
-		self.rankings['flexibility_of_coverage'] = int(response.text)
+		self.__rankings['flexibility_of_coverage'] = int(response.text)
 		return None
 
 	# Evaluates the plan based on how easy it'll be for user to access the coverage in their area, based on the provided zip code, city, and state.
@@ -134,7 +131,7 @@ class AssignRankings:
 			),
 			contents=self.plan
 		)
-		self.rankings['convenience_of_coverage'] = int(response.text)
+		self.__rankings['convenience_of_coverage'] = int(response.text)
 		return None
 
 	# Evaluates the plan based on how well it'll cover the user while traveling.
@@ -151,9 +148,9 @@ class AssignRankings:
 			),
 			contents=self.plan
 		)
-		self.rankings['geographic_coverage'] = int(response.text)
+		self.__rankings['geographic_coverage'] = int(response.text)
 		return None
 
-	# Returns the current dictionary of 1-10 rankings.
+	# Returns the current dictionary of 1-10 __rankings.
 	def get_rankings(self):
-		return self.rankings
+		return copy.deepcopy(self.__rankings)
