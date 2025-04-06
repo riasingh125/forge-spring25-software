@@ -21,6 +21,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
     concerns: "",
   });
   const [files, setFiles] = useState<File[]>([]);
+  const [planCost, setPlanCost] = useState<number[]>([]);
   const { setHasSubmittedInput } = useFlow();
 
   // Handle input changes
@@ -32,7 +33,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setHasSubmittedInput(true);
-    navigate("/Rankings", { state: { formData, files } });
+    navigate("/Rankings", { state: { formData, files, planCost } });
   };
 
   return (
@@ -174,7 +175,7 @@ const Input: React.FC<ResultsProps> = ({ setResults }) => {
               Upload PDFs (select multiple at once!)
             </div>
             <div className={styles.formInputGroup}>
-              <FileUpload files={files} setFiles={setFiles} />
+              <FileUpload files={files} setFiles={setFiles} planCost={planCost} setPlanCost={setPlanCost}/>
             </div>
           </div>
           <div className={styles.line}></div>
