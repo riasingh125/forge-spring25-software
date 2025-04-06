@@ -34,14 +34,14 @@ to_frontend = {}
 
 @app.get("/")
 def root():
-	return {"FastAPI Running!!!!!"}
-
+    return {"FastAPI Running!!!!!"}
 
 @app.post("/chat/message")
 async def send_message(data: ChatBotMessage):
-	# response = get_chatbot_response(data.message, history)
-	return {"received": data.message,
-			"response": "Oh no! I am not connected to the chatbot yet!"}
+    print('HISTORY')
+    print(history)
+    response = get_chatbot_response(data.message, history['plans'])
+    return {"received": data.message, "response": response}
 
 
 @app.post("/form/submit")
