@@ -1,70 +1,49 @@
 
-from langchain.text_splitter import RecursiveCharacterTextSplitter  # read more here: https://python.langchain.com/api_reference/text_splitters/character/langchain_text_splitters.character.RecursiveCharacterTextSplitter.html#recursivecharactertextsplitter
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.vectorstores import FAISS
-from langchain.chat_models import ChatOpenAI
-from langchain.chains import RetrievalQA
-from langchain.docstore.document import Document
-from langchain_core.messages import SystemMessage, HumanMessage
-from langchain_core.prompts import ChatPromptTemplate
-
 from dotenv import load_dotenv
 import os
+from google import genai
+from google.genai import types
+
 load_dotenv()
-api_key = os.getenv("OPENAI_API_KEY")
-
-# pip install langchain openai faiss-cpu tiktoken python-dotenv
-
-CHUNK_SIZE = 1000
-CHUNK_OVERLAP = 200
-
-splitter = RecursiveCharacterTextSplitter(
-    chunk_size = CHUNK_SIZE,
-    chunk_overlap = CHUNK_OVERLAP,
-    separators=["\n\n", "\n", ".", " "]
-)
-
-embeddings = OpenAIEmbeddings()
-
-# Convert Textract into Documents for vector embedding
-def get_documents(history):
-    documents = []
-    print('history is ')
-    print(history)
-    for plan in history['plans']:
-        chunks = splitter.split_text(plan['text'])
-        for chunk in chunks:
-            documents.append(Document(
-                page_content = chunk,
-                metadata = {"plan_name": plan['name']}
-            ))
-    return documents
+api_key = os.getenv("GOOGLE_API_KEY")
 
 
-# Add the role to chatbot
-system_message = SystemMessage(
-    content="You are a healthcare plan assistant. Help users clearly understand plan details like deductibles, copays, and coverage. Be concise, accurate, and only use information from the provided documents."
-)
 
-custom_prompt = ChatPromptTemplate.from_messages([
-    system_message,
-    HumanMessage(content="{question}")
-])
 
-def get_chatbot_response(message: str, history):
-    documents = get_documents(history)
-    if  len(documents) == 0:
-        return "Error: Cannot access PDF data"
-    vectors = FAISS.from_documents(documents, embeddings)
-    qa = RetrievalQA.from_chain_type(
-        llm = ChatOpenAI(),
-        retriever = vectors.as_retriever(),
-        chain_type_kwargs = {"prompt": custom_prompt}
+
+# 1) Configure your API key
+client = genai.Client(api_key=api_key)
+
+
+
+
+
+def get_chatbot_response(question: str, plans: list) -> str:
+    client = genai.Client(api_key=api_key)
+    # Combine plan textract stuff
+    combined_plans_text = "\n".join(
+        f"---\nPlan: {plan['name']}\n\n{plan['text']}"
+        for plan in plans
     )
-    response = qa.run(message)
-    return response
 
+    # Prompting type
+    prompt = f"""You are a healthcare plan assistant. Only use the text provided to answer user questions.
 
+    Below is the text for multiple plans:
+    {combined_plans_text}
+    
+    Answer the following question ONLY from the text above:
+    
+    Question: {question}
+    """
+
+    response = client.models.generate_content(
+        model="gemini-2.0-flash",
+        contents=[prompt],
+    )
+
+    # 5) Return the text response
+    return response.text
 
 
 

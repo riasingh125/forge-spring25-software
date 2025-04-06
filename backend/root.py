@@ -35,8 +35,9 @@ def root():
 
 @app.post("/chat/message")
 async def send_message(data: ChatBotMessage):
-
-    response = get_chatbot_response(data.message, history)
+    print('HISTORY')
+    print(history)
+    response = get_chatbot_response(data.message, history['plans'])
     return {"received": data.message, "response": response}
 
 
@@ -47,7 +48,7 @@ async def upload_pdfs(form_data:str = Form(...), files: List[UploadFile] = File(
     form_dict = json.loads(form_data)
 
     # Check against Pydantic Model
-    user_input = UserInputForm(**form_dict)
+    #user_input = UserInputForm(**form_dict)
 
     # check files for right type:
     for file in files:
@@ -58,7 +59,7 @@ async def upload_pdfs(form_data:str = Form(...), files: List[UploadFile] = File(
     results = await upload_and_extract(files)
 
     # The weights:
-    weights = user_input.weights
+    #weights = user_input.weights
 
     for result in results:
         history['plans'].append(result)
