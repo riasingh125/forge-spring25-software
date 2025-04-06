@@ -18,13 +18,16 @@ client = genai.Client(api_key=api_key)
 
 
 
-def get_chatbot_response(question: str, plans: list) -> str:
+def get_chatbot_response(question: str, history: dict) -> str:
     client = genai.Client(api_key=api_key)
     # Combine plan textract stuff
-    combined_plans_text = "\n".join(
-        f"---\nPlan: {plan['name']}\n\n{plan['text']}"
-        for plan in plans
-    )
+
+    combined_plans_text = ""
+
+    for key, value in history.items():
+        combined_plans_text += f"---\nPlan: {key}\n\n{value["text"]}\n"
+
+
 
     # Prompting type
     prompt = f"""You are a healthcare plan assistant. Only use the text provided to answer user questions.
