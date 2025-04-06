@@ -1,20 +1,27 @@
 from google import genai
 from google.genai import types
-from backend.Budget import Budget
+from Budget import Budget
 import copy
+import os
+from dotenv import load_dotenv
+import aiohttp
+import io
+
+load_dotenv()
+api_key = os.getenv("GEMINI_API_KEY")
 
 class UnweightedPlanRankings:
 	def __init__(self, rankings: dict, user_plan: str):
 		self.client = genai.Client(
-			api_key="",
+			api_key=api_key,
 		)
-		self.model = "gemini-2.5-pro-exp-03-25"
+		self.model = "gemini-2.5-pro-preview-03-25"
 		self.__rankings = rankings
 		self.plan = user_plan
 
 	# Assigns a 1-10 score to the plan based on the coverage of all benefits in the plan. Is effectively a void method, returns None, but updates a __rankings dictionary.
-	def assign_benefit_rankings(self):
-		response = self.client.models.generate_content(
+	async def assign_benefit_rankings(self):
+		response = await self.client.aio.models.generate_content(
 			model=self.model,
 			config=types.GenerateContentConfig(
 				system_instruction="Evaluate the provided healthcare insurance plan as an expert and assign a score based on both state and nationwide benchmarks."
@@ -35,8 +42,8 @@ class UnweightedPlanRankings:
 		return None
 
 	# Evaluates affordability of the plan in the greater context of the plan's premium and user budget, compared to what plans of this caliber should typically cost.
-	def assign_cost_rankings(self, cost: float, budget: Budget):
-		response = self.client.models.generate_content(
+	async def assign_cost_rankings(self, cost: float, budget: Budget):
+		response = await self.client.aio.models.generate_content(
 			model=self.model,
 			config=types.GenerateContentConfig(
 				system_instruction=f"Compared to the monthly premium of ${cost} per month and a user given budget given as {budget} where the desired budget is in the range of {budget.value} "
@@ -57,8 +64,8 @@ class UnweightedPlanRankings:
 		return None
 
 	# Evaluates the plan based on the user's personal health concerns, and assigns a score from 1-10 based on how well the plan covers these concerns.
-	def assign_personalized_rankings(self, user_input: str):
-		response = self.client.models.generate_content(
+	async def assign_personalized_rankings(self, user_input: str):
+		response = await self.client.aio.models.generate_content(
 			model=self.model,
 			config=types.GenerateContentConfig(
 				system_instruction=f"You are an expert advisor in healthcare insurance evaluation. Based on the user's "
@@ -78,8 +85,8 @@ class UnweightedPlanRankings:
 		return None
 
 	# Evaluates the plan based on how well it covers the user in emergency situations, and assigns a score from 1-10 based on how well it covers the user in these situations.
-	def assign_plan_viability_in_emergency(self):
-		response = self.client.models.generate_content(
+	async def assign_plan_viability_in_emergency(self):
+		response = await self.client.aio.models.generate_content(
 			model=self.model,
 			config=types.GenerateContentConfig(
 				system_instruction="Evaluate the healthcare insurance plan's viability in emergency situations. "
@@ -95,8 +102,8 @@ class UnweightedPlanRankings:
 		return None
 
 	# Evaluates the plan based on the user's age, and assigns a score from 1-10 based on how well the plan covers the most common diseases and injuries for this age group.
-	def assign_plan_flexibility(self, age: int):
-		response = self.client.models.generate_content(
+	async def assign_plan_flexibility(self, age: int):
+		response = await self.client.aio.models.generate_content(
 			model=self.model,
 			config=types.GenerateContentConfig(
 				system_instruction=f"Evaluate the healthcare insurance plan's flexibility in terms of coverage for "
@@ -116,9 +123,9 @@ class UnweightedPlanRankings:
 		return None
 
 	# Evaluates the plan based on how easy it'll be for user to access the coverage in their area, based on the provided zip code, city, and state.
-	def assign_convenience_rankings(self, zip_code: int, city: str, state: str,
+	async def assign_convenience_rankings(self, zip_code: int, city: str, state: str,
 									user_input: str):
-		response = self.client.models.generate_content(
+		response = await self.client.aio.models.generate_content(
 			model=self.model,
 			config=types.GenerateContentConfig(
 				system_instruction=f"Evaluate the healthcare insurance plan's convenience to access coverage based on the provided zip code {zip_code}, city {city}, and state {state}. "
@@ -136,8 +143,8 @@ class UnweightedPlanRankings:
 		return None
 
 	# Evaluates the plan based on how well it'll cover the user while traveling.
-	def assign_geographic_rankings(self):
-		response = self.client.models.generate_content(
+	async def assign_geographic_rankings(self):
+		response = await self.client.aio.models.generate_content(
 			model=self.model,
 			config=types.GenerateContentConfig(
 				system_instruction=f"Evaluate the healthcare insurance plan's geographic coverage. Consider the plan's coverage in terms of the plans coverage, should they happen to be traveling for any reason."

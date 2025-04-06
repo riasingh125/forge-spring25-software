@@ -45,14 +45,20 @@ async def process_file(file):
     # Upload to S3
     await asyncio.to_thread(upload_to_s3, file, S3_BUCKET_NAME, file.filename)
     # Start Textract job and get job_id
-    job_id = await asyncio.to_thread(start_textract_job, S3_BUCKET_NAME, file.filename)
-    # Get Textract result
-    result = await asyncio.to_thread(get_textract_result, job_id)
+
     return {
         "name": file.filename,
         "text": result
     }
 
 async def upload_and_extract(files):
-    tasks = [process_file(file) for file in files]
-    return await asyncio.gather(*tasks)
+    results = {}
+    for file in files:
+        # Process each file and get results
+        await asyncio.to_thread(upload_to_s3, file, S3_BUCKET_NAME,
+                                file.filename)
+        job_id = await asyncio.to_thread(start_textract_job, S3_BUCKET_NAME,
+                                         file.filename)
+        # Get Textract result
+        result = await asyncio.to_thread(get_textract_result, job_id)
+        results[file.filename] = result
