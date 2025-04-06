@@ -8,11 +8,11 @@ def main():
 		weights={
 			'coverage_of_all_benefits': 0.0,
 			'affordability': 1,
-			'personalized_coverage': 1.0,
-			'emergency_coverage': 0.2,
+			'personalized_coverage': 0.0,
+			'emergency_coverage': 0.0,
 			'flexibility_of_coverage': 0.1,
-			'convenience_of_coverage': 0.1,
-			'geographic_coverage': 0.1
+			'convenience_of_coverage': 0.0,
+			'geographic_coverage': 0.0
 		},
 		corpus='''
 BLUE CROSS AND BLUE SHIELD OF TEXAS
@@ -6308,6 +6308,7 @@ an Independent Licensee of the Blue Cross and Blue Shield Association''',
 	print(plan.scores)
 	print(plan.pair_keys())
 	print(plan.total_scores())
+	print(plan.weighted_scores)
 
 
 main()
