@@ -44,3 +44,4 @@ class UserInputForm(BaseModel):
     contact: Contact
     address: Address
     weights: Weights
+    premium: Premium

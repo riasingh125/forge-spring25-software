@@ -51,9 +51,9 @@ async def process_file(file):
         "text": result
     }
 
-async def upload_and_extract(files):
+async def upload_and_extract(files:dict):
     results = {}
-    for file in files:
+    for file, premium in files:
         # Process each file and get results
         await asyncio.to_thread(upload_to_s3, file, S3_BUCKET_NAME,
                                 file.filename)
@@ -61,5 +61,5 @@ async def upload_and_extract(files):
                                          file.filename)
         # Get Textract result
         result = await asyncio.to_thread(get_textract_result, job_id)
-        results[file.filename] = result
+        results[file.filename] = [result, premium]
     return results
