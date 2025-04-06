@@ -6,7 +6,7 @@ import copy
 class UnweightedPlanRankings:
 	def __init__(self, rankings: dict, user_plan: str):
 		self.client = genai.Client(
-			api_key="AIzaSyCuBim30wS6w5a03y_lKuQ8Ln6eW0_XAmA",
+			api_key="",
 		)
 		self.model = "gemini-2.5-pro-exp-03-25"
 		self.__rankings = rankings
@@ -27,6 +27,7 @@ class UnweightedPlanRankings:
 								   "reasoning or ANY other information than the number. Wait for the "
 								   "next instruction before proceeding.",
 				temperature=0
+
 			),
 			contents=self.plan
 		)
