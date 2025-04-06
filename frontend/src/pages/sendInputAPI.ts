@@ -1,7 +1,22 @@
 import axios from "axios";
 
+interface FormDataInput {
+  firstName: string;
+  lastName: string;
+  age: string;
+  salary: string;
+  budget: string;
+  concerns: string;
+  email: string;
+  phone: string;
+  city: string;
+  state: string;
+  country: string;
+  zip: string;
+  [key: string]: any;
+}
 
-function structureToJSON(data) {
+function structureToJSON(data: FormDataInput) {
 
     return {
         "first_name": data.firstName || "",
@@ -41,35 +56,43 @@ function structureToJSON(data) {
  * @param data the user's filled out form data
  * @param files the uploaded pdfs of the insurance plans
  */
-async function sendInputData(data: object, files: File[]) {
-    try {
-        console.log('Trying POST Request to backend')
-        const formData = new FormData();
-        // add the user form data
-        data = structureToJSON(data)
-        formData.append("form_data", JSON.stringify(data));
-        // add all the uploaded files
-        files.forEach((file) => {
-            formData.append("files", file);
-        });
-        const response = await axios.post("http://127.0.0.1:8000/form/submit", formData);
-        console.log("Server response:", response.data);
-        return true;
-    } catch (error) {
-        console.error("Submission error:", error);
-        if (axios.isAxiosError(error) && error.response) {
-            // 422 - incorrect format
-            console.error("Error status:", error.response?.status);
-            alert(`Error submitting the form: ${error.response.data.detail || "Unknown error"}`);
-        } else {
-            alert("Failed to connect to the server.");
-        }
-        return false;
+async function sendInputData(
+  data: FormDataInput,
+  files: File[],
+  planCost: number[]
+) {
+  try {
+    const formData = new FormData();
+    // add the user form data
+    const jsonData = structureToJSON(data);
+
+    formData.append("form_data", JSON.stringify(jsonData));
+    // add all the uploaded files
+    files.forEach((file) => {
+      formData.append("files", file);
+      formData.append("plan_cost", String(planCost[files.indexOf(file)]));
+    });
+    const response = await axios.post(
+      "http://127.0.0.1:8000/form/submit",
+      formData
+    );
+    console.log("Server response:", response.data);
+    return true;
+  } catch (error) {
+    console.error("Submission error:", error);
+    if (axios.isAxiosError(error) && error.response) {
+      // 422 - incorrect format
+      console.error("Error status:", error.response?.status);
+      alert(
+        `Error submitting the form: ${
+          error.response.data.detail || "Unknown error"
+        }`
+      );
+    } else {
+      alert("Failed to connect to the server.");
     }
+    return false;
+  }
 }
 
-
-export {
-    sendInputData
-
-};
+export { sendInputData };
