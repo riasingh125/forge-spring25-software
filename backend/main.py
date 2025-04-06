@@ -6,9 +6,9 @@ import asyncio
 def main():
 	plan = rankings.WeightedPlanRanking(
 		weights={
-			'coverage_of_all_benefits': 1,
-			'affordability': 0.2,
-			'personalized_coverage': 0.2,
+			'coverage_of_all_benefits': 0.0,
+			'affordability': 1,
+			'personalized_coverage': 1.0,
 			'emergency_coverage': 0.2,
 			'flexibility_of_coverage': 0.1,
 			'convenience_of_coverage': 0.1,

@@ -62,3 +62,4 @@ async def upload_and_extract(files):
         # Get Textract result
         result = await asyncio.to_thread(get_textract_result, job_id)
         results[file.filename] = result
+    return results

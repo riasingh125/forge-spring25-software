@@ -6,8 +6,6 @@ from typing import List
 class ChatBotMessage(BaseModel):
     message: str
 
-
-
 class Coverage(BaseModel):
     ages_of_people_needing_coverage: List[int]
     personal_health_concerns: str
@@ -31,6 +29,9 @@ class Weights(BaseModel):
     flexibility_of_coverage: int
     convenience_of_coverage: int
     geographic_coverage: int
+
+class Premium(BaseModel):
+    premium: List[float]
 
 # Main Pydantic format for JSON
 class UserInputForm(BaseModel):

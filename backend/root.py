@@ -1,6 +1,5 @@
 from fastapi import FastAPI, File, UploadFile, Form
 from typing import List
-
 from rankings import WeightedPlanRanking
 from models import UserInputForm
 from models import ChatBotMessage
@@ -67,7 +66,8 @@ async def upload_pdfs(form_data: str = Form(...),
 	weights = user_input['weights']
 	del user_input['weights']
 
-	async def process_plan(plan_name, plan_content):
+	# The premiums:
+	async def process_plan(plan_name, plan_content, ):
 		ranking_instance = WeightedPlanRanking(weights, plan_content,
 											   user_input)
 		unweighted_scores = await ranking_instance.ranking_logics()
@@ -93,8 +93,7 @@ async def upload_pdfs(form_data: str = Form(...),
 			"totalScore": total_score,
 		}
 
-	return history
-
+	return to_frontend
 
 @app.get("/results")
 async def get_results():
