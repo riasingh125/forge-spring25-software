@@ -12,27 +12,16 @@ import MenuItem from "@mui/material/MenuItem";
 import { SelectChangeEvent } from "@mui/material/Select";
 import { ResultsProps } from "../../App";
 
-import { sendInputData, uploadFiles } from "../sendInputAPI.ts";
+import { sendInputData } from "../sendInputAPI.ts";
 import { getResults } from "../resultsAPI.ts";
 import styles from "./rankings.module.css";
 import { useFlow } from "../../context/FlowContext.tsx";
-
 
 const Input = styled(MuiInput)`
   width: 42px;
 `;
 
 const marks = [
-  { value: 1, label: "1" },
-  { value: 2, label: "2" },
-  { value: 3, label: "3" },
-  { value: 4, label: "4" },
-  { value: 5, label: "5" },
-  { value: 6, label: "6" },
-  { value: 7, label: "7" },
-  { value: 8, label: "8" },
-  { value: 9, label: "9" },
-  { value: 10, label: "10" },
   { value: 1, label: "1" },
   { value: 2, label: "2" },
   { value: 3, label: "3" },
@@ -54,14 +43,6 @@ const rankingItems = [
   "Coverage for Family and Dependents",
   "Convenience/Ease of Use",
   "Long-Term Benefits",
-  "Affordability",
-  "Personal Health Concerns",
-  "Coverage of Essential Services",
-  "Plan Flexibility",
-  "Geographic Coverage",
-  "Coverage for Family and Dependents",
-  "Convenience/Ease of Use",
-  "Long-Term Benefits",
 ];
 
 const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
@@ -69,6 +50,7 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
   const location = useLocation();
   const { formData } = location.state || {};
   const { files } = location.state || {};
+  const { planCost } = location.state || {};
   const { setHasCompletedRankings } = useFlow();
 
   const [rankings, setRankings] = React.useState<{
@@ -103,10 +85,10 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
     }
     setHasCompletedRankings(true);
     const fullUserData = { ...formData, ...rankings, selectedOption };
+    console.log(planCost)
 
     // success = true, if form upload worked someone handle that..
-    const success = await sendInputData(fullUserData, files);
-
+    const success = await sendInputData(fullUserData, files, planCost);
 
     navigate("/results");
 
