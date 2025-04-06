@@ -53,7 +53,7 @@ async def process_file(file):
 
 async def upload_and_extract(files:dict):
     results = {}
-    for file, premium in files:
+    for file, premium in files.items():
         # Process each file and get results
         await asyncio.to_thread(upload_to_s3, file, S3_BUCKET_NAME,
                                 file.filename)

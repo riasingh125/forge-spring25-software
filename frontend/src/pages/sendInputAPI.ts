@@ -16,7 +16,7 @@ interface FormDataInput {
   [key: string]: any;
 }
 
-function structureToJSON(data: FormDataInput) {
+function structureToJSON(data: FormDataInput, planCost: number[]) {
 
     return {
         "first_name": data.firstName || "",
@@ -47,7 +47,8 @@ function structureToJSON(data: FormDataInput) {
             "emergency_coverage": parseFloat(data["Coverage in Emergencies"]) || 0,
             "convenience_of_coverage": parseFloat(data["Convenience of using plan"]) || 0,
             "geographic_coverage": parseFloat(data["Geographic coverage"]) || 0,
-        }
+        },
+        "premium" : planCost
     };
 }
 
@@ -64,7 +65,7 @@ async function sendInputData(
   try {
     const formData = new FormData();
     // add the user form data
-    const jsonData = structureToJSON(data);
+    const jsonData = structureToJSON(data, planCost);
 
     formData.append("form_data", JSON.stringify(jsonData));
     // add all the uploaded files

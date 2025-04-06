@@ -42,11 +42,11 @@ class WeightedPlanRanking:
 	# Assigns each category a weighted score
 	def pair_keys(self):
 		for i in self.weights.keys():
-			self.weighted_scores[i] = self.weights[i] * self.scores[i]
+			self.weighted_scores[i] = round(self.weights[i] * self.scores[i],2)
 		return self.weighted_scores
 
 	# Returns the total score for this corpus
 	def total_scores(self):
 		optimal_score = sum([i * 10 for i in self.weights.values()])
-		self.total_score = sum(self.weighted_scores.values()) / optimal_score
+		self.total_score = round((sum(self.weighted_scores.values()) / optimal_score * 10),2)
 		return self.total_score

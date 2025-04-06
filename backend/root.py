@@ -69,7 +69,7 @@ async def upload_pdfs(form_data: str = Form(...),
 
 	# upload to s3 and textract
 	# { "name": filename, "text": "TEXT RESULTS " }
-	results = await upload_and_extract(files)
+	results = await upload_and_extract(plans)
 
 
 	# The weights:

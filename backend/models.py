@@ -30,8 +30,6 @@ class Weights(BaseModel):
     convenience_of_coverage: int
     geographic_coverage: int
 
-class Premium(BaseModel):
-    premium: List[float]
 
 # Main Pydantic format for JSON
 class UserInputForm(BaseModel):
@@ -44,4 +42,4 @@ class UserInputForm(BaseModel):
     contact: Contact
     address: Address
     weights: Weights
-    premium: Premium
+    premium: List[float]
