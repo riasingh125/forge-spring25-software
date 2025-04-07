@@ -107,7 +107,7 @@ async def upload_pdfs(form_data: str = Form(...),
 	to_frontend = []
 
 	# Store the results in the history
-	for name, unweighted_scores, weighted_scores, total_score, short_summary, long_summary, plan_content in results:
+	for name, unweighted_scores, weighted_scores, total_score, short_summary, plan_content in results:
 		# {'file_name': 'weighted_scores: dict, 'total_score': float, 'text': str}
 		history[name] = {
 			"weighted_scores": weighted_scores,
