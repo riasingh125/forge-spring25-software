@@ -78,7 +78,7 @@ async function sendInputData(
       formData
     );
     console.log("Server response:", response.data);
-    return true;
+    return response.data;
   } catch (error) {
     console.error("Submission error:", error);
     if (axios.isAxiosError(error) && error.response) {
@@ -92,7 +92,7 @@ async function sendInputData(
     } else {
       alert("Failed to connect to the server.");
     }
-    return false;
+    return []
   }
 }
 
