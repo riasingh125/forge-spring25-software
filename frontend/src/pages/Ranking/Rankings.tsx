@@ -36,7 +36,6 @@ const marks = [
 
 const rankingItems = [
     "Affordability",
-    "Personal Health Concerns",
     "Coverage of Personal Health Concerns",
     "Plan Flexibility",
     "Coverage of All Benefits",
