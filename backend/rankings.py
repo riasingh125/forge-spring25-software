@@ -2,6 +2,7 @@ import asyncio
 
 from GeminiScript2 import UnweightedPlanRankings
 from Budget import Budget
+import copy
 
 
 # ===========================
@@ -47,6 +48,6 @@ class WeightedPlanRanking:
 
 	# Returns the total score for this corpus
 	def total_scores(self):
-		optimal_score = sum([i * 10 for i in self.weights.values()])
-		self.total_score = round((sum(self.weighted_scores.values()) / optimal_score * 10),2)
+		optimal_score = sum([i * 10 for i in copy.deepcopy(self.weights).values()])
+		self.total_score = round(sum(copy.deepcopy(self.weighted_scores).values()) / optimal_score * 10, 2)
 		return self.total_score
