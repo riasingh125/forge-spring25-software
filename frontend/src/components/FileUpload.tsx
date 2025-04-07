@@ -37,7 +37,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
       {files.length > 0 && (
         <menu className={styles.menuContainer}>
           {files.map((file, index) => (
-            <div>
+            <div key={index+file.name}>
               <ol key={index} className={styles.menuItem}>
                 {file.name}
               </ol>

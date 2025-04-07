@@ -1,27 +1,41 @@
-import React from "react";
+import React, {useMemo} from "react";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { Result } from "../App";
 import './TextBoxStyles.css';
-
 interface SpiderChartProps {
     scores: Result;
     color: string;
 }
 
-const transformData = (result: Result) => [
-    { factor: "Affordability", value: result.affordability },
-    { factor: "Personal Health", value: result.personalHealth },
-    { factor: "Essential Services", value: result.essentialServicesCoverage },
-    { factor: "Flexibility", value: result.flexibility },
-    { factor: "Geographic Coverage", value: result.geographicCoverage },
-    { factor: "Family Coverage", value: result.familyCoverage },
-    { factor: "Convenience", value: result.convenience },
-    { factor: "Long-Term Benefits", value: result.longTermBenefits }
-];
+
+
+
 
 
 export default function SpiderChart({ scores, color }: SpiderChartProps) {
-    const chartData = transformData(scores); // Convert `Result` into Recharts format
+
+    console.log("SPIDER CHART CHECK");
+    console.log(scores);
+
+
+    const chartData = useMemo(() => {
+        if (!scores) return {}; // handle null/undefined safely
+
+        return [
+          { factor: "Affordability", value: scores.weightedScores.affordability },
+          { factor: "Personal Health", value: scores.weightedScores.personalized_coverage },
+          { factor: "Emergency Coverage", value: scores.weightedScores.emergency_coverage },
+          { factor: "Flexibility", value: scores.weightedScores.flexibility_of_coverage },
+          { factor: "Geographic Coverage", value: scores.weightedScores.geographic_coverage },
+          { factor: "All Benefits Coverage", value: scores.weightedScores.coverage_of_all_benefits },
+          { factor: "Convenience", value: scores.weightedScores.convenience_of_coverage },
+        ];
+    }, [scores]);
+
+
+
+
+
 
     return (
         <ResponsiveContainer width="100%" height="100%">
