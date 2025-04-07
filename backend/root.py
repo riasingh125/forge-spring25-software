@@ -1,6 +1,5 @@
 from fastapi import FastAPI, File, UploadFile, Form
 from typing import List
-
 from PlanSummaries import PlanSummaries
 from rankings import WeightedPlanRanking
 from models import UserInputForm
@@ -106,7 +105,7 @@ async def upload_pdfs(form_data: str = Form(...),
 	results = await asyncio.gather(*tasks)
 
 	# Store the results in the history
-	for name, unweighted_scores, weighted_scores, total_score, short_summary, long_summary, plan_content in results:
+	for name, unweighted_scores, weighted_scores, total_score, short_summary, plan_content in results:
 		# {'file_name': 'weighted_scores: dict, 'total_score': float, 'text': str}
 		history[name] = {
 			"weighted_scores": weighted_scores,
