@@ -32,6 +32,19 @@ Amplify.configure(config);
 //   totalScore : number;
 // }
 
+// export interface Result {
+//   name : string;
+//   affordability : number;
+//   personalHealth : number;
+//   essentialServicesCoverage : number;
+//   flexibility : number;
+//   geographicCoverage : number;
+//   familyCoverage : number;
+//   convenience : number;
+//   longTermBenefits : number;
+//   totalScore : number;
+// }
+
 export interface Result {
   name: string
   totalScore: number;

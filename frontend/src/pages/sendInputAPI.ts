@@ -52,11 +52,7 @@ function structureToJSON(data: FormDataInput, planCost: number[]) {
     };
 }
 
-/**
- * POST request to backend to send user input and get back results
- * @param data the user's filled out form data
- * @param files the uploaded pdfs of the insurance plans
- */
+
 async function sendInputData(data: FormDataInput, files: File[], planCost: number[]) {
     console.log("Post request");
     try {
@@ -79,6 +75,7 @@ async function sendInputData(data: FormDataInput, files: File[], planCost: numbe
         console.log(error);
         return [];
     }
+
 }
 
 export { sendInputData };
