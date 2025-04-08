@@ -8,7 +8,7 @@ import json
 # import function to upload files to s3
 from upload_extract import upload_and_extract
 # import function to get chabot response
-# from chatbot import get_chatbot_response
+from chatbot import get_chatbot_response
 import asyncio
 
 app = FastAPI()
@@ -34,14 +34,13 @@ to_frontend = {}
 
 @app.get("/")
 def root():
-	return {"FastAPI Running!!!!!"}
-
+    return {"FastAPI Running!!!!!"}
 
 @app.post("/chat/message")
 async def send_message(data: ChatBotMessage):
-	# response = get_chatbot_response(data.message, history)
-	return {"received": data.message,
-			"response": "Oh no! I am not connected to the chatbot yet!"}
+
+    response = get_chatbot_response(data.message, history)
+    return {"received": data.message, "response": response}
 
 
 @app.post("/form/submit")
