@@ -6,10 +6,15 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Input from "./pages/Input/Input";
 import Rankings from "./pages/Ranking/Rankings";
 import Results from "./pages/Results/Results";
-<<<<<<< HEAD
+
 import config from './aws-exports';
 import Navbar from "./components/NavBar";
+import {
+  ProtectedRankingsRoute,
+  ProtectedResultsRoute,
+} from "./routes/ProtectedRoutes";
 //import Authenticator from amplify
+
 
 
 /*
@@ -23,20 +28,9 @@ const config = {
 */
 
 Amplify.configure(config);
-=======
-import Navbar from "./components/NavBar";
-import {
-  ProtectedRankingsRoute,
-  ProtectedResultsRoute,
-} from "./routes/ProtectedRoutes";
->>>>>>> 66e4716a1d6949f23ec60eeca7ad81e6ce1fb3f7
 
 
 export interface Result {
-<<<<<<< HEAD
-  name: string;
-  price: number;
-=======
   name : string;
   affordability : number;
   personalHealth : number;
@@ -47,7 +41,6 @@ export interface Result {
   convenience : number;
   longTermBenefits : number;
   totalScore : number;
->>>>>>> 66e4716a1d6949f23ec60eeca7ad81e6ce1fb3f7
 }
 
 export interface ResultsProps {
@@ -84,9 +77,9 @@ function App() {
   return (
     <>
       <Authenticator>
-        <h1>Welcome to the App</h1>
+        {({ signOut, user }) => ( 
       <Router>
-        <Navbar></Navbar>
+        <Navbar signOut={signOut}></Navbar>
         <Routes>
           <Route
             path="/input"
@@ -117,6 +110,7 @@ function App() {
           />
         </Routes>
       </Router>
+        )}
       </Authenticator>
     </>
   );
