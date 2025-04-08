@@ -1,5 +1,6 @@
 import { Amplify } from 'aws-amplify';
-import { Authenticator } from '@aws-amplify/ui-react';
+import { Authenticator, ThemeProvider, Theme } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css'; 
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -13,19 +14,7 @@ import {
   ProtectedRankingsRoute,
   ProtectedResultsRoute,
 } from "./routes/ProtectedRoutes";
-//import Authenticator from amplify
-
-
-
-/*
-const config = {
-  aws_project_region: 'us-east-1',
-  aws_cognito_region: 'us-east-1', 
-  aws_user_pools_id: 'us-east-1_0BnGQZ2AO', 
-  aws_user_pools_web_client_id: '7357poqc90amf4c1c7t3i6dqjs',
-  aws_mandatory_sign_in: false,
-};
-*/
+import logo from './resources/parcel.png';
 
 Amplify.configure(config);
 
@@ -68,6 +57,35 @@ export interface ResultsProps {
   setResults: React.Dispatch<React.SetStateAction<Result[]>>;
 }
 
+const theme = {
+  name: 'parcel-custom-theme',
+  tokens: {
+    colors: {
+      brand: {
+        primary: '#416774',
+        secondary: '#000000',
+      },
+    },
+
+    components: {
+      button: {
+        primary: {
+          backgroundColor: '{colors.brand.primary}',
+          borderColor: '{colors.brand.primary}',
+          borderRadius: '4px',
+        },
+      },
+
+      tabs: {
+        item: {
+          borderColor: "#a7bccf",
+          color: "#a7bccf",
+        },
+    },
+  }
+  },
+};
+
 function App() {
   const [results, setResults] = useState<Result[]>([]);
   const [modalOpened, setModalOpened] = useState(false);
@@ -75,8 +93,38 @@ function App() {
     [new Message("Hello! Welcome to Parcel! How can I assist you today?", "bot")]);
 
   return (
-    <>
-      <Authenticator>
+    <ThemeProvider theme={theme}>
+      <div style={{ 
+      display: 'flex',
+      justifyContent: 'center',
+      paddingTop: '150px',
+      paddingLeft: '550px',
+    }}>
+      <Authenticator components={{
+          Header() {
+            return (
+              <div style={{
+                display: 'flex', 
+                justifyContent: 'center', 
+                alignItems: 'center',
+                gap: '10px',
+                paddingBottom: '10px',
+              }}>
+
+                <img src={logo} alt="Parcel Logo" style={{ width: '50px', height: '50px' }} />
+                <h1 style={{ 
+                  fontSize: '36px', 
+                  fontFamily: 'Georgia', 
+                  fontStyle: 'italic', 
+                  fontWeight: 400,
+                  margin: 0
+                }}>
+                  parcel
+                </h1>
+              </div>
+            );
+          }
+        }}>
         {({ signOut, user }) => ( 
       <Router>
         <Navbar signOut={signOut}></Navbar>
@@ -112,7 +160,8 @@ function App() {
       </Router>
         )}
       </Authenticator>
-    </>
+      </div>
+    </ThemeProvider>
   );
 }
 
