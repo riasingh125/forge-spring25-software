@@ -1,0 +1,13 @@
+langchain
+openai
+faiss-cpu
+tiktoken
+python-dotenv
+textract
+fastapi
+uvicorn
+boto3
+aysncio
+fastapi
+python-multipart
+pydantic
