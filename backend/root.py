@@ -1,5 +1,7 @@
 from fastapi import FastAPI, File, UploadFile, Form
 from typing import List
+
+from PlanSummaries import PlanSummaries
 from rankings import WeightedPlanRanking
 from models import UserInputForm
 from models import ChatBotMessage
@@ -16,7 +18,7 @@ app = FastAPI()
 from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
-	CORSMiddleware,
+	CORSMiddleware,	#type: ignore
 	allow_origins=["http://localhost:5173"],
 	# Allow frontend in React to connect
 	allow_credentials=True,
@@ -29,7 +31,7 @@ app.add_middleware(
 # fastapi dev root.py
 
 history = {}
-to_frontend = {}
+to_frontend = []
 
 
 @app.get("/")
@@ -93,7 +95,10 @@ async def upload_pdfs(form_data: str = Form(...),
 		unweighted_scores = await ranking_instance.ranking_logics()
 		weighted_scores = ranking_instance.pair_keys()
 		total_score = ranking_instance.total_scores()
-		return plan_name, unweighted_scores, weighted_scores, total_score, plan_content
+		summary = PlanSummaries(plan_content, user_input['age'], user_input['budget'])
+		short_summary = await summary.get_short_summary()
+
+		return plan_name, unweighted_scores, weighted_scores, total_score, short_summary, plan_content
 
 	tasks = [process_plan(name, content[0], content[1]) for name, content in results.items()]
 
@@ -101,7 +106,7 @@ async def upload_pdfs(form_data: str = Form(...),
 	results = await asyncio.gather(*tasks)
 
 	# Store the results in the history
-	for name, unweighted_scores, weighted_scores, total_score, plan_content in results:
+	for name, unweighted_scores, weighted_scores, total_score, short_summary, long_summary, plan_content in results:
 		# {'file_name': 'weighted_scores: dict, 'total_score': float, 'text': str}
 		history[name] = {
 			"weighted_scores": weighted_scores,
@@ -109,10 +114,13 @@ async def upload_pdfs(form_data: str = Form(...),
 			"text": plan_content
 		}
 
-		to_frontend[name] = {
+		to_frontend.append({
+			"name": name,
 			"weightedScores": weighted_scores,
 			"totalScore": total_score,
-		}
+			"premium": premiums[name],
+			"short_summary": short_summary,
+		})
 
 	return to_frontend
 
