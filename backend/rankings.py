@@ -1,6 +1,6 @@
 import asyncio
 
-from GeminiScript2 import UnweightedPlanRankings
+from UnweightedPlanRankings import UnweightedPlanRankings
 from Budget import Budget
 import copy
 
