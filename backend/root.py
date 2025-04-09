@@ -29,7 +29,7 @@ app.add_middleware(
 # fastapi dev root.py
 
 history = {}
-to_frontend = {}
+to_frontend = []
 
 
 @app.get("/")
@@ -109,10 +109,11 @@ async def upload_pdfs(form_data: str = Form(...),
 			"text": plan_content
 		}
 
-		to_frontend[name] = {
+		to_frontend.append({
+			"name" : name,
 			"weightedScores": weighted_scores,
 			"totalScore": total_score,
-		}
+		})
 
 	return to_frontend
 

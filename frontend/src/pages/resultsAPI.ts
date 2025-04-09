@@ -8,7 +8,7 @@ export async function getResults() {
         console.log('RESULTS:');
         console.log(response);
         console.log(response.data);
-        return response.data.results;
+        return response.data;
     } catch (error) {
         console.error("Get error:", error);
 
