@@ -57,11 +57,11 @@ export default function TextBox({ rank, title, content, bgColor, expanded, resul
                   <br></br>
                   flexibility: {result.weightedScores.flexibility_of_coverage}
                   <br></br>
-                  geographic coverage: {dummyResult.weightedScores.geographic_coverage}
+                  geographic coverage: {result.weightedScores.geographic_coverage}
                   <br></br>
                   coverage of all benefits: {result.weightedScores.coverage_of_all_benefits}
                   <br></br>
-                  convenience: {dummyResult.weightedScores.convenience_of_coverage}
+                  convenience: {result.weightedScores.convenience_of_coverage}
                 </h2>
               </div>
               </div>
