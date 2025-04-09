@@ -18,7 +18,7 @@ import styles from "./rankings.module.css";
 import {useFlow} from "../../context/FlowContext.tsx";
 
 const Input = styled(MuiInput)`
-  width: 42px;
+    width: 42px;
 `;
 
 const marks = [
@@ -36,23 +36,31 @@ const marks = [
 
 const rankingItems = [
     "Affordability",
-    "Coverage of All Benefits",
     "Coverage of Personal Health Concerns",
     "Plan Flexibility",
+    "Coverage of All Benefits",
+    "Geographic Coverage",
     "Coverage in Emergencies",
     "Convenience of Accessing Benefits",
-    "Geographic coverage",
 ];
 
-const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { formData } = location.state || {};
-  const { files } = location.state || {};
-  const { planCost } = location.state || {};
-  const { setHasCompletedRankings } = useFlow();
+const rankingDescriptions = [
+  "Overall cost of the plan, including premiums, deductibles, and out-of-pocket expenses.",
+  "How well the plan covers your specific health needs, including pre-existing conditions and ongoing treatments.",
+  "Flexibility in choosing healthcare providers, specialists, and treatment options.",
+  "Comprehensive coverage of all necessary medical services, including preventive care and specialist visits.",
+  "Availability of the plan in your geographic area and its network of providers.",
+  "Coverage for emergency situations, including out-of-network care.",
+  "Ease of accessing benefits, including online services, customer support, and appointment scheduling.",
+];
 
-    const [loading, setLoading] = useState(false);
+const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const {formData} = location.state || {};
+    const {files} = location.state || {};
+    const {planCost} = location.state || {};
+    const {setHasCompletedRankings} = useFlow();
 
     const [rankings, setRankings] = React.useState<{
         [key: string]: number | string;
@@ -75,12 +83,9 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
             }));
         };
 
-
+    //Handle Submit
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (loading) {
-            return;
-        }
 
         // Check if dropdown is selected
         if (!selectedOption) {
@@ -91,20 +96,15 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
         const fullUserData = {...formData, ...rankings, selectedOption};
         console.log(planCost)
 
-        setLoading(true)
         // success = true, if form upload worked someone handle that..
-        const results = await sendInputData(fullUserData, files, planCost);
-        setLoading(false);
+        const success = await sendInputData(fullUserData, files, planCost);
 
-
-        if (results.length === 0) {
-            console.log('FAILED');
-            return
-        }
-        setResults(results)
         navigate("/results");
-    };
 
+        getResults().then((newResults) => {
+            setResults(newResults);
+        });
+    };
 
     return (
         <div>
@@ -125,6 +125,8 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
                 {rankingItems.map((category, index) => (
                     <Box key={category + index} sx={{padding: 2}}>
                         <h3>{category}</h3>
+                        <h4 style={{fontStyle: "italic", fontWeight: "normal", opacity: 0.5}}>
+                            {rankingDescriptions[index]}</h4>
                         <Grid
                             container
                             spacing={2}
@@ -165,7 +167,8 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
                 {/* Dropdown Selection */}
                 <Box sx={{marginTop: 4, textAlign: "center"}}>
                     <Typography>
-                        Select your level of familiarity with healthcare jargon.
+                        Select your level of familiarity with healthcare
+                        jargon.
                     </Typography>
                     <Select
                         value={selectedOption}
@@ -178,7 +181,8 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
                             Select an option
                         </MenuItem>
                         <MenuItem value="Option 1">Unfamiliar</MenuItem>
-                        <MenuItem value="Option 2">Moderately Familiar</MenuItem>
+                        <MenuItem value="Option 2">Moderately
+                            Familiar</MenuItem>
                         <MenuItem value="Option 3">Very Familiar</MenuItem>
                     </Select>
                 </Box>
@@ -192,6 +196,6 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
             </Box>
         </div>
     );
-}
+};
 
 export default Rankings;
