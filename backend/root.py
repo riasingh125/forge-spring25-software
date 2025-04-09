@@ -16,11 +16,12 @@ app = FastAPI()
 from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Allow frontend in React to conncet
-    allow_credentials=True,
-    allow_methods=["*"],  # Allow all methods
-    allow_headers=["*"],  # Allow all headers
+	CORSMiddleware,
+	allow_origins=["http://localhost:5173"],
+	# Allow frontend in React to connect
+	allow_credentials=True,
+	allow_methods=["*"],  # Allow all methods
+	allow_headers=["*"],  # Allow all headers
 )
 
 # To run app:
@@ -71,7 +72,7 @@ async def upload_pdfs(form_data: str = Form(...),
 
 
 	# The weights:
-	weights = user_input['weights']
+	weight = user_input['weights']
 	del user_input['weights']
 
 	coverage = user_input['coverage']
@@ -83,6 +84,7 @@ async def upload_pdfs(form_data: str = Form(...),
 	user_input['city'] = location['city']
 	user_input['state'] = location['state']
 
+	weights = {k: v/10 for k, v in weight.items()}
 
 	# The premiums:
 	async def process_plan(plan_name: str, plan_content: str, plan_premium: float):
@@ -100,6 +102,7 @@ async def upload_pdfs(form_data: str = Form(...),
 
 	# Store the results in the history
 	for name, unweighted_scores, weighted_scores, total_score, plan_content in results:
+		# {'file_name': 'weighted_scores: dict, 'total_score': float, 'text': str}
 		history[name] = {
 			"weighted_scores": weighted_scores,
 			"total_score": total_score,

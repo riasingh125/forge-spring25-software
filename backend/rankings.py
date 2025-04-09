@@ -4,7 +4,6 @@ from GeminiScript2 import UnweightedPlanRankings
 from Budget import Budget
 import copy
 
-
 # ===========================
 # Weighted Ranking Logic for a plan
 class WeightedPlanRanking:
