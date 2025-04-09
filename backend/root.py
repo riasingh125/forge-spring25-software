@@ -117,8 +117,6 @@ async def upload_pdfs(form_data: str = Form(...),
 			"name": name,
 			"weightedScores": weighted_scores,
 			"totalScore": total_score,
-			"premium": premiums[name],
-			"short_summary": short_summary,
 		})
 
 	return to_frontend
