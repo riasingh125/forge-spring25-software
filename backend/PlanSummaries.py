@@ -19,7 +19,7 @@ class PlanSummaries:
 		)
 		self.model = "gemini-2.0-flash"
 
-	async def get_plan_summary(self) -> str:
+	async def get_short_summary(self) -> str:
 		response = await self.client.aio.models.generate_content(
 			model=self.model,
 			contents=[
@@ -37,7 +37,7 @@ class PlanSummaries:
 		)
 		return response.text
 
-	async def get_all_plan_summaries(self, previous_message:str) -> str:
+	async def get_long_summary(self, previous_message:str) -> str:
 		response = await self.client.aio.models.generate_content(
 			model = self.model,
 			contents = [
