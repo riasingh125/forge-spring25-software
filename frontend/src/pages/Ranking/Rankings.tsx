@@ -36,13 +36,12 @@ const marks = [
 
 const rankingItems = [
   "Affordability",
-  "Personal Health Concerns",
-  "Coverage of Essential Services",
-  "Plan Flexibility",
-  "Geographic Coverage",
-  "Coverage for Family and Dependents",
-  "Convenience/Ease of Use",
-  "Long-Term Benefits",
+  "Coverage of All Benefits",
+  "Coverage of Personal Health Concerns",
+  "Plan Flexibilit",
+  "Coverage in Emergencies",
+  "Convenience of Accessing Benefits",
+  "Geographic coverage",
 ];
 
 const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
