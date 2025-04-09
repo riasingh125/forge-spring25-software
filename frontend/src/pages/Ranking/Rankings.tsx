@@ -44,6 +44,16 @@ const rankingItems = [
     "Convenience of Accessing Benefits",
 ];
 
+const rankingDescriptions = [
+  "Overall cost of the plan, including premiums, deductibles, and out-of-pocket expenses.",
+  "How well the plan covers your specific health needs, including pre-existing conditions and ongoing treatments.",
+  "Flexibility in choosing healthcare providers, specialists, and treatment options.",
+  "Comprehensive coverage of all necessary medical services, including preventive care and specialist visits.",
+  "Availability of the plan in your geographic area and its network of providers.",
+  "Coverage for emergency situations, including out-of-network care.",
+  "Ease of accessing benefits, including online services, customer support, and appointment scheduling.",
+];
+
 const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -115,6 +125,8 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
                 {rankingItems.map((category, index) => (
                     <Box key={category + index} sx={{padding: 2}}>
                         <h3>{category}</h3>
+                        <h4 style={{fontStyle: "italic", fontWeight: "normal", opacity: 0.5}}>
+                            {rankingDescriptions[index]}</h4>
                         <Grid
                             container
                             spacing={2}
