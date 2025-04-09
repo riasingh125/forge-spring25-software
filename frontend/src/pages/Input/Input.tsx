@@ -22,6 +22,7 @@ const Input: React.FC<ResultsProps> = ({
   const navigate = useNavigate();
   const { formData, setFormData } = formUseFlow();
   const [files, setFiles] = useState<File[]>([]);
+  const [planCost, setPlanCost] = useState<number[]>([]);
   const { setHasSubmittedInput } = useFlow();
   const [step, setStep] = useState(0);
 
@@ -34,7 +35,7 @@ const Input: React.FC<ResultsProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setHasSubmittedInput(true);
-    navigate("/Rankings", { state: { formData, files } });
+    navigate("/Rankings", { state: { formData, files, planCost } });
   };
 
   const nextStep = () =>
