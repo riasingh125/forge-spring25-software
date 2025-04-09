@@ -7,17 +7,6 @@ from google.genai import types
 load_dotenv()
 api_key = os.getenv("GEMINI_API_KEY")
 
-
-
-
-
-# 1) Configure your API key
-client = genai.Client(api_key=api_key)
-
-
-
-
-
 def get_chatbot_response(question: str, history: dict) -> str:
     client = genai.Client(api_key=api_key)
     # Combine plan textract stuff
