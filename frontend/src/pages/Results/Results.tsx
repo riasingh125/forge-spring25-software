@@ -40,10 +40,9 @@ function displayResult(
       key={index}
       rank={index}
       title={result.name}
-      content={result}
+      result={result}
       bgColor={bgColor}
       expanded={expanded}
-      result={result}
     />
   );
 }

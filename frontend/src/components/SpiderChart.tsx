@@ -8,32 +8,34 @@ interface SpiderChartProps {
 }
 
 
-
-
-
-
 export default function SpiderChart({ scores, color }: SpiderChartProps) {
 
-    console.log("SPIDER CHART CHECK");
-    console.log(scores);
 
 
-    const chartData = useMemo(() => {
-        if (!scores) return {}; // handle null/undefined safely
+    // affordability: number,
+    // convenience_of_coverage: number,
+    // coverage_of_all_benefits: number,
+    // emergency_coverage: number,
+    // flexibility_of_coverage: number,
+    // geographic_coverage: number,
+    // personalized_coverage: number
 
+
+    const transformData = (result: Result) => {
         return [
-          { factor: "Affordability", value: scores.weightedScores.affordability },
-          { factor: "Personal Health", value: scores.weightedScores.personalized_coverage },
-          { factor: "Emergency Coverage", value: scores.weightedScores.emergency_coverage },
-          { factor: "Flexibility", value: scores.weightedScores.flexibility_of_coverage },
-          { factor: "Geographic Coverage", value: scores.weightedScores.geographic_coverage },
-          { factor: "All Benefits Coverage", value: scores.weightedScores.coverage_of_all_benefits },
-          { factor: "Convenience", value: scores.weightedScores.convenience_of_coverage },
+            { factor: "Affordability", value: result.weightedScores.affordability },
+            { factor: "Personal Health", value: result.weightedScores.coverage_of_all_benefits},
+            { factor: "Essential Services", value: result.weightedScores.emergency_coverage},
+            { factor: "Flexibility", value: result.weightedScores.flexibility_of_coverage},
+            { factor: "Geographic Coverage", value: result.weightedScores.geographic_coverage},
+            { factor: "Family Coverage", value: result.weightedScores.personalized_coverage}
         ];
-    }, [scores]);
+    }
 
-
-
+    // Convert `Result` into Recharts format
+    const chartData = useMemo(() => {
+        return transformData(scores);
+    }, [scores])
 
 
 

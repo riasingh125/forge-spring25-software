@@ -35,6 +35,8 @@ def get_chatbot_response(question: str, history: dict) -> str:
     Below is the text for multiple plans:
     {combined_plans_text}
     
+    
+    
     Answer the following question ONLY from the text above:
     
     Question: {question}
