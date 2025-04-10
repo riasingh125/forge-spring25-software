@@ -19,19 +19,31 @@ import logo from './resources/parcel.png';
 Amplify.configure(config);
 
 
-export interface Result {
-  name : string;
-  totalScore : number;
-  weightedScores: {
-    affordability: number,
-    convenience_of_coverage: number,
-    coverage_of_all_benefits: number,
-    emergency_coverage: number,
-    flexibility_of_coverage: number,
-    geographic_coverage: number,
-    personalized_coverage: number
-  }
+// export interface Result {
+//   name : string;
+//   affordability : number;
+//   personalHealth : number;
+//   essentialServicesCoverage : number;
+//   flexibility : number;
+//   geographicCoverage : number;
+//   familyCoverage : number;
+//   convenience : number;
+//   longTermBenefits : number;
+//   totalScore : number;
+// }
 
+export interface Result {
+  name: string
+  totalScore: number;
+  weightedScores: {
+    affordability: number;
+    convenience_of_coverage: number;
+    coverage_of_all_benefits: number;
+    emergency_coverage: number;
+    flexibility_of_coverage: number;
+    geographic_coverage: number;
+    personalized_coverage: number;
+  };
 }
 
 export interface ResultsProps {

@@ -57,8 +57,11 @@ function structureToJSON(data: FormDataInput, planCost: number[]) {
  * @param data the user's filled out form data
  * @param files the uploaded pdfs of the insurance plans
  */
-async function sendInputData(data: FormDataInput, files: File[], planCost: number[]) {
-    console.log("Post request");
+async function sendInputData(
+  data: FormDataInput,
+  files: File[],
+  planCost: number[]
+) {
   try {
     const formData = new FormData();
     // add the user form data
@@ -89,9 +92,7 @@ async function sendInputData(data: FormDataInput, files: File[], planCost: numbe
     } else {
       alert("Failed to connect to the server.");
     }
-
-    return [];
-
+    return []
   }
 }
 
