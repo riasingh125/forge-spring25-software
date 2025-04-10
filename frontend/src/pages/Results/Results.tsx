@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TextBox from "../../components/ResultsText";
+import TextBox, {dummyResult} from "../../components/ResultsText";
 import { ResultsProps, Result } from "../../App";
 import Chatbot from "../../components/Chatbot";
 import styles from "./results.module.css";
@@ -25,7 +25,7 @@ function interpolateColor(start: string, end: string, factor: number): string {
 }
 
 function displayResult(
-  results: Result,
+  result: Result,
   index: number,
   total: number,
   expanded: boolean
@@ -39,8 +39,8 @@ function displayResult(
     <TextBox
       key={index}
       rank={index}
-      title={results.name}
-      content={results}
+      title={result.name}
+      result={result}
       bgColor={bgColor}
       expanded={expanded}
     />

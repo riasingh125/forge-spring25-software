@@ -6,7 +6,7 @@ import { Result } from '../App';
 interface TextBoxProps {
   rank: number;
   title: string;
-  content: Result;
+  result: Result;
   bgColor: string;
   expanded: boolean;
 }
@@ -14,18 +14,19 @@ interface TextBoxProps {
 export const dummyResult: Result = {
     name: "Sample Plan",
     totalScore: 7.2,
-    affordability: 8,
-    personalHealth: 7,
-    essentialServicesCoverage: 9,
-    flexibility: 6,
-    geographicCoverage: 8,
-    familyCoverage: 7,
-    convenience: 5,
-    longTermBenefits: 9
+    weightedScores: {
+        affordability: 7.2,
+        convenience_of_coverage: 8,
+        coverage_of_all_benefits: 7,
+        emergency_coverage: 9,
+        flexibility_of_coverage: 6,
+        geographic_coverage: 8,
+        personalized_coverage: 9
+    }
   };
 
 // will use content once we have the actual data
-export default function TextBox({ rank, title, content, bgColor, expanded }: TextBoxProps) {
+export default function TextBox({ rank, title, result, bgColor, expanded }: TextBoxProps) {
   if (expanded) {
     return (
       <div>
@@ -33,28 +34,26 @@ export default function TextBox({ rank, title, content, bgColor, expanded }: Tex
           <h6>{rank + 1}. {title}</h6>
           <div className="results-content">
             <div className="inner-box-expanded">
-              <SpiderChart scores = {dummyResult} color = {bgColor}></SpiderChart>
+              <SpiderChart scores = {result} color = {bgColor}></SpiderChart>
             </div>
             <div className="score-card"> 
             <h2 style={{fontFamily: "Georgia", fontSize:"25px", fontWeight: 400, lineHeight: "1.5"}}>
               <br></br>
-              ⭐ overall rating: {dummyResult.totalScore}
+              ⭐ overall rating: {result.totalScore}
               <div className="line"></div>
-              affordability: {dummyResult.affordability}
+              affordability: {result.weightedScores.affordability}
               <br></br>
-              personal health: {dummyResult.personalHealth}
+              convenience of coverage: {result.weightedScores.convenience_of_coverage}
               <br></br>
-              essential services coverage: {dummyResult.essentialServicesCoverage}
+              coverage of all benefits: {result.weightedScores.coverage_of_all_benefits}
               <br></br>
-              flexibility: {dummyResult.flexibility}
+              emergency coverage: {result.weightedScores.emergency_coverage}
               <br></br>
-              geographic coverage: {dummyResult.geographicCoverage}
+              flexibility of coverage: {result.weightedScores.flexibility_of_coverage}
               <br></br>
-              family coverage: {dummyResult.familyCoverage}
+              geographic coverage: {result.weightedScores.geographic_coverage}
               <br></br>
-              convenience: {dummyResult.convenience}
-              <br></br>
-              long-term benefits: {dummyResult.longTermBenefits}
+              personalized coverage: {result.weightedScores.personalized_coverage}
             </h2>
           </div>
           </div>
@@ -70,12 +69,12 @@ export default function TextBox({ rank, title, content, bgColor, expanded }: Tex
         <div className="box-container" style={{width: "50vw", height: "600px", backgroundColor: bgColor }}>
           <h6>{rank + 1}. {title}</h6>
           <div className="inner-box">
-            <SpiderChart scores = {dummyResult} color = {bgColor}></SpiderChart>
+            <SpiderChart scores = {result} color = {bgColor}></SpiderChart>
           </div>
           <br></br>
           <div className="score-tag"> 
             <h2 style={{fontSize:"20px", fontWeight: 400}}>
-              ⭐ overall rating: {dummyResult.totalScore}
+              ⭐ overall rating: {result.totalScore}
             </h2>
           </div>
         </div>

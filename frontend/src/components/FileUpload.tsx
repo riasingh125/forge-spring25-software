@@ -37,16 +37,17 @@ const FileUpload: React.FC<FileUploadProps> = ({
       {files.length > 0 && (
         <menu className={styles.menuContainer}>
           {files.map((file, index) => (
-            <div>
-              <ol key={index} className={styles.menuItem}>
+            <div key={"div"+index}>
+              <ol key={"ol"+index} className={styles.menuItem}>
                 {file.name}
               </ol>
-              <label htmlFor="cost">Monthly premium</label>
+              <label key={"label"+index} htmlFor="cost">Monthly premium</label>
               <input
                 type="number"
                 id={file.name}
                 name="cost"
                 required
+                key={"input"+index}
                 onChange={(e) =>
                   handleCostChange(index, Number(e.target.value))
                 }

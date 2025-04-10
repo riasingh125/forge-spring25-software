@@ -100,6 +100,10 @@ async def upload_pdfs(form_data: str = Form(...),
 	# Run all tasks concurrently
 	results = await asyncio.gather(*tasks)
 
+
+	# Just send list
+	plans = []
+
 	# Store the results in the history
 	for name, unweighted_scores, weighted_scores, total_score, plan_content in results:
 		# {'file_name': 'weighted_scores: dict, 'total_score': float, 'text': str}
@@ -108,13 +112,18 @@ async def upload_pdfs(form_data: str = Form(...),
 			"total_score": total_score,
 			"text": plan_content
 		}
-
+		# delete this later we don need it
 		to_frontend[name] = {
 			"weightedScores": weighted_scores,
 			"totalScore": total_score,
 		}
+		plans.append({
+			"name": name,
+			"weightedScores": weighted_scores,
+			"totalScore": total_score,
+		})
 
-	return to_frontend
+	return plans
 
 @app.get("/results")
 async def get_results():

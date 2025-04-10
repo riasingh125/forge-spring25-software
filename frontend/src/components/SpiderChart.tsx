@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useMemo} from "react";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { Result } from "../App";
 import './TextBoxStyles.css';
@@ -8,20 +8,36 @@ interface SpiderChartProps {
     color: string;
 }
 
-const transformData = (result: Result) => [
-    { factor: "Affordability", value: result.affordability },
-    { factor: "Personal Health", value: result.personalHealth },
-    { factor: "Essential Services", value: result.essentialServicesCoverage },
-    { factor: "Flexibility", value: result.flexibility },
-    { factor: "Geographic Coverage", value: result.geographicCoverage },
-    { factor: "Family Coverage", value: result.familyCoverage },
-    { factor: "Convenience", value: result.convenience },
-    { factor: "Long-Term Benefits", value: result.longTermBenefits }
-];
+
 
 
 export default function SpiderChart({ scores, color }: SpiderChartProps) {
-    const chartData = transformData(scores); // Convert `Result` into Recharts format
+
+
+    // affordability: number,
+    // convenience_of_coverage: number,
+    // coverage_of_all_benefits: number,
+    // emergency_coverage: number,
+    // flexibility_of_coverage: number,
+    // geographic_coverage: number,
+    // personalized_coverage: number
+
+
+    const transformData = (result: Result) => {
+        return [
+            { factor: "Affordability", value: result.weightedScores.affordability },
+            { factor: "Personal Health", value: result.weightedScores.coverage_of_all_benefits},
+            { factor: "Essential Services", value: result.weightedScores.emergency_coverage},
+            { factor: "Flexibility", value: result.weightedScores.flexibility_of_coverage},
+            { factor: "Geographic Coverage", value: result.weightedScores.geographic_coverage},
+            { factor: "Family Coverage", value: result.weightedScores.personalized_coverage}
+        ];
+    }
+
+    // Convert `Result` into Recharts format
+    const chartData = useMemo(() => {
+        return transformData(scores);
+    }, [scores])
 
     return (
         <ResponsiveContainer width="100%" height="100%">
