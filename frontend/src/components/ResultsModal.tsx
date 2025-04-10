@@ -3,14 +3,17 @@ import styles from './ModalStyles.module.css';
 import info from '../resources/info.png';
 import SpiderChart from './SpiderChart';
 import {dummyResult} from './ResultsText.tsx';
+import {Result} from "../App.tsx";
 
 interface ModalProps {
   isOpen: boolean;
   handleClose: () => void;
   setNoOpenOnClick: React.Dispatch<React.SetStateAction<boolean>>;
+  result: Result
 }
 
-export default function ResultsModal({ isOpen, handleClose, setNoOpenOnClick}: ModalProps) {
+export default function ResultsModal({ isOpen, handleClose, setNoOpenOnClick, result}: ModalProps) {
+
 
   return (
     <div>
@@ -34,7 +37,7 @@ export default function ResultsModal({ isOpen, handleClose, setNoOpenOnClick}: M
               chatbot to view a list of all the individual scores. (Feel free to play around with the sample chart below)
               <br></br>
               <div style={{width: "100%", height: "40%", marginTop: "20px"}}>
-                <SpiderChart scores={dummyResult} color={"gray"}/>
+                <SpiderChart scores={result} color={"gray"}/>
               </div>
               <br></br> 
               <hr style={{marginTop:"20px", marginBottom: "20px"}}></hr>

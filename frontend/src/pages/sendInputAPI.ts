@@ -75,7 +75,7 @@ async function sendInputData(data: FormDataInput, files: File[], planCost: numbe
       formData
     );
     console.log("Server response:", response.data);
-    return response.data
+    return response.data;
   } catch (error) {
     console.error("Submission error:", error);
     if (axios.isAxiosError(error) && error.response) {
@@ -89,7 +89,9 @@ async function sendInputData(data: FormDataInput, files: File[], planCost: numbe
     } else {
       alert("Failed to connect to the server.");
     }
-    return {};
+
+    return [];
+
   }
 }
 

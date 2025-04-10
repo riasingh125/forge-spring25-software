@@ -2,6 +2,7 @@
 import './TextBoxStyles.css';
 import SpiderChart from './SpiderChart';
 import { Result } from '../App';
+import results from "../pages/Results/Results.tsx";
 
 interface TextBoxProps {
   rank: number;
@@ -9,6 +10,7 @@ interface TextBoxProps {
   result: Result;
   bgColor: string;
   expanded: boolean;
+  result: Result
 }
 
 export const dummyResult: Result = {
@@ -77,10 +79,7 @@ export default function TextBox({ rank, title, result, bgColor, expanded }: Text
               ⭐ overall rating: {result.totalScore}
             </h2>
           </div>
-        </div>
-        <br></br>
-      </div>
-    );
-  }
-  }
+        );
+    }
+}
   
