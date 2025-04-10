@@ -57,6 +57,7 @@ export interface Result {
     geographic_coverage: number;
     personalized_coverage: number;
   };
+  shortSummary : string;
 }
 
 export interface ResultsProps {
