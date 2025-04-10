@@ -117,9 +117,9 @@ async def upload_pdfs(form_data: str = Form(...),
 			"name": name,
 			"weightedScores": weighted_scores,
 			"totalScore": total_score,
+			"shortSummary": short_summary
 		})
 
-		print(weighted_scores)
 	return to_frontend
 
 @app.get("/results")

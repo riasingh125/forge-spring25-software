@@ -38,7 +38,7 @@ const rankingItems = [
   "Affordability",
   "Coverage of All Benefits",
   "Coverage of Personal Health Concerns",
-  "Plan Flexibilit",
+  "Plan Flexibility",
   "Coverage in Emergencies",
   "Convenience of Accessing Benefits",
   "Geographic coverage",
@@ -188,3 +188,4 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
 };
 
 export default Rankings;
+
