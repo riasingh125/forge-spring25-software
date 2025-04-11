@@ -52,6 +52,8 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
     const {planCost} = location.state || {};
     const {setHasCompletedRankings} = useFlow();
 
+    const [loading, setLoading] = useState(false);
+
     const [rankings, setRankings] = React.useState<{
         [key: string]: number | string;
     }>(Object.fromEntries(rankingItems.map((item) => [item, 1])));
@@ -73,9 +75,12 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
             }));
         };
 
-    //Handle Submit
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (loading) {
+            return;
+        }
 
         // Check if dropdown is selected
         if (!selectedOption) {
@@ -86,72 +91,29 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
         const fullUserData = {...formData, ...rankings, selectedOption};
         console.log(planCost)
 
+        setLoading(true)
         // success = true, if form upload worked someone handle that..
-        const success = await sendInputData(fullUserData, files, planCost);
+        const results = await sendInputData(fullUserData, files, planCost);
+        setLoading(false);
 
+
+        if (results.length === 0) {
+            console.log('FAILED');
+            return
+        }
+        setResults(results)
         navigate("/results");
-
-        getResults().then((newResults) => {
-            setResults(newResults);
-        });
     };
 
-  //Handle Submit
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
 
-    // Check if dropdown is selected
-    if (!selectedOption) {
-      setDropdownError(true);
-      return; // Stop submission
-    }
-    setHasCompletedRankings(true);
-    const fullUserData = { ...formData, ...rankings, selectedOption };
-    console.log(planCost)
-
-    // success = true, if form upload worked someone handle that..
-    const results = await sendInputData(fullUserData, files, planCost);
-    if (results.length === 0) {
-      console.log('FAILED');
-      return
-    }
-    setResults(results)
-
-    navigate("/results");
-
-
-  };
-
-  return (
-    <div>
-      <Box
-        sx={{
-          width: "60vw",
-          maxWidth: "100%",
-          margin: "auto",
-          padding: 11,
-        }}
-      >
-        <h2 style={{ fontStyle: "italic", marginBottom: 40 }}>
-          Rank the following factors on a scale from <br></br>
-          Least Important (1) » Most Important (10)
-        </h2>
-        <hr></hr>
-
-        {rankingItems.map((category, index) => (
-          <Box key={category + index} sx={{ padding: 2 }}>
-            <h3>{category}</h3>
-            <Grid
-              container
-              spacing={2}
-              sx={{ alignItems: "center", padding: 2 }}
-
-            >
+    return (
+        <div>
+            <Box sx={{width: "60vw", maxWidth: "100%", margin: "auto", padding: 11}}>
                 <h2 style={{fontStyle: "italic", marginBottom: 40}}>
-                    Rank the following factors on a scale from <br></br>
+                    Rank the following factors on a scale from <br/>
                     Least Important (1) » Most Important (10)
                 </h2>
-                <hr></hr>
+                <hr/>
 
                 {rankingItems.map((category, index) => (
                     <Box key={category + index} sx={{padding: 2}}>
@@ -196,8 +158,7 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
                 {/* Dropdown Selection */}
                 <Box sx={{marginTop: 4, textAlign: "center"}}>
                     <Typography>
-                        Select your level of familiarity with healthcare
-                        jargon.
+                        Select your level of familiarity with healthcare jargon.
                     </Typography>
                     <Select
                         value={selectedOption}
@@ -210,8 +171,7 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
                             Select an option
                         </MenuItem>
                         <MenuItem value="Option 1">Unfamiliar</MenuItem>
-                        <MenuItem value="Option 2">Moderately
-                            Familiar</MenuItem>
+                        <MenuItem value="Option 2">Moderately Familiar</MenuItem>
                         <MenuItem value="Option 3">Very Familiar</MenuItem>
                     </Select>
                 </Box>
@@ -225,6 +185,6 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
             </Box>
         </div>
     );
-};
+}
 
 export default Rankings;

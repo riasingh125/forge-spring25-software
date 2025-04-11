@@ -57,43 +57,28 @@ function structureToJSON(data: FormDataInput, planCost: number[]) {
  * @param data the user's filled out form data
  * @param files the uploaded pdfs of the insurance plans
  */
-async function sendInputData(
-  data: FormDataInput,
-  files: File[],
-  planCost: number[]
-) {
-  try {
-    const formData = new FormData();
-    // add the user form data
-    const jsonData = structureToJSON(data, planCost);
-
-    formData.append("form_data", JSON.stringify(jsonData));
-    // add all the uploaded files
-    files.forEach((file) => {
-      formData.append("files", file);
-      formData.append("plan_cost", String(planCost[files.indexOf(file)]));
-    });
-    const response = await axios.post(
-      "http://127.0.0.1:8000/form/submit",
-      formData
-    );
-    console.log("Server response:", response.data);
-    return response.data;
-  } catch (error) {
-    console.error("Submission error:", error);
-    if (axios.isAxiosError(error) && error.response) {
-      // 422 - incorrect format
-      console.error("Error status:", error.response?.status);
-      alert(
-        `Error submitting the form: ${
-          error.response.data.detail || "Unknown error"
-        }`
-      );
-    } else {
-      alert("Failed to connect to the server.");
+async function sendInputData(data: FormDataInput, files: File[], planCost: number[]) {
+    console.log("Post request");
+    try {
+        const formData = new FormData();
+        // add the user form data
+        const jsonData = structureToJSON(data, planCost);
+        formData.append("form_data", JSON.stringify(jsonData));
+        // add all the uploaded files
+        files.forEach((file) => {
+          formData.append("files", file);
+          formData.append("plan_cost", String(planCost[files.indexOf(file)]));
+        });
+        const response = await axios.post(
+          "http://127.0.0.1:8000/form/submit",
+          formData
+        );
+        console.log("Server response:", response.data);
+        return response.data
+    } catch (error) {
+        console.log(error);
+        return [];
     }
-    return []
-  }
 }
 
 export { sendInputData };
