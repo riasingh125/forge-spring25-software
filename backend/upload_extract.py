@@ -29,7 +29,6 @@ def get_textract_result(job_id: str) -> str:
         status = response["JobStatus"]
         if status in ["SUCCEEDED", "FAILED"]:
             break
-        time.sleep(2)
 
     if status == "FAILED":
         raise Exception("Textract job failed")
@@ -41,25 +40,26 @@ def get_textract_result(job_id: str) -> str:
     ]
     return "\n".join(lines)
 
-async def process_file(file):
-    # Upload to S3
-    await asyncio.to_thread(upload_to_s3, file, S3_BUCKET_NAME, file.filename)
-    # Start Textract job and get job_id
 
-    return {
-        "name": file.filename,
-        "text": result
-    }
 
-async def upload_and_extract(files:dict):
+async def upload_and_extract(files: dict):
     results = {}
+    job_map = {}
+    upload_jobs = []
+    # start all s3 jobs and wait till they finish
     for file, premium in files.items():
-        # Process each file and get results
-        await asyncio.to_thread(upload_to_s3, file, S3_BUCKET_NAME,
-                                file.filename)
-        job_id = await asyncio.to_thread(start_textract_job, S3_BUCKET_NAME,
-                                         file.filename)
-        # Get Textract result
+        job_map[file.filename] = premium
+        job = asyncio.to_thread(upload_to_s3, file, S3_BUCKET_NAME, file.filename);
+        upload_jobs.append(job)
+    await asyncio.gather(*upload_jobs)
+
+    textract_jobs = {}
+    for file, premium in files.items():
+        job_id = await asyncio.to_thread(start_textract_job, S3_BUCKET_NAME, file.filename)
+        textract_jobs[file.filename] = (job_id, premium)
+
+    results = {}
+    for filename, (job_id, premium) in textract_jobs.items():
         result = await asyncio.to_thread(get_textract_result, job_id)
-        results[file.filename] = [result, premium]
+        results[filename] = [result, premium]
     return results

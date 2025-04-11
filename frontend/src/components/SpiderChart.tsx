@@ -14,10 +14,6 @@ interface SpiderChartProps {
 
 export default function SpiderChart({ scores, color }: SpiderChartProps) {
 
-    console.log("SPIDER CHART CHECK");
-    console.log(scores);
-
-
     const chartData = useMemo(() => {
         if (!scores) return {}; // handle null/undefined safely
 
