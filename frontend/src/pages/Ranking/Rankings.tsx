@@ -110,15 +110,56 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
 
     };
 
-    return (
-        <div>
-            <Box
-                sx={{
-                    width: "60vw",
-                    maxWidth: "100%",
-                    margin: "auto",
-                    padding: 11,
-                }}
+  //Handle Submit
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Check if dropdown is selected
+    if (!selectedOption) {
+      setDropdownError(true);
+      return; // Stop submission
+    }
+    setHasCompletedRankings(true);
+    const fullUserData = { ...formData, ...rankings, selectedOption };
+    console.log(planCost)
+
+    // success = true, if form upload worked someone handle that..
+    const results = await sendInputData(fullUserData, files, planCost);
+    if (results.length === 0) {
+      console.log('FAILED');
+      return
+    }
+    setResults(results)
+
+    navigate("/results");
+
+
+  };
+
+  return (
+    <div>
+      <Box
+        sx={{
+          width: "60vw",
+          maxWidth: "100%",
+          margin: "auto",
+          padding: 11,
+        }}
+      >
+        <h2 style={{ fontStyle: "italic", marginBottom: 40 }}>
+          Rank the following factors on a scale from <br></br>
+          Least Important (1) » Most Important (10)
+        </h2>
+        <hr></hr>
+
+        {rankingItems.map((category, index) => (
+          <Box key={category + index} sx={{ padding: 2 }}>
+            <h3>{category}</h3>
+            <Grid
+              container
+              spacing={2}
+              sx={{ alignItems: "center", padding: 2 }}
+
             >
                 <h2 style={{fontStyle: "italic", marginBottom: 40}}>
                     Rank the following factors on a scale from <br></br>

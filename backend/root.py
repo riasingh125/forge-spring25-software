@@ -29,7 +29,7 @@ app.add_middleware(
 # fastapi dev root.py
 
 history = {}
-to_frontend = {}
+to_frontend = []
 
 
 @app.get("/")
@@ -101,8 +101,7 @@ async def upload_pdfs(form_data: str = Form(...),
 	results = await asyncio.gather(*tasks)
 
 
-	# Just send list
-	plans = []
+
 
 	# Store the results in the history
 	for name, unweighted_scores, weighted_scores, total_score, plan_content in results:
@@ -112,18 +111,16 @@ async def upload_pdfs(form_data: str = Form(...),
 			"total_score": total_score,
 			"text": plan_content
 		}
-		# delete this later we don need it
-		to_frontend[name] = {
+
+
+		to_frontend.append({
+			"name" : name,
 			"weightedScores": weighted_scores,
 			"totalScore": total_score,
-		}
-		plans.append({
-			"name": name,
-			"weightedScores": weighted_scores,
-			"totalScore": total_score,
+
 		})
 
-	return plans
+	return to_frontend
 
 @app.get("/results")
 async def get_results():

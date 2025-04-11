@@ -90,6 +90,7 @@ const Results: React.FC<ResultsProps> = ({
           isOpen={isModalOpen}
           handleClose={setClose}
           setNoOpenOnClick={setModalOpened}
+          result={dummyResult}
         />
         <button
           className={styles.closeChat}
@@ -115,6 +116,7 @@ const Results: React.FC<ResultsProps> = ({
           isOpen={isModalOpen}
           handleClose={setClose}
           setNoOpenOnClick={setModalOpened}
+          result={dummyResult}
         />
         <button className={styles.openChat} onClick={() => setIsChatOpen(true)}>
           Chat

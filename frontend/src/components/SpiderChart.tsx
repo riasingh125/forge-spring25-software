@@ -2,16 +2,14 @@ import React, {useMemo} from "react";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { Result } from "../App";
 import './TextBoxStyles.css';
-
 interface SpiderChartProps {
     scores: Result;
     color: string;
 }
 
 
-
-
 export default function SpiderChart({ scores, color }: SpiderChartProps) {
+
 
 
     // affordability: number,
@@ -38,6 +36,8 @@ export default function SpiderChart({ scores, color }: SpiderChartProps) {
     const chartData = useMemo(() => {
         return transformData(scores);
     }, [scores])
+
+
 
     return (
         <ResponsiveContainer width="100%" height="100%">
