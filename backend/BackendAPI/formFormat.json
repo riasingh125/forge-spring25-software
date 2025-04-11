@@ -1,0 +1,31 @@
+{
+  "insurance_id": 123456,
+
+
+
+  "age": 30,
+  "income": 75000.0,
+
+  "coverage" : {
+    "ages_of_people_needing_coverage": [30, 28],
+    "personal_health_concerns": "None",
+    "budget": 500.0
+  },
+
+  "contact": {
+  	"email": "example@email.com",
+    "number": 1234567890  
+  },
+
+  "address": {
+    "city": "Boston",
+    "state": "MA",
+    "zip_code": "090290"
+  },
+
+  "weights" : {
+    "age" : 2,
+    "income" : 3,
+    "city" : 1
+  }
+}

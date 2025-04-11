@@ -16,7 +16,7 @@ const Chatbot: React.FC<ChatbotProps> = ({messages, setMessages}) => {
     setMessages((prev) => [...prev, { message: input, sender: "user" }]);
 
     try {
-      // Replace with your AI API (e.g., OpenAI, Rasa, Dialogflow, etc.)
+      // Replace with your AI BackendAPI (e.g., OpenAI, Rasa, Dialogflow, etc.)
       const response = await fetch("http://127.0.0.1:8000/chat/message", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
