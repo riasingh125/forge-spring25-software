@@ -2,8 +2,8 @@ from fastapi import FastAPI, File, UploadFile, Form
 from typing import List
 from PlanSummaries import PlanSummaries
 from backend.RankingLogics.rankings import WeightedPlanRanking
-from backend.BackendAPI.models import UserInputForm
-from backend.BackendAPI.models import ChatBotMessage
+from backend.API.models import UserInputForm
+from backend.API.models import ChatBotMessage
 import json
 
 # import function to upload files to s3
