@@ -77,7 +77,7 @@ async function sendInputData(data: FormDataInput, files: File[], planCost: numbe
         return response.data
     } catch (error) {
         console.log(error);
-        return {}
+        return [];
     }
 }
 

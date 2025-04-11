@@ -51,8 +51,6 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
     const {files} = location.state || {};
     const {planCost} = location.state || {};
     const {setHasCompletedRankings} = useFlow();
-    // loading
-    const [loading, setLoading] = useState(false);
 
     const [rankings, setRankings] = React.useState<{
         [key: string]: number | string;
@@ -84,30 +82,18 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
             setDropdownError(true);
             return; // Stop submission
         }
-
-        // if loading stop
-        if (loading) {
-            return;
-        }
-
         setHasCompletedRankings(true);
         const fullUserData = {...formData, ...rankings, selectedOption};
+        console.log(planCost)
 
         // success = true, if form upload worked someone handle that..
-        const newResults = await sendInputData(fullUserData, files, planCost);
-
-        setLoading(false);
-
-        if (newResults.length === 0) {
-            alert("Failed to upload data")
-            return;
-        }
-
-        setResults(newResults);
+        const success = await sendInputData(fullUserData, files, planCost);
 
         navigate("/results");
 
-
+        getResults().then((newResults) => {
+            setResults(newResults);
+        });
     };
 
   //Handle Submit
