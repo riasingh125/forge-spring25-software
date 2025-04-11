@@ -1,6 +1,6 @@
 from google import genai
 from google.genai import types
-from Budget import Budget
+from .Budget import Budget
 import copy
 import os
 from dotenv import load_dotenv

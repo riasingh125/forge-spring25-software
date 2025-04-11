@@ -1,15 +1,15 @@
 from fastapi import FastAPI, File, UploadFile, Form
 from typing import List
-from PlanSummaries import PlanSummaries
-from backend.RankingLogics.rankings import WeightedPlanRanking
-from backend.API.models import UserInputForm
-from backend.API.models import ChatBotMessage
+from .PlanSummaries import PlanSummaries
+from ..RankingLogics.rankings import WeightedPlanRanking
+from ..API.models import UserInputForm
+from ..API.models import ChatBotMessage
 import json
 
 # import function to upload files to s3
-from upload_extract import upload_and_extract
+from .upload_extract import upload_and_extract
 # import function to get chabot response
-from backend.Chatbot.chatbot import get_chatbot_response
+from ..Chatbot.chatbot import get_chatbot_response
 import asyncio
 
 app = FastAPI()
