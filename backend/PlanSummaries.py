@@ -24,9 +24,10 @@ class PlanSummaries:
 			model=self.model,
 			contents=[
 				f"Summarize the following healthcare insurance plan for a {self.user_age} year old with a budget of {self.user_budget}."
-				f"Given is the plan content here. Talk professionally, as though you are an HR representative briefly summarizing the "
+				f"Given the plan content here. Talk professionally, as though you are an HR representative briefly summarizing the "
 				f"plan for an employee. Try to note the key points in 2-3 sentences. Note that this is not an interactive chat, thus"
-				f"maintain that your responses are not open ended.\n\n{self.plan_content}"
+				f"maintain that your responses are not open ended. Do not note reception of this message. Always end with the sentence: '"
+				f"If you have more questions, or require a longer summary, please consult with the included chatbot.'\n\n{self.plan_content}"
 			],
 			config=genai.types.GenerateContentConfig(
 				temperature=0.5,
