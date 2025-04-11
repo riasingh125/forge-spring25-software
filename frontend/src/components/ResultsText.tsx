@@ -47,7 +47,7 @@ export default function TextBox({
             <div>
                 <div className="box-container" style={{
                     width: "80vw",
-                    height: "550px",
+                    minHeight: "600vh",
                     backgroundColor: bgColor
                 }}>
                     <h6>{rank + 1}. {title}</h6>
