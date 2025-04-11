@@ -5,7 +5,10 @@ export async function getResults() {
         const response = await axios.get("http://127.0.0.1:8000/results", {
             headers: { "Content-Type": "application/json" }
         });
-        return response.data.results;
+        console.log('RESULTS:');
+        console.log(response);
+        console.log(response.data);
+        return response.data;
     } catch (error) {
         console.error("Get error:", error);
 
