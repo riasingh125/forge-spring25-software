@@ -2,13 +2,13 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  --burgundy: #6D2B22;
+  --burgundy: #6d2b22;
   --dark-blue: #416774;
-  --gray: #433A3A;
-  --background-off-white: #FFFAEE;
-  --textbox-off-white: #F8F5ED;
-  --light-gray: #7D7D7D;
-  --navy: #203F72;
+  --gray: #433a3a;
+  --background-off-white: #fffaee;
+  --textbox-off-white: #f8f5ed;
+  --light-gray: #7d7d7d;
+  --navy: #203f72;
   color-scheme: light;
   color: black;
   background-color: var(--background-off-white);
@@ -16,6 +16,22 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Primary theme colors */
+  --amplify-colors-brand-primary: #416774;
+  --amplify-colors-brand-secondary: #000000;
+
+  /* Buttons */
+  --amplify-components-button-primary-background-color: var(
+    --amplify-colors-brand-primary
+  );
+  --amplify-components-button-primary-border-color: var(
+    --amplify-colors-brand-primary
+  );
+  --amplify-components-button-primary-border-radius: 4px;
+
+  /* Tabs */
+  --amplify-components-tabs-item-border-color: #a7bccf;
+  --amplify-components-tabs-item-color: #a7bccf;
 }
 
 h1 {
@@ -30,12 +46,12 @@ h2 {
   -webkit-text-stroke-color: #000;
   font-weight: 500;
   line-height: normal;
-  font-size: 32px; 
+  font-size: 32px;
 }
 
 h3 {
-  color: black; 
-  font-weight: 550; 
+  color: black;
+  font-weight: 550;
   font-size: 24px;
 }
 
@@ -74,4 +90,25 @@ button:focus-visible {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.auth-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.auth-logo {
+  width: 50px;
+  height: 50px;
+}
+
+.auth-title {
+  font-size: 36px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  margin: 0;
 }
