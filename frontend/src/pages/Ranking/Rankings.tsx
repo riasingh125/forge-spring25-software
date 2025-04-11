@@ -44,13 +44,13 @@ const rankingItems = [
     "Geographic coverage",
 ];
 
-const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const {formData} = location.state || {};
-    const {files} = location.state || {};
-    const {planCost} = location.state || {};
-    const {setHasCompletedRankings} = useFlow();
+const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { formData } = location.state || {};
+  const { files } = location.state || {};
+  const { planCost } = location.state || {};
+  const { setHasCompletedRankings } = useFlow();
 
     const [loading, setLoading] = useState(false);
 
