@@ -1,20 +1,35 @@
-// src/App.tsx
-import { Amplify } from 'aws-amplify';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Amplify } from "aws-amplify";
+import { Authenticator, ThemeProvider, Theme } from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
 import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import config from './aws-exports';
 import Input from "./pages/Input/Input";
 import Rankings from "./pages/Ranking/Rankings";
 import Results from "./pages/Results/Results";
+
+import config from "./aws-exports";
 import Navbar from "./components/NavBar";
 import {
   ProtectedRankingsRoute,
   ProtectedResultsRoute,
 } from "./routes/ProtectedRoutes";
-import AuthPage from "./pages/Auth/Auth";
+import logo from "./resources/parcel.png";
 
 Amplify.configure(config);
+
+// export interface Result {
+//   name : string;
+//   affordability : number;
+//   personalHealth : number;
+//   essentialServicesCoverage : number;
+//   flexibility : number;
+//   geographicCoverage : number;
+//   familyCoverage : number;
+//   convenience : number;
+//   longTermBenefits : number;
+//   totalScore : number;
+// }
 
 export interface Result {
   name: string;
@@ -49,52 +64,122 @@ export class Message {
   }
 }
 
+export interface ResultsProps {
+  results: Result[];
+  setResults: React.Dispatch<React.SetStateAction<Result[]>>;
+}
+
+const theme = {
+  name: "parcel-custom-theme",
+  tokens: {
+    colors: {
+      brand: {
+        primary: "#416774",
+        secondary: "#000000",
+      },
+    },
+
+    components: {
+      button: {
+        primary: {
+          backgroundColor: "{colors.brand.primary}",
+          borderColor: "{colors.brand.primary}",
+          borderRadius: "4px",
+        },
+      },
+
+      tabs: {
+        item: {
+          borderColor: "#a7bccf",
+          color: "#a7bccf",
+        },
+      },
+    },
+  },
+};
+
 function App() {
   const [results, setResults] = useState<Result[]>([]);
   const [modalOpened, setModalOpened] = useState(false);
-  const [messages, setMessages] = useState<Message[]>(
-    [new Message("Hello! Welcome to Parcel! How can I assist you today?", "bot")]
-  );
+  const [messages, setMessages] = useState<Message[]>([
+    new Message("Hello! Welcome to Parcel! How can I assist you today?", "bot"),
+  ]);
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<AuthPage />} />
-        <Route
-          path="/input"
-          element={
-            <>
-              <Navbar />
-              <Input results={results} setResults={setResults}
-                modalOpened={modalOpened} setModalOpened={setModalOpened}
-                messages={messages} setMessages={setMessages} />
-            </>
-          }
-        />
-        <Route
-          path="/rankings"
-          element={
-            <ProtectedRankingsRoute>
-              <Navbar />
-              <Rankings results={results} setResults={setResults}
-                modalOpened={modalOpened} setModalOpened={setModalOpened}
-                messages={messages} setMessages={setMessages} />
-            </ProtectedRankingsRoute>
-          }
-        />
-        <Route
-          path="/results"
-          element={
-            <ProtectedResultsRoute>
-              <Navbar />
-              <Results results={results} setResults={setResults}
-                modalOpened={modalOpened} setModalOpened={setModalOpened}
-                messages={messages} setMessages={setMessages} />
-            </ProtectedResultsRoute>
-          }
-        />
-      </Routes>
-    </Router>
+    <div
+      style={{
+        height: "100vh",
+        width: "100vw",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Authenticator
+        components={{
+          Header() {
+            return (
+              <div className="auth-header">
+                <img src={logo} alt="Parcel Logo" className="auth-logo" />
+                <h1 className="auth-title">parcel</h1>
+              </div>
+            );
+          },
+        }}
+      >
+        {({ signOut, user }) => (
+          <Router>
+            <Navbar signOut={signOut}></Navbar>
+            <Routes>
+              <Route
+                path="/input"
+                element={
+                  <Input
+                    results={results}
+                    setResults={setResults}
+                    modalOpened={modalOpened}
+                    setModalOpened={setModalOpened}
+                    messages={messages}
+                    setMessages={setMessages}
+                  />
+                }
+              />
+              <Route
+                path="/rankings"
+                element={
+                  <ProtectedRankingsRoute>
+                    {" "}
+                    <Rankings
+                      results={results}
+                      setResults={setResults}
+                      modalOpened={modalOpened}
+                      setModalOpened={setModalOpened}
+                      messages={messages}
+                      setMessages={setMessages}
+                    />{" "}
+                  </ProtectedRankingsRoute>
+                }
+              />
+              <Route
+                path="/results"
+                element={
+                  <ProtectedResultsRoute>
+                    <Results
+                      results={results}
+                      setResults={setResults}
+                      modalOpened={modalOpened}
+                      setModalOpened={setModalOpened}
+                      messages={messages}
+                      setMessages={setMessages}
+                    />
+                  </ProtectedResultsRoute>
+                }
+              />
+            </Routes>
+          </Router>
+        )}
+      </Authenticator>
+    </div>
   );
 }
 
