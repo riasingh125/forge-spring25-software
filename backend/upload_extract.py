@@ -41,7 +41,6 @@ def get_textract_result(job_id: str) -> str:
     return "\n".join(lines)
 
 
-
 async def upload_and_extract(files: dict):
     results = {}
     job_map = {}
