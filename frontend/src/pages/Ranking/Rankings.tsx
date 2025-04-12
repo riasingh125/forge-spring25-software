@@ -18,7 +18,7 @@ import styles from "./rankings.module.css";
 import {useFlow} from "../../context/FlowContext.tsx";
 
 const Input = styled(MuiInput)`
-    width: 42px;
+  width: 42px;
 `;
 
 const marks = [
@@ -36,21 +36,21 @@ const marks = [
 
 const rankingItems = [
     "Affordability",
+    "Coverage of All Benefits",
     "Coverage of Personal Health Concerns",
     "Plan Flexibility",
-    "Coverage of All Benefits",
-    "Geographic Coverage",
     "Coverage in Emergencies",
     "Convenience of Accessing Benefits",
+    "Geographic coverage",
 ];
 
-const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const {formData} = location.state || {};
-    const {files} = location.state || {};
-    const {planCost} = location.state || {};
-    const {setHasCompletedRankings} = useFlow();
+const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { formData } = location.state || {};
+  const { files } = location.state || {};
+  const { planCost } = location.state || {};
+  const { setHasCompletedRankings } = useFlow();
 
     const [loading, setLoading] = useState(false);
 
@@ -108,12 +108,19 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
 
     return (
         <div>
-            <Box sx={{width: "60vw", maxWidth: "100%", margin: "auto", padding: 11}}>
+            <Box
+                sx={{
+                    width: "60vw",
+                    maxWidth: "100%",
+                    margin: "auto",
+                    padding: 11,
+                }}
+            >
                 <h2 style={{fontStyle: "italic", marginBottom: 40}}>
-                    Rank the following factors on a scale from <br/>
+                    Rank the following factors on a scale from <br></br>
                     Least Important (1) » Most Important (10)
                 </h2>
-                <hr/>
+                <hr></hr>
 
                 {rankingItems.map((category, index) => (
                     <Box key={category + index} sx={{padding: 2}}>
