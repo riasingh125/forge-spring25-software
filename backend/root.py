@@ -28,7 +28,7 @@ app.add_middleware(
 # cd backend
 # fastapi dev root.py
 
-history = {}
+history = {"user_info": "","combined_plan_text": None, "experience": None, "chat_history" : []}
 
 
 
@@ -64,11 +64,10 @@ async def upload_pdfs(form_data: str = Form(...),
 	for i, j in zip(premiums, files):
 		plans[j] = i
 
-
-
 	# upload to s3 and textract
 	# { "name": filename, "text": "TEXT RESULTS " }
-	results = await upload_and_extract(plans)
+	textract_results = await upload_and_extract(plans)
+
 
 
 	# The weights:
@@ -95,27 +94,28 @@ async def upload_pdfs(form_data: str = Form(...),
 		total_score = ranking_instance.total_scores()
 		return plan_name, unweighted_scores, weighted_scores, total_score, plan_content
 
-	tasks = [process_plan(name, content[0], content[1]) for name, content in results.items()]
+	tasks = [process_plan(name, content[0], content[1]) for name, content in textract_results.items()]
 
 	# Run all tasks concurrently
 	results = await asyncio.gather(*tasks)
 
 	to_frontend = []
 
+	combined_plan_text = ""
 	# Store the results in the history
 	for name, unweighted_scores, weighted_scores, total_score, plan_content in results:
 		# {'file_name': 'weighted_scores: dict, 'total_score': float, 'text': str}
-		history[name] = {
-			"weighted_scores": weighted_scores,
-			"total_score": total_score,
-			"text": plan_content
-		}
-
 		to_frontend.append({
 			"name" : name,
 			"weightedScores": weighted_scores,
 			"totalScore": total_score,
 		})
+
+		combined_plan_text += f"Plan Name: {name}(associated score: {total_score}), content: {plan_content}\n\n"
+
+	history["combined_plan_text"] = combined_plan_text
+	history["experience"] = user_input['user_experience']
+	history["user_info"] = str(user_input)
 
 	return to_frontend
 

@@ -24,6 +24,7 @@ def start_textract_job(bucket: str, key: str) -> str:
 
 # GET TEXTRACT RESULTS
 def get_textract_result(job_id: str) -> str:
+    time.sleep(5)
     while True:
         response = textract.get_document_text_detection(JobId=job_id)
         status = response["JobStatus"]
@@ -46,19 +47,25 @@ async def upload_and_extract(files: dict):
     job_map = {}
     upload_jobs = []
     # start all s3 jobs and wait till they finish
+    s3_start = time.time();
+    print('STARTING S3 UPLOAD')
     for file, premium in files.items():
         job_map[file.filename] = premium
         job = asyncio.to_thread(upload_to_s3, file, S3_BUCKET_NAME, file.filename);
         upload_jobs.append(job)
     await asyncio.gather(*upload_jobs)
-
+    print('S3 UPLOAD COMPLETE: '+str(time.time()-s3_start))
     textract_jobs = {}
+    textract_start = time.time()
+    print('STARTING TEXTRACT UPLOAD: ')
     for file, premium in files.items():
         job_id = await asyncio.to_thread(start_textract_job, S3_BUCKET_NAME, file.filename)
         textract_jobs[file.filename] = (job_id, premium)
-
     results = {}
+    print('TEXTRACT DONE STARTING JOBS: '+str(time.time()-textract_start))
     for filename, (job_id, premium) in textract_jobs.items():
         result = await asyncio.to_thread(get_textract_result, job_id)
         results[filename] = [result, premium]
+    print('TEXTRACT FINISHED: '+str(time.time()-textract_start))
     return results
+

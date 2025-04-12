@@ -43,3 +43,4 @@ class UserInputForm(BaseModel):
     address: Address
     weights: Weights
     premium: List[float]
+    user_experience: str
