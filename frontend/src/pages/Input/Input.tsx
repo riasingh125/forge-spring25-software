@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
-import { ResultsProps } from "../../App";
+import { InputPageProps } from "../../App";
 import { useFlow } from "../../context/FlowContext";
 import { useFlow as formUseFlow } from "../../context/FormContext";
 import ContactInfo from "../../components/form/ContactInfo";
@@ -9,29 +9,33 @@ import Address from "../../components/form/Address";
 import BudgetInfo from "../../components/form/BudgetInfo";
 import UploadPdfs from "../../components/form/UploadPdfs";
 import Rankings from "../../components/form/Rankings";
+import { sendInputData } from "../sendInputAPI";
 
-const Input: React.FC<ResultsProps> = ({
-  results,
-  setResults,
-  modalOpened,
-  setModalOpened,
-  messages,
-  setMessages,
-}) => {
+const Input: React.FC<InputPageProps> = ({ results, setResults }) => {
   const navigate = useNavigate();
-  const { formData, setFormData } = formUseFlow();
-  const [files, setFiles] = useState<File[]>([]);
-  const [planCost, setPlanCost] = useState<number[]>([]);
+  const { formData } = formUseFlow();
   const { setHasSubmittedInput } = useFlow();
   const [step, setStep] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     console.log("Form submitted");
     console.log(formData);
     e.preventDefault();
-    //SubmittedInput(true);
-    //navigate("/Results", { state: { formData, files, planCost } });
+    if (loading) {
+      return;
+    }
+    setLoading(true);
+    const results = await sendInputData(formData);
+    setLoading(false);
+    setHasSubmittedInput(true);
+    if (results.length === 0) {
+      console.log("FAILED");
+      return;
+    }
+    setResults(results);
+    navigate("/results");
   };
 
   const nextStep = () =>
@@ -39,7 +43,7 @@ const Input: React.FC<ResultsProps> = ({
   const prevStep = () => setStep((prev) => Math.max(prev - 1, 0));
 
   const SubForms = [
-    <ContactInfo key="contact"/>,
+    <ContactInfo key="contact" />,
     <Address key="address" />,
     <BudgetInfo key="budget" />,
     <UploadPdfs key="upload" />,

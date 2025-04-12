@@ -43,13 +43,18 @@ export interface Result {
   };
 }
 
-export interface ResultsProps {
+export interface ResultsPageProps {
   results: Result[];
   setResults: React.Dispatch<React.SetStateAction<Result[]>>;
   modalOpened: boolean;
   setModalOpened: React.Dispatch<React.SetStateAction<boolean>>;
   messages: Message[];
   setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
+}
+
+export interface InputPageProps {
+  results: Result[];
+  setResults: React.Dispatch<React.SetStateAction<Result[]>>;
 }
 
 export class Message {
@@ -108,10 +113,6 @@ function App() {
                     <Input
                       results={results}
                       setResults={setResults}
-                      modalOpened={modalOpened}
-                      setModalOpened={setModalOpened}
-                      messages={messages}
-                      setMessages={setMessages}
                     />
                   }
                 />

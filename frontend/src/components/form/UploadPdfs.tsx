@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./styles.module.css";
-import { ResultsProps } from "../../App";
 import FileUpload from "../FileUpload";
 import { useFlow as formUseFlow } from "../../context/FormContext";
 
@@ -15,11 +14,6 @@ const UploadPdfs: React.FC = () => {
 
   const updatePlanCost = (newCosts: number[]) => {
     setFormData({ ...formData, costs: newCosts });
-  };
-
-  // Handle input changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
