@@ -16,7 +16,7 @@ interface FormDataInput {
   [key: string]: any;
 }
 
-function structureToJSON(data: FormDataInput, planCost: number[]) {
+function structureToJSON(data: FormDataInput, planCost: number[], userExperience) {
 
     return {
         "first_name": data.firstName || "",
@@ -48,7 +48,8 @@ function structureToJSON(data: FormDataInput, planCost: number[]) {
             "convenience_of_coverage": parseFloat(data["Convenience of Accessing Benefits"]) || 0,
             "geographic_coverage": parseFloat(data["Geographic coverage"]) || 0,
         },
-        "premium" : planCost
+        "premium" : planCost,
+        "user_experience" : userExperience
     };
 }
 
@@ -57,12 +58,12 @@ function structureToJSON(data: FormDataInput, planCost: number[]) {
  * @param data the user's filled out form data
  * @param files the uploaded pdfs of the insurance plans
  */
-async function sendInputData(data: FormDataInput, files: File[], planCost: number[]) {
+async function sendInputData(data: FormDataInput, files: File[], planCost: number[], userExperience: string) {
     console.log("Post request");
     try {
         const formData = new FormData();
         // add the user form data
-        const jsonData = structureToJSON(data, planCost);
+        const jsonData = structureToJSON(data, planCost, userExperience);
         formData.append("form_data", JSON.stringify(jsonData));
         // add all the uploaded files
         files.forEach((file) => {
