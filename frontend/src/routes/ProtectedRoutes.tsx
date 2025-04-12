@@ -7,5 +7,10 @@ export const ProtectedResultsRoute = ({
   children: React.ReactNode;
 }) => {
   const { hasSubmittedInput } = useFlow();
-  return hasSubmittedInput ? children : <Navigate to="/results" />;
+
+  if (!hasSubmittedInput) {
+    return <div>Please complete the input to view the results.</div>; 
+  }
+
+  return <>{children}</>;
 };

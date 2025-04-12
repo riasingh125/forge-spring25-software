@@ -17,6 +17,8 @@ interface FormDataType {
   numHousehold: string;
   budget: string;
   concerns: string;
+  age: string;
+  phone: string;
   rankings: RankingsType;
   files: File[];
   costs: number[];
@@ -47,6 +49,8 @@ export const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
     numHousehold: "",
     budget: "",
     concerns: "",
+    age: "",
+    phone: "",
     rankings: {},
     files: [],
     costs: [],

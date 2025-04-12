@@ -64,6 +64,16 @@ const ContactInfo: React.FC = () => {
                 required
               />
             </div>
+            <div className={styles.inputsNextToEachOther}>
+              <input
+                type="phone"
+                placeholder="Phone Number"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+              />
+            </div>
             <br></br>
           </div>
         </div>
