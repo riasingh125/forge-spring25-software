@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../../pages/Input/styles.module.css";
 import { ResultsProps } from "../../App";
-import FileUpload from "../../components/FileUpload";
+import FileUpload from "../FileUpload";
 import { useFlow as formUseFlow } from "../../context/FormContext";
 
 const UploadPdfs: React.FC<ResultsProps> = ({ setResults }) => {
   const { formData, setFormData } = formUseFlow();
   const [files, setFiles] = useState<File[]>([]);
+  const [planCost, setPlanCost] = useState<number[]>([]);
 
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +30,7 @@ const UploadPdfs: React.FC<ResultsProps> = ({ setResults }) => {
           Upload PDFs (select multiple at once!)
         </div>
         <div className={styles.formInputGroup}>
-          <FileUpload files={files} setFiles={setFiles} />
+          <FileUpload files={files} setFiles={setFiles} planCost={planCost} setPlanCost={setPlanCost}/>
         </div>
       </div>
       <div className={styles.line}></div>

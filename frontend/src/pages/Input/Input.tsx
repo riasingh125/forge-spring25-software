@@ -9,7 +9,6 @@ import ContactInfo from "../../components/form/ContactInfo";
 import Address from "../../components/form/Address";
 import BudgetInfo from "../../components/form/BudgetInfo";
 import UploadPdfs from "../../components/form/UploadPdfs";
-import Welcome from "../../components/form/Welcome";
 
 const Input: React.FC<ResultsProps> = ({
   results,
@@ -43,15 +42,6 @@ const Input: React.FC<ResultsProps> = ({
   const prevStep = () => setStep((prev) => Math.max(prev - 1, 0));
 
   const SubForms = [
-    <Welcome
-      key="welcome"
-      results={results}
-      setResults={setResults}
-      modalOpened={modalOpened}
-      setModalOpened={setModalOpened}
-      messages={messages}
-      setMessages={setMessages}
-    />,
     <ContactInfo
       key="contact"
       results={results}
