@@ -1,191 +1,100 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
-import { ResultsProps } from "../../App";
-import FileUpload from "../../components/FileUpload";
+import { InputPageProps } from "../../App";
 import { useFlow } from "../../context/FlowContext";
+import { useFlow as formUseFlow } from "../../context/FormContext";
+import ContactInfo from "../../components/form/ContactInfo";
+import Address from "../../components/form/Address";
+import BudgetInfo from "../../components/form/BudgetInfo";
+import UploadPdfs from "../../components/form/UploadPdfs";
+import Rankings from "../../components/form/Rankings";
+import { sendInputData } from "../sendInputAPI";
 
-const Input: React.FC<ResultsProps> = ({ setResults }) => {
+const Input: React.FC<InputPageProps> = ({ results, setResults }) => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    city: "",
-    state: "",
-    zip: "",
-    country: "",
-    salary: "",
-    numHousehold: "",
-    budget: "",
-    concerns: "",
-  });
-  const [files, setFiles] = useState<File[]>([]);
-  const [planCost, setPlanCost] = useState<number[]>([]);
+  const { formData } = formUseFlow();
   const { setHasSubmittedInput } = useFlow();
-
-  // Handle input changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const [step, setStep] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("Form submitted");
+    console.log(formData);
+
+    if (loading) {
+      return;
+    }
+    setLoading(true);
+    const { files, costs, ...formDataWithoutFilesAndCosts } = formData;
+    const results = await sendInputData(
+      formDataWithoutFilesAndCosts,
+      files,
+      costs
+    );
+    setLoading(false);
     setHasSubmittedInput(true);
-    navigate("/Rankings", { state: { formData, files, planCost } });
+    if (results.length === 0) {
+      console.log("FAILED");
+      return;
+    }
+    setResults(results);
+    navigate("/results");
   };
 
-  return (
-    <div className={styles.inputPage}>
-      <h1 className={styles.title}>Welcome</h1>
-      <div className={styles.subtitle}>
-        <h2>
-          Let's get you set up to compare the best insurance plans. We'll need a
-          few details to get started.
-        </h2>
-      </div>
+  const nextStep = () =>
+    setStep((prev) => Math.min(prev + 1, SubForms.length - 1));
+  const prevStep = () => setStep((prev) => Math.max(prev - 1, 0));
 
-      <div className={styles.line}></div>
-      <div className={styles.formContainer}>
-        <form className={styles.form} onSubmit={handleSubmit}>
-          {/* Contact Information */}
-          <div className={styles.formGroup}>
-            <div className={styles.formLabelGroup}>Contact Information</div>
-            <div className={styles.formInputGroup}>
-              <div className={styles.inputsNextToEachOther}>
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className={styles.inputsNextToEachOther}>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-          </div>
-          <div className={styles.line}></div>
-          {/* Address Information */}
-          <div className={styles.formGroup}>
-            <div className={styles.formLabelGroup}>Address</div>
-            <div className={styles.formInputGroup}>
-              <div className={styles.inputsNextToEachOther}>
-                <input
-                  type="text"
-                  placeholder="City"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="text"
-                  placeholder="State/Province/Region"
-                  name="state"
-                  value={formData.state}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className={styles.inputsNextToEachOther}>
-                <input
-                  type="text"
-                  placeholder="Zip Code"
-                  name="zip"
-                  value={formData.zip}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="text"
-                  placeholder="Country"
-                  name="country"
-                  value={formData.country}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-          </div>
-          <div className={styles.line}></div>
-          {/* Budget Information */}
-          <div className={styles.formGroup}>
-            <div className={styles.formLabelGroup}>Budget Information</div>
-            <div className={styles.formInputGroup}>
-              <div className={styles.inputsNextToEachOther}>
-                <input
-                  type="number"
-                  placeholder="Salary"
-                  name="salary"
-                  value={formData.salary}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="number"
-                  placeholder="# People in Household"
-                  name="numHousehold"
-                  value={formData.numHousehold}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="number"
-                  placeholder="Budget"
-                  name="budget"
-                  value={formData.budget}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className={styles.inputsNextToEachOther}>
-                <input
-                  type="text"
-                  placeholder="Health concerns/additional information"
-                  name="concerns"
-                  value={formData.concerns}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-          </div>
-          <div className={styles.line}></div>
-          {/* File Upload */}
-          <div className={styles.formGroup}>
-            <div className={styles.formLabelGroup}>
-              Upload PDFs (select multiple at once!)
-            </div>
-            <div className={styles.formInputGroup}>
-              <FileUpload files={files} setFiles={setFiles} planCost={planCost} setPlanCost={setPlanCost}/>
-            </div>
-          </div>
-          <div className={styles.line}></div>
-          <br></br>
-          {/* Submit Button */}
-          <button type="submit" className={styles.submitButton}>
-            Submit
-          </button>
-        </form>
-      </div>
+  const SubForms = [
+    <ContactInfo key="contact" />,
+    <Address key="address" />,
+    <BudgetInfo key="budget" />,
+    <UploadPdfs key="upload" />,
+    <Rankings key="rankings" />,
+  ];
+
+  return (
+    <div>
+      <form className={styles.form}>
+        {/* Render current step */}
+        <div>{SubForms[step]}</div>
+        {/* Navigation Buttons */}
+        <div
+          className={
+            step === 0 ? styles.buttonGroupCentered : styles.buttonGroup
+          }
+        >
+          {step > 0 && (
+            <button
+              type="button"
+              onClick={prevStep}
+              className={styles.navButton}
+            >
+              Previous
+            </button>
+          )}
+          {step < SubForms.length - 1 ? (
+            <button
+              type="button"
+              onClick={nextStep}
+              className={styles.navButton}
+            >
+              Next
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={handleSubmit}
+              className={styles.submitButton}
+            >
+              Submit
+            </button>
+          )}
+        </div>
+      </form>
     </div>
   );
 };

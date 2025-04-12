@@ -6,11 +6,44 @@
 
 .menuItem {
   text-align: left;
-  font-size: 0.8rem;
+  font-size: 1rem;
   display: list-item;
   list-style-position: inside;
+  padding: 8px;
 }
 
 .line {
   border-bottom: 0.9px solid black;
+}
+
+.costInput {
+  padding: 8px;
+}
+
+.uploadContainer {
+  margin-top: 1rem;
+}
+
+.fileTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.fileTable th,
+.fileTable td {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.fileTable th {
+  background-color: var(--textbox-off-white);
+}
+
+.inputField {
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 0.95rem;
 }

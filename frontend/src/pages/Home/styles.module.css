@@ -1,0 +1,56 @@
+.welcomePage {
+  width: 80%;
+}
+
+.title {
+  text-align: left;
+  color: var(--gray);
+  margin-top: 5rem;
+  font-family: "Inter", sans-serif;
+  font-size: 55px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.subtitle {
+  text-align: left;
+  color: var(--burgundy);
+  width: 80%;
+  font-family: Georgia;
+  font-size: 35px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.checkmark li {
+    list-style-type: none;
+    font-size: 1.2em;
+    font-family: "Inter", sans-serif;
+    position: relative;
+    padding-left: 24px;
+  }
+  
+  .checkmark li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    color: var(--burgundy);
+    font-weight: bold;
+  }
+  
+
+.navButton {
+  background-color: var(--dark-blue);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navButton:hover {
+  background-color: var(--navy);
+}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import TextBox, {dummyResult} from "../../components/ResultsText";
-import { ResultsProps, Result } from "../../App";
+import TextBox, { dummyResult } from "../../components/ResultsText";
+import { ResultsPageProps, Result } from "../../App";
 import Chatbot from "../../components/Chatbot";
 import styles from "./results.module.css";
 import Modal from "../../components/ResultsModal";
@@ -71,7 +71,7 @@ const ResultsAndModalButton = (setOpen: () => void) => {
   );
 };
 
-const Results: React.FC<ResultsProps> = ({
+const Results: React.FC<ResultsPageProps> = ({
   results,
   modalOpened,
   setModalOpened,

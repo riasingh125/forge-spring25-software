@@ -1,0 +1,67 @@
+.inputPage {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: left;
+  color: var(--gray);
+  margin-top: 5rem;
+}
+
+.subtitle h2 {
+  text-align: left;
+  color: var(--burgundy);
+  font-weight: 400;
+  width: 60%;
+}
+
+input {
+  border: 0.9px solid black;
+  background-color: var(--textbox-off-white);
+  min-height: 30px;
+  border-radius: 3px;
+  width: 100%;
+  margin: 5px;
+  padding: 5px;
+}
+
+/* Form */
+.form {
+  width: 100%;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* Group each section (label + inputs) */
+.formLabelGroup {
+  width: 40%;
+  text-align: left;
+  font-weight: 500;
+  font-size: 1.2em;
+}
+
+/* Group each section (label + inputs) */
+.formInputGroup {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.inputsNextToEachOther {
+  display: flex;
+  justify-content: space-between;
+}
+
+.line {
+  border-bottom: 0.9px solid black;
+}
+
+.customDropdown {
+  width: 100%; 
+  background-color: var(--textbox-off-white);
+}

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./FileUploadStyles.module.css";
 
 interface FileUploadProps {
   files: File[];
-  setFiles: React.Dispatch<React.SetStateAction<File[]>>;
+  setFiles: (files: File[]) => void; // change this!
   planCost: number[];
-  setPlanCost: React.Dispatch<React.SetStateAction<number[]>>;
+  setPlanCost: (costs: number[]) => void; // change this too
 }
 
 const FileUpload: React.FC<FileUploadProps> = ({
@@ -15,6 +15,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
   setPlanCost,
 }) => {
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log("File changed");
     const newFiles = event.target.files ? Array.from(event.target.files) : [];
     setFiles(newFiles);
   };
@@ -35,25 +36,35 @@ const FileUpload: React.FC<FileUploadProps> = ({
         onChange={handleFileChange}
       />
       {files.length > 0 && (
-        <menu className={styles.menuContainer}>
-          {files.map((file, index) => (
-            <div key={index+file.name}>
-              <ol key={index} className={styles.menuItem}>
-                {file.name}
-              </ol>
-              <label htmlFor="cost">Monthly premium</label>
-              <input
-                type="number"
-                id={file.name}
-                name="cost"
-                required
-                onChange={(e) =>
-                  handleCostChange(index, Number(e.target.value))
-                }
-              />
-            </div>
-          ))}
-        </menu>
+        <table className={styles.fileTable}>
+          <thead>
+            <tr>
+              <th>File</th>
+              <th>Monthly Premium ($)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {files.map((file, index) => (
+              <tr key={index + file.name}>
+                <td>{file.name}</td>
+                <td>
+                  <input
+                    type="number"
+                    name={`cost-${index}`}
+                    id={`cost-${index}`}
+                    min={0}
+                    placeholder="e.g. 200"
+                    value={planCost[index] ?? ""}
+                    onChange={(e) =>
+                      handleCostChange(index, Number(e.target.value))
+                    }
+                    className={styles.inputField}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </div>
   );
