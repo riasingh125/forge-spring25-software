@@ -1,12 +1,10 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import React from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Slider from "@mui/material/Slider";
 import MuiInput from "@mui/material/Input";
-import { SelectChangeEvent } from "@mui/material/Select";
-import { sendInputData } from "../../pages/sendInputAPI.ts";
+import { useFlow as formUseFlow } from "../../context/FormContext";
 
 const Input = styled(MuiInput)`
   width: 42px;
@@ -45,18 +43,19 @@ const rankingDescriptions = [
   "Ease of accessing benefits, including online services, customer support, and appointment scheduling.",
 ];
 
-
 const Rankings: React.FC = () => {
-  const [rankings, setRankings] = React.useState<{
-    [key: string]: number | string;
-  }>(Object.fromEntries(rankingItems.map((item) => [item, 1])));
+  const { formData, setFormData } = formUseFlow();
+  const rankings = formData.rankings;
 
   // Handle slider change
   const handleSliderChange =
-    (category: string) => (event: Event, newValue: number | number[]) => {
-      setRankings((prev) => ({
+    (category: string) => (_event: Event, newValue: number | number[]) => {
+      setFormData((prev) => ({
         ...prev,
-        [category]: newValue as number,
+        rankings: {
+          ...prev.rankings,
+          [category]: newValue as number,
+        },
       }));
     };
 

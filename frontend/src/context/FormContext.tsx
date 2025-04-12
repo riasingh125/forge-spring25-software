@@ -1,5 +1,9 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
+type RankingsType = {
+  [key: string]: number;
+};
+
 interface FormDataType {
   firstName: string;
   lastName: string;
@@ -13,8 +17,8 @@ interface FormDataType {
   numHousehold: string;
   budget: string;
   concerns: string;
-  rankings: {};
-  pdfs: File[];
+  rankings: RankingsType;
+  files: File[];
   costs: number[];
 }
 
@@ -44,7 +48,7 @@ export const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
     budget: "",
     concerns: "",
     rankings: {},
-    pdfs: [],
+    files: [],
     costs: [],
   });
 

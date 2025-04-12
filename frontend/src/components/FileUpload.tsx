@@ -3,9 +3,9 @@ import styles from "./FileUploadStyles.module.css";
 
 interface FileUploadProps {
   files: File[];
-  setFiles: React.Dispatch<React.SetStateAction<File[]>>;
+  setFiles: (files: File[]) => void; // change this!
   planCost: number[];
-  setPlanCost: React.Dispatch<React.SetStateAction<number[]>>;
+  setPlanCost: (costs: number[]) => void; // change this too
 }
 
 const FileUpload: React.FC<FileUploadProps> = ({
@@ -37,7 +37,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
       {files.length > 0 && (
         <menu className={styles.menuContainer}>
           {files.map((file, index) => (
-            <div key={index+file.name}>
+            <div key={index + file.name}>
               <ol key={index} className={styles.menuItem}>
                 {file.name}
               </ol>
