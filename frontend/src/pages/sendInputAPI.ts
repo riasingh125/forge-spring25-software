@@ -17,6 +17,7 @@ interface FormDataInput {
 }
 
 function structureToJSON(data: FormDataInput, planCost: number[]) {
+  const weights = data["weights"];
   return {
     first_name: data.firstName || "",
     last_name: data.lastName || "",
@@ -39,16 +40,16 @@ function structureToJSON(data: FormDataInput, planCost: number[]) {
       zip_code: data.zip || "",
     },
     weights: {
-      affordability: parseFloat(data["Affordability"]) || 0,
+      affordability: parseFloat(weights["Affordability"]) || 0,
       coverage_of_all_benefits:
-        parseFloat(data["Coverage of All Benefits"]) || 0,
+        parseFloat(weights["Coverage of All Benefits"]) || 0,
       personalized_coverage:
-        parseFloat(data["Coverage of Personal Health Concerns"]) || 0,
-      flexibility_of_coverage: parseFloat(data["Plan Flexibility"]) || 0,
-      emergency_coverage: parseFloat(data["Coverage in Emergencies"]) || 0,
+        parseFloat(weights["Coverage of Personal Health Concerns"]) || 0,
+      flexibility_of_coverage: parseFloat(weights["Plan Flexibility"]) || 0,
+      emergency_coverage: parseFloat(weights["Coverage in Emergencies"]) || 0,
       convenience_of_coverage:
-        parseFloat(data["Convenience of Accessing Benefits"]) || 0,
-      geographic_coverage: parseFloat(data["Geographic coverage"]) || 0,
+        parseFloat(weights["Convenience of Accessing Benefits"]) || 0,
+      geographic_coverage: parseFloat(weights["Geographic coverage"]) || 0,
     },
     premium: planCost,
   };
@@ -65,10 +66,16 @@ async function sendInputData(
   planCost: number[]
 ) {
   console.log("Post request");
+  console.log("DATA CHECK:");
+  console.log(data);
   try {
     const formData = new FormData();
     // add the user form data
     const jsonData = structureToJSON(data, planCost);
+
+    console.log("JSON DATA CHECK:");
+    console.log(jsonData);
+
     formData.append("form_data", JSON.stringify(jsonData));
     // add all the uploaded files
     files.forEach((file) => {

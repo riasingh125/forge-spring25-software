@@ -39,7 +39,7 @@ const rankingDescriptions = [
 
 const Rankings: React.FC = () => {
   const { formData, setFormData } = formUseFlow();
-  const rankings = formData.rankings;
+  const weights = formData.weights;
 
   // Handle slider change
   const handleSliderChange =
@@ -49,10 +49,12 @@ const Rankings: React.FC = () => {
       newValue: number | number[]
     ) => {
       _event.preventDefault();
+      console.log("FORM DATA UPDATED");
+      console.log(formData);
       setFormData((prev) => ({
         ...prev,
-        rankings: {
-          ...prev.rankings,
+        weights: {
+          ...prev.weights,
           [category]: newValue as number,
         },
       }));
@@ -93,8 +95,8 @@ const Rankings: React.FC = () => {
               <Grid item xs>
                 <Slider
                   value={
-                    typeof rankings[category] === "number"
-                      ? rankings[category]
+                    typeof weights[category] === "number"
+                      ? weights[category]
                       : 1
                   }
                   onChange={handleSliderChange(category)}

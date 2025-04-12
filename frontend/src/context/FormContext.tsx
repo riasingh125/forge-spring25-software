@@ -19,7 +19,7 @@ interface FormDataType {
   concerns: string;
   age: string;
   phone: string;
-  rankings: RankingsType;
+  weights: RankingsType;
   files: File[];
   costs: number[];
 }
@@ -51,7 +51,7 @@ export const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
     concerns: "",
     age: "",
     phone: "",
-    rankings: {},
+    weights: {},
     files: [],
     costs: [],
   });
