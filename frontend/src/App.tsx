@@ -12,6 +12,7 @@ import config from "./aws-exports";
 import Navbar from "./components/NavBar";
 import { ProtectedResultsRoute } from "./routes/ProtectedRoutes";
 import logo from "./resources/parcel.png";
+import { FormProvider } from "./context/FormContext";
 
 Amplify.configure(config);
 
@@ -96,29 +97,15 @@ function App() {
         }}
       >
         {({ signOut, user }) => (
-          <Router>
-            <Navbar signOut={signOut}></Navbar>
-            <Routes>
-              <Route path="/" element={<Home />} />
-
-              <Route
-                path="/input"
-                element={
-                  <Input
-                    results={results}
-                    setResults={setResults}
-                    modalOpened={modalOpened}
-                    setModalOpened={setModalOpened}
-                    messages={messages}
-                    setMessages={setMessages}
-                  />
-                }
-              />
-              <Route
-                path="/results"
-                element={
-                  <ProtectedResultsRoute>
-                    <Results
+          <FormProvider>
+            <Router>
+              <Navbar signOut={signOut} />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route
+                  path="/input"
+                  element={
+                    <Input
                       results={results}
                       setResults={setResults}
                       modalOpened={modalOpened}
@@ -126,11 +113,26 @@ function App() {
                       messages={messages}
                       setMessages={setMessages}
                     />
-                  </ProtectedResultsRoute>
-                }
-              />
-            </Routes>
-          </Router>
+                  }
+                />
+                <Route
+                  path="/results"
+                  element={
+                    <ProtectedResultsRoute>
+                      <Results
+                        results={results}
+                        setResults={setResults}
+                        modalOpened={modalOpened}
+                        setModalOpened={setModalOpened}
+                        messages={messages}
+                        setMessages={setMessages}
+                      />
+                    </ProtectedResultsRoute>
+                  }
+                />
+              </Routes>
+            </Router>
+          </FormProvider>
         )}
       </Authenticator>
     </div>

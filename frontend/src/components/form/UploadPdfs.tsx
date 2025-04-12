@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import { ResultsProps } from "../../App";
 import FileUpload from "../FileUpload";
 import { useFlow as formUseFlow } from "../../context/FormContext";
 
-const UploadPdfs: React.FC<ResultsProps> = ({ setResults }) => {
+const UploadPdfs: React.FC = () => {
   const { formData, setFormData } = formUseFlow();
   const [files, setFiles] = useState<File[]>([]);
   const [planCost, setPlanCost] = useState<number[]>([]);

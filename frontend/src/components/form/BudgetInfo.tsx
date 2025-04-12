@@ -1,17 +1,10 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import styles from "./styles.module.css";
-import { ResultsProps } from "../../App";
-import FileUpload from "../../components/FileUpload";
-import { useFlow } from "../../context/FlowContext";
 import { useFlow as formUseFlow } from "../../context/FormContext";
 
-const BudgetInfo: React.FC<ResultsProps> = ({ setResults }) => {
-  const navigate = useNavigate();
+const BudgetInfo: React.FC= () => {
   const { formData, setFormData } = formUseFlow();
-  const [files, setFiles] = useState<File[]>([]);
 
-  // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };

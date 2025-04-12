@@ -25,13 +25,10 @@ const Input: React.FC<ResultsProps> = ({
   const { setHasSubmittedInput } = useFlow();
   const [step, setStep] = useState(0);
 
-  // Handle input changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
+    console.log("Form submitted");
+    console.log(formData);
     e.preventDefault();
     //SubmittedInput(true);
     //navigate("/Results", { state: { formData, files, planCost } });
@@ -42,51 +39,11 @@ const Input: React.FC<ResultsProps> = ({
   const prevStep = () => setStep((prev) => Math.max(prev - 1, 0));
 
   const SubForms = [
-    <ContactInfo
-      key="contact"
-      results={results}
-      setResults={setResults}
-      modalOpened={modalOpened}
-      setModalOpened={setModalOpened}
-      messages={messages}
-      setMessages={setMessages}
-    />,
-    <Address
-      key="welcome"
-      results={results}
-      setResults={setResults}
-      modalOpened={modalOpened}
-      setModalOpened={setModalOpened}
-      messages={messages}
-      setMessages={setMessages}
-    />,
-    <BudgetInfo
-      key="budget"
-      results={results}
-      setResults={setResults}
-      modalOpened={modalOpened}
-      setModalOpened={setModalOpened}
-      messages={messages}
-      setMessages={setMessages}
-    />,
-    <UploadPdfs
-      key="upload"
-      results={results}
-      setResults={setResults}
-      modalOpened={modalOpened}
-      setModalOpened={setModalOpened}
-      messages={messages}
-      setMessages={setMessages}
-    />,
-    <Rankings
-      key="rankings"
-      results={results}
-      setResults={setResults}
-      modalOpened={modalOpened}
-      setModalOpened={setModalOpened}
-      messages={messages}
-      setMessages={setMessages}
-    />,
+    <ContactInfo key="contact"/>,
+    <Address key="address" />,
+    <BudgetInfo key="budget" />,
+    <UploadPdfs key="upload" />,
+    <Rankings key="rankings" />,
   ];
 
   return (

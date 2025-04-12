@@ -4,6 +4,7 @@ interface FormDataType {
   firstName: string;
   lastName: string;
   email: string;
+  familiarity: string;
   city: string;
   state: string;
   zip: string;
@@ -12,6 +13,9 @@ interface FormDataType {
   numHousehold: string;
   budget: string;
   concerns: string;
+  rankings: {};
+  pdfs: File[];
+  costs: number[];
 }
 
 interface FormContextType {
@@ -30,6 +34,7 @@ export const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
     firstName: "",
     lastName: "",
     email: "",
+    familiarity: "",
     city: "",
     state: "",
     zip: "",
@@ -38,6 +43,9 @@ export const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
     numHousehold: "",
     budget: "",
     concerns: "",
+    rankings: {},
+    pdfs: [],
+    costs: [],
   });
 
   return (
