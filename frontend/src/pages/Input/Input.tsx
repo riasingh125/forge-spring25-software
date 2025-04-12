@@ -23,6 +23,7 @@ const Input: React.FC<InputPageProps> = ({ results, setResults }) => {
     e.preventDefault();
     console.log("Form submitted");
     console.log(formData);
+
     if (loading) {
       return;
     }
