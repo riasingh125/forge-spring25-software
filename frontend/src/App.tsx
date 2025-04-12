@@ -9,7 +9,7 @@ import Results from "./pages/Results/Results";
 import Home from "./pages/Home/Home";
 
 import config from "./aws-exports";
-import Navbar from "./components/navBar/NavBar";
+import Navbar from "./components/NavBar";
 import { ProtectedResultsRoute } from "./routes/ProtectedRoutes";
 import logo from "./resources/parcel.png";
 
