@@ -2,18 +2,31 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import { ResultsProps } from "../../App";
+import Box from "@mui/material/Box";
 import FileUpload from "../../components/FileUpload";
 import { useFlow } from "../../context/FlowContext";
 import { useFlow as formUseFlow } from "../../context/FormContext";
+import Typography from "@mui/material/Typography";
+import Slider from "@mui/material/Slider";
+import MuiInput from "@mui/material/Input";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 const ContactInfo: React.FC<ResultsProps> = ({ setResults }) => {
   const navigate = useNavigate();
   const { formData, setFormData } = formUseFlow();
   const [files, setFiles] = useState<File[]>([]);
+  const [selectedOption, setSelectedOption] = useState("");
+  const [dropdownError, setDropdownError] = useState(false);
 
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleDropdownChange = (event: SelectChangeEvent<string>) => {
+    setSelectedOption(event.target.value);
+    setDropdownError(false);
   };
 
   return (
@@ -60,12 +73,42 @@ const ContactInfo: React.FC<ResultsProps> = ({ setResults }) => {
                 required
               />
             </div>
+            <br></br>
+          </div>
+        </div>
+        {/* User Experience */}
+        <div className={styles.line}></div>
+        <br></br>
+        <div className={styles.formGroup}>
+          <div className={styles.formLabelGroup}>
+            Select your level of familiarity with healthcare jargon
+          </div>
+          <div className={styles.formInputGroup}>
+            <div className={styles.inputsNextToEachOther}>
+              {/* Dropdown Selection */}
+              <Box>
+                <Select
+                  value={selectedOption}
+                  onChange={handleDropdownChange}
+                  displayEmpty
+                  fullWidth
+                  error={dropdownError}
+                  className={styles.customDropdown}
+                >
+                  <MenuItem value="" disabled>
+                    Select an option
+                  </MenuItem>
+                  <MenuItem value="Option 1">Unfamiliar</MenuItem>
+                  <MenuItem value="Option 2">Moderately Familiar</MenuItem>
+                  <MenuItem value="Option 3">Very Familiar</MenuItem>
+                </Select>
+              </Box>
+            </div>
           </div>
         </div>
         <br></br>
         <div className={styles.line}></div>
       </div>
-      <br></br>
     </div>
   );
 };

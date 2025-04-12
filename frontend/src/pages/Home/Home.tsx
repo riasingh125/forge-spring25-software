@@ -21,11 +21,12 @@ const Home: React.FC = ({}) => {
         coverage for you and your family.
       </h2>
       <br></br>
-      <ul>
+      <ul className={styles.checkmark}>
         <li>Compare multiple plans side-by-side</li>
         <li>Find optimal coverage for your budget</li>
         <li>Expert recommendations tailored to you</li>
       </ul>
+
       <img src={logo} style={{ width: "150px", height: "150px" }}></img>
       <br></br>
       <button type="button" onClick={handleSubmit} className={styles.navButton}>

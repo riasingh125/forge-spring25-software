@@ -174,27 +174,6 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
             </Grid>
           </Box>
         ))}
-
-        {/* Dropdown Selection */}
-        <Box sx={{ marginTop: 4, textAlign: "center" }}>
-          <Typography>
-            Select your level of familiarity with healthcare jargon.
-          </Typography>
-          <Select
-            value={selectedOption}
-            onChange={handleDropdownChange}
-            displayEmpty
-            fullWidth
-            error={dropdownError}
-          >
-            <MenuItem value="" disabled>
-              Select an option
-            </MenuItem>
-            <MenuItem value="Option 1">Unfamiliar</MenuItem>
-            <MenuItem value="Option 2">Moderately Familiar</MenuItem>
-            <MenuItem value="Option 3">Very Familiar</MenuItem>
-          </Select>
-        </Box>
       </Box>
     </div>
   );
