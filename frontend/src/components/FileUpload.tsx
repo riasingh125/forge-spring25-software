@@ -15,6 +15,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
   setPlanCost,
 }) => {
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log("File changed");
     const newFiles = event.target.files ? Array.from(event.target.files) : [];
     setFiles(newFiles);
   };
@@ -51,7 +52,6 @@ const FileUpload: React.FC<FileUploadProps> = ({
                     type="number"
                     name={`cost-${index}`}
                     id={`cost-${index}`}
-                    required
                     min={0}
                     placeholder="e.g. 200"
                     value={planCost[index] ?? ""}

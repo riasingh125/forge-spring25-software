@@ -1,14 +1,8 @@
 import React from "react";
-import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Slider from "@mui/material/Slider";
-import MuiInput from "@mui/material/Input";
 import { useFlow as formUseFlow } from "../../context/FormContext";
-
-const Input = styled(MuiInput)`
-  width: 42px;
-`;
 
 const marks = [
   { value: 1, label: "1" },
@@ -49,7 +43,12 @@ const Rankings: React.FC = () => {
 
   // Handle slider change
   const handleSliderChange =
-    (category: string) => (_event: Event, newValue: number | number[]) => {
+    (category: string) =>
+    (
+      _event: React.SyntheticEvent<Element, Event>,
+      newValue: number | number[]
+    ) => {
+      _event.preventDefault();
       setFormData((prev) => ({
         ...prev,
         rankings: {

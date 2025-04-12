@@ -1,32 +1,26 @@
 import axios from "axios";
 
-interface RankingsType {
-  [key: string]: number;
-}
-
-interface FormDataType {
+interface FormDataInput {
   firstName: string;
   lastName: string;
-  email: string;
-  familiarity: string;
-  city: string;
-  state: string;
-  zip: string;
-  country: string;
+  age: string;
   salary: string;
-  numHousehold: string;
   budget: string;
   concerns: string;
-  rankings: RankingsType;
-  files: File[];
-  costs: number[];
+  email: string;
+  phone: string;
+  city: string;
+  state: string;
+  country: string;
+  zip: string;
+  [key: string]: any;
 }
 
-function structureToJSON(data: FormDataType) {
+function structureToJSON(data: FormDataInput, planCost: number[]) {
   return {
     first_name: data.firstName || "",
     last_name: data.lastName || "",
-    age: 25,
+    age: parseInt(data.age) || 25,
     income: parseFloat(data.salary) || 0,
     budget: parseFloat(data.budget) || 0,
     coverage: {
@@ -36,7 +30,7 @@ function structureToJSON(data: FormDataType) {
     },
     contact: {
       email: data.email || "",
-      number: "0000000000",
+      number: data.phone || "0000000000",
     },
     address: {
       city: data.city || "",
@@ -45,42 +39,50 @@ function structureToJSON(data: FormDataType) {
       zip_code: data.zip || "",
     },
     weights: {
-      affordability: data.rankings["Affordability"] || 0,
-      coverage_of_all_benefits: data.rankings["Coverage of All Benefits"] || 0,
+      affordability: parseFloat(data["Affordability"]) || 0,
+      coverage_of_all_benefits:
+        parseFloat(data["Coverage of All Benefits"]) || 0,
       personalized_coverage:
-        data.rankings["Coverage of Personal Health Concerns"] || 0,
-      flexibility_of_coverage: data.rankings["Plan Flexibility"] || 0,
-      emergency_coverage: data.rankings["Coverage in Emergencies"] || 0,
+        parseFloat(data["Coverage of Personal Health Concerns"]) || 0,
+      flexibility_of_coverage: parseFloat(data["Plan Flexibility"]) || 0,
+      emergency_coverage: parseFloat(data["Coverage in Emergencies"]) || 0,
       convenience_of_coverage:
-        data.rankings["Convenience of Accessing Benefits"] || 0,
-      geographic_coverage: data.rankings["Geographic coverage"] || 0,
+        parseFloat(data["Convenience of Accessing Benefits"]) || 0,
+      geographic_coverage: parseFloat(data["Geographic coverage"]) || 0,
     },
-    premium: data.costs,
+    premium: planCost,
   };
 }
 
-async function sendInputData(formData: FormDataType) {
+/**
+ * POST request to backend to send user input and get back results
+ * @param data the user's filled out form data
+ * @param files the uploaded pdfs of the insurance plans
+ */
+async function sendInputData(
+  data: FormDataInput,
+  files: File[],
+  planCost: number[]
+) {
   console.log("Post request");
   try {
-    const payload = new FormData();
-    const jsonData = structureToJSON(formData);
-
-    payload.append("form_data", JSON.stringify(jsonData));
-
-    formData.files.forEach((file, index) => {
-      payload.append("files", file);
-      payload.append("plan_cost", String(formData.costs[index] || 0));
+    const formData = new FormData();
+    // add the user form data
+    const jsonData = structureToJSON(data, planCost);
+    formData.append("form_data", JSON.stringify(jsonData));
+    // add all the uploaded files
+    files.forEach((file) => {
+      formData.append("files", file);
+      formData.append("plan_cost", String(planCost[files.indexOf(file)]));
     });
-
     const response = await axios.post(
       "http://127.0.0.1:8000/form/submit",
-      payload
+      formData
     );
-
     console.log("Server response:", response.data);
     return response.data;
   } catch (error) {
-    console.error(error);
+    console.log(error);
     return [];
   }
 }

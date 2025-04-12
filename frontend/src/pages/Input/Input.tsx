@@ -20,14 +20,19 @@ const Input: React.FC<InputPageProps> = ({ results, setResults }) => {
 
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     console.log("Form submitted");
     console.log(formData);
-    e.preventDefault();
     if (loading) {
       return;
     }
     setLoading(true);
-    const results = await sendInputData(formData);
+    const { files, costs, ...formDataWithoutFilesAndCosts } = formData;
+    const results = await sendInputData(
+      formDataWithoutFilesAndCosts,
+      files,
+      costs
+    );
     setLoading(false);
     setHasSubmittedInput(true);
     if (results.length === 0) {
@@ -52,7 +57,7 @@ const Input: React.FC<InputPageProps> = ({ results, setResults }) => {
 
   return (
     <div>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form className={styles.form}>
         {/* Render current step */}
         <div>{SubForms[step]}</div>
         {/* Navigation Buttons */}
@@ -79,7 +84,11 @@ const Input: React.FC<InputPageProps> = ({ results, setResults }) => {
               Next
             </button>
           ) : (
-            <button type="submit" className={styles.submitButton}>
+            <button
+              type="button"
+              onClick={handleSubmit}
+              className={styles.submitButton}
+            >
               Submit
             </button>
           )}

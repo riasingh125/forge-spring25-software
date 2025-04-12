@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import { useFlow as formUseFlow } from "../../context/FormContext";
 
-const BudgetInfo: React.FC= () => {
+const BudgetInfo: React.FC = () => {
   const { formData, setFormData } = formUseFlow();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,11 +42,21 @@ const BudgetInfo: React.FC= () => {
                 onChange={handleChange}
                 required
               />
+            </div>
+            <div className={styles.inputsNextToEachOther}>
               <input
                 type="number"
                 placeholder="Budget"
                 name="budget"
                 value={formData.budget}
+                onChange={handleChange}
+                required
+              />
+              <input
+                type="number"
+                placeholder="age"
+                name="age"
+                value={formData.age}
                 onChange={handleChange}
                 required
               />
