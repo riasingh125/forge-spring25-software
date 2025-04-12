@@ -53,3 +53,42 @@ input {
 .line {
   border-bottom: 0.9px solid black;
 }
+
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.buttonGroupCentered {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.navButton {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: var(--dark-blue);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.navButton:hover {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: var(--navy);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submitButton {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: var(--dark-blue);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}

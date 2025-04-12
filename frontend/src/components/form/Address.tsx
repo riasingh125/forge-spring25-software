@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../../pages/Input/styles.module.css";
+import styles from "./styles.module.css";
 import { ResultsProps } from "../../App";
 import FileUpload from "../../components/FileUpload";
 import { useFlow } from "../../context/FlowContext";
@@ -19,13 +19,13 @@ const Address: React.FC<ResultsProps> = ({ setResults }) => {
   return (
     <div className={styles.inputPage}>
       <h1 className={styles.title}>Location Details</h1>
+      <br></br>
       <h2 className={styles.subtitle}>
         Your location helps us find healthcare plans available in your area.
       </h2>
+      <br></br>
       <div className={styles.line}></div>
-      <div className={styles.formContainer}>
-        <div className={styles.line}></div>
-      </div>
+      <br></br>
       {/* Address Information */}
       <div className={styles.formGroup}>
         <div className={styles.formLabelGroup}>Address</div>
@@ -68,6 +68,9 @@ const Address: React.FC<ResultsProps> = ({ setResults }) => {
           </div>
         </div>
       </div>
+      <br></br>
+      <div className={styles.line}></div>
+      <br></br>
     </div>
   );
 };
