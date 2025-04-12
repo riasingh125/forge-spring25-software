@@ -1,0 +1,67 @@
+@import-normalize;
+
+/* Main container for the ranking page */
+.container {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  background-color: #f3f4f6;
+}
+
+/* Individual ranking item row */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+}
+
+/* Number on the left */
+.number {
+  width: 24px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #374151;
+}
+
+/* Box where the ranking label goes */
+.box {
+  flex-grow: 1;
+  padding: 16px;
+  background-color: #d1d5db;
+  color: #374151;
+  border-radius: 8px;
+}
+
+/* Drag handle (three bars for moving items) */
+.dragHandle {
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Each small bar in the drag handle */
+.dragHandle div {
+  width: 16px;
+  height: 4px;
+  background-color: #9ca3af;
+}
+
+/* Next Button */
+.nextButton {
+  margin-top: 12px;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.nextButton:hover {
+  opacity: 0.8;
+}

@@ -10,7 +10,6 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = () => {
   const { hasSubmittedInput } = useFlow();
-  const { hasCompletedRankings } = useFlow();
   const { signOut, user } = useAuthenticator((context) => [context.user]);
 
   return (
@@ -52,18 +51,10 @@ const Navbar: React.FC<NavbarProps> = () => {
         >
           Input
         </Link>
-        <Link
-          to="/rankings"
-          className={`nav-link ${hasSubmittedInput ? "enabled" : "disabled"}`}
-          style={{ display: "flex", alignItems: "center" }}
-        >
-          Rankings
-        </Link>
+
         <Link
           to="/results"
-          className={`nav-link ${
-            hasCompletedRankings ? "enabled" : "disabled"
-          }`}
+          className={`nav-link ${hasSubmittedInput ? "enabled" : "disabled"}`}
           style={{ display: "flex", alignItems: "center" }}
         >
           Results

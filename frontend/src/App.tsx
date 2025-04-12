@@ -99,19 +99,7 @@ function App() {
           <Router>
             <Navbar signOut={signOut}></Navbar>
             <Routes>
-              <Route
-                path="/"
-                element={
-                  <Home
-                    results={results}
-                    setResults={setResults}
-                    modalOpened={modalOpened}
-                    setModalOpened={setModalOpened}
-                    messages={messages}
-                    setMessages={setMessages}
-                  />
-                }
-              />
+              <Route path="/" element={<Home />} />
 
               <Route
                 path="/input"

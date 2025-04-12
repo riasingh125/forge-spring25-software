@@ -10,7 +10,6 @@ const Address: React.FC<ResultsProps> = ({ setResults }) => {
   const navigate = useNavigate();
   const { formData, setFormData } = formUseFlow();
   const [files, setFiles] = useState<File[]>([]);
-  const { setHasSubmittedInput } = useFlow();
 
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -3,8 +3,6 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 interface FlowContextType {
   hasSubmittedInput: boolean;
   setHasSubmittedInput: React.Dispatch<React.SetStateAction<boolean>>;
-  hasCompletedRankings: boolean;
-  setHasCompletedRankings: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const FlowContext = createContext<FlowContextType | null>(null);
@@ -15,15 +13,12 @@ interface FlowProviderProps {
 
 export const FlowProvider: React.FC<FlowProviderProps> = ({ children }) => {
   const [hasSubmittedInput, setHasSubmittedInput] = useState(false);
-  const [hasCompletedRankings, setHasCompletedRankings] = useState(false);
 
   return (
     <FlowContext.Provider
       value={{
         hasSubmittedInput,
-        setHasSubmittedInput,
-        hasCompletedRankings,
-        setHasCompletedRankings,
+        setHasSubmittedInput
       }}
     >
       {children}
