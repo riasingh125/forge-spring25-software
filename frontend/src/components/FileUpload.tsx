@@ -35,25 +35,36 @@ const FileUpload: React.FC<FileUploadProps> = ({
         onChange={handleFileChange}
       />
       {files.length > 0 && (
-        <menu className={styles.menuContainer}>
-          {files.map((file, index) => (
-            <div key={index + file.name}>
-              <ol key={index} className={styles.menuItem}>
-                {file.name}
-              </ol>
-              <label htmlFor="cost">Monthly premium</label>
-              <input
-                type="number"
-                id={file.name}
-                name="cost"
-                required
-                onChange={(e) =>
-                  handleCostChange(index, Number(e.target.value))
-                }
-              />
-            </div>
-          ))}
-        </menu>
+        <table className={styles.fileTable}>
+          <thead>
+            <tr>
+              <th>File</th>
+              <th>Monthly Premium ($)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {files.map((file, index) => (
+              <tr key={index + file.name}>
+                <td>{file.name}</td>
+                <td>
+                  <input
+                    type="number"
+                    name={`cost-${index}`}
+                    id={`cost-${index}`}
+                    required
+                    min={0}
+                    placeholder="e.g. 200"
+                    value={planCost[index] ?? ""}
+                    onChange={(e) =>
+                      handleCostChange(index, Number(e.target.value))
+                    }
+                    className={styles.inputField}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </div>
   );
