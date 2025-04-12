@@ -24,19 +24,22 @@
   line-height: normal;
 }
 
-ul li:before {
-  content: "\2713";
-  display: inline-block;
-  color: var(--burgundy);
-  padding: 0 6px 0 0;
-  font-family: "Inter", sans-serif;
-}
-
-ul li {
-  list-style-type: none;
-  font-size: 1.2em;
-  font-family: "Inter", sans-serif;
-}
+.checkmark li {
+    list-style-type: none;
+    font-size: 1.2em;
+    font-family: "Inter", sans-serif;
+    position: relative;
+    padding-left: 24px;
+  }
+  
+  .checkmark li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    color: var(--burgundy);
+    font-weight: bold;
+  }
+  
 
 .navButton {
   background-color: var(--dark-blue);

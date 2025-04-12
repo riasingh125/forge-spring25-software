@@ -61,3 +61,7 @@ input {
   border-bottom: 0.9px solid black;
 }
 
+.customDropdown {
+  width: 100%; 
+  background-color: var(--textbox-off-white);
+}
