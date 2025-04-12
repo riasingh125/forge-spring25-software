@@ -95,7 +95,11 @@ const Input: React.FC<ResultsProps> = ({
         {/* Render current step */}
         <div>{SubForms[step]}</div>
         {/* Navigation Buttons */}
-        <div className={styles.buttonGroup}>
+        <div
+          className={
+            step === 0 ? styles.buttonGroupCentered : styles.buttonGroup
+          }
+        >
           {step > 0 && (
             <button
               type="button"

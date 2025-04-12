@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../../pages/Input/styles.module.css";
+import styles from "./styles.module.css";
 import { ResultsProps } from "../../App";
 import FileUpload from "../../components/FileUpload";
 import { useFlow } from "../../context/FlowContext";
@@ -19,11 +19,14 @@ const BudgetInfo: React.FC<ResultsProps> = ({ setResults }) => {
   return (
     <div className={styles.inputPage}>
       <h1 className={styles.title}>Household and Financial Information</h1>
+      <br></br>
       <h2 className={styles.subtitle}>
         Understanding your household size and financial situation helps us
         determine the best healthcare coverage options.
       </h2>
+      <br></br>
       <div className={styles.line}></div>
+      <br></br>
       <div className={styles.formContainer}>
         {/* Budget Information */}
         <div className={styles.formGroup}>
@@ -57,7 +60,9 @@ const BudgetInfo: React.FC<ResultsProps> = ({ setResults }) => {
             </div>
           </div>
         </div>
+        <br></br>
         <div className={styles.line}></div>
+        <br></br>
         <div className={styles.formGroup}>
           <div className={styles.formLabelGroup}>
             List any additional concerns
@@ -74,6 +79,9 @@ const BudgetInfo: React.FC<ResultsProps> = ({ setResults }) => {
             </div>
           </div>
         </div>
+        <br></br>
+        <div className={styles.line}></div>
+        <br></br>
       </div>
     </div>
   );

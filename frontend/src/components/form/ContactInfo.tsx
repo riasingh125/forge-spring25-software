@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../../pages/Input/styles.module.css";
+import styles from "./styles.module.css";
 import { ResultsProps } from "../../App";
 import FileUpload from "../../components/FileUpload";
 import { useFlow } from "../../context/FlowContext";
@@ -19,11 +19,14 @@ const ContactInfo: React.FC<ResultsProps> = ({ setResults }) => {
   return (
     <div className={styles.inputPage}>
       <h1 className={styles.title}>Personal Information</h1>
+      <br></br>
       <h2 className={styles.subtitle}>
         Let's start with some basic information to help us tailor your
         healthcare plan options.
       </h2>
+      <br></br>
       <div className={styles.line}></div>
+      <br></br>
       <div className={styles.formContainer}>
         {/* Contact Information */}
         <div className={styles.formGroup}>
@@ -59,9 +62,10 @@ const ContactInfo: React.FC<ResultsProps> = ({ setResults }) => {
             </div>
           </div>
         </div>
+        <br></br>
         <div className={styles.line}></div>
-        
       </div>
+      <br></br>
     </div>
   );
 };
