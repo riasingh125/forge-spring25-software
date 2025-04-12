@@ -5,15 +5,12 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Input from "./pages/Input/Input";
-import Rankings from "./pages/Ranking/Rankings";
 import Results from "./pages/Results/Results";
+import Home from "./pages/Home/Home";
 
 import config from "./aws-exports";
-import Navbar from "./components/NavBar";
-import {
-  ProtectedRankingsRoute,
-  ProtectedResultsRoute,
-} from "./routes/ProtectedRoutes";
+import Navbar from "./components/navBar/NavBar";
+import { ProtectedResultsRoute } from "./routes/ProtectedRoutes";
 import logo from "./resources/parcel.png";
 
 Amplify.configure(config);
@@ -69,35 +66,6 @@ export interface ResultsProps {
   setResults: React.Dispatch<React.SetStateAction<Result[]>>;
 }
 
-const theme = {
-  name: "parcel-custom-theme",
-  tokens: {
-    colors: {
-      brand: {
-        primary: "#416774",
-        secondary: "#000000",
-      },
-    },
-
-    components: {
-      button: {
-        primary: {
-          backgroundColor: "{colors.brand.primary}",
-          borderColor: "{colors.brand.primary}",
-          borderRadius: "4px",
-        },
-      },
-
-      tabs: {
-        item: {
-          borderColor: "#a7bccf",
-          color: "#a7bccf",
-        },
-      },
-    },
-  },
-};
-
 function App() {
   const [results, setResults] = useState<Result[]>([]);
   const [modalOpened, setModalOpened] = useState(false);
@@ -132,6 +100,20 @@ function App() {
             <Navbar signOut={signOut}></Navbar>
             <Routes>
               <Route
+                path="/"
+                element={
+                  <Home
+                    results={results}
+                    setResults={setResults}
+                    modalOpened={modalOpened}
+                    setModalOpened={setModalOpened}
+                    messages={messages}
+                    setMessages={setMessages}
+                  />
+                }
+              />
+
+              <Route
                 path="/input"
                 element={
                   <Input
@@ -142,22 +124,6 @@ function App() {
                     messages={messages}
                     setMessages={setMessages}
                   />
-                }
-              />
-              <Route
-                path="/rankings"
-                element={
-                  <ProtectedRankingsRoute>
-                    {" "}
-                    <Rankings
-                      results={results}
-                      setResults={setResults}
-                      modalOpened={modalOpened}
-                      setModalOpened={setModalOpened}
-                      messages={messages}
-                      setMessages={setMessages}
-                    />{" "}
-                  </ProtectedRankingsRoute>
                 }
               />
               <Route
