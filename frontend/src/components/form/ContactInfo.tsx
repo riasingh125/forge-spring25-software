@@ -1,22 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
-import { ResultsProps } from "../../App";
 import Box from "@mui/material/Box";
-import FileUpload from "../../components/FileUpload";
-import { useFlow } from "../../context/FlowContext";
 import { useFlow as formUseFlow } from "../../context/FormContext";
-import Typography from "@mui/material/Typography";
-import Slider from "@mui/material/Slider";
-import MuiInput from "@mui/material/Input";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
-const ContactInfo: React.FC<ResultsProps> = ({ setResults }) => {
-  const navigate = useNavigate();
+const ContactInfo: React.FC = () => {
   const { formData, setFormData } = formUseFlow();
-  const [files, setFiles] = useState<File[]>([]);
-  const [selectedOption, setSelectedOption] = useState("");
   const [dropdownError, setDropdownError] = useState(false);
 
   // Handle input changes
@@ -25,7 +15,8 @@ const ContactInfo: React.FC<ResultsProps> = ({ setResults }) => {
   };
 
   const handleDropdownChange = (event: SelectChangeEvent<string>) => {
-    setSelectedOption(event.target.value);
+    const value = event.target.value;
+    setFormData({ ...formData, familiarity: value });
     setDropdownError(false);
   };
 
@@ -88,7 +79,7 @@ const ContactInfo: React.FC<ResultsProps> = ({ setResults }) => {
               {/* Dropdown Selection */}
               <Box>
                 <Select
-                  value={selectedOption}
+                  value={formData.familiarity}
                   onChange={handleDropdownChange}
                   displayEmpty
                   fullWidth

@@ -1,21 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
 import MuiInput from "@mui/material/Input";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
 import { SelectChangeEvent } from "@mui/material/Select";
-import { ResultsProps } from "../../App";
-
 import { sendInputData } from "../../pages/sendInputAPI.ts";
-import { getResults } from "../../pages/resultsAPI.ts";
-import styles from "./rankings.module.css";
-import { useFlow } from "../../context/FlowContext.tsx";
 
 const Input = styled(MuiInput)`
   width: 42px;
@@ -54,26 +45,11 @@ const rankingDescriptions = [
   "Ease of accessing benefits, including online services, customer support, and appointment scheduling.",
 ];
 
-const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { formData } = location.state || {};
-  const { files } = location.state || {};
-  const { planCost } = location.state || {};
 
-  const [loading, setLoading] = useState(false);
-
+const Rankings: React.FC = () => {
   const [rankings, setRankings] = React.useState<{
     [key: string]: number | string;
   }>(Object.fromEntries(rankingItems.map((item) => [item, 1])));
-
-  const [selectedOption, setSelectedOption] = useState("");
-  const [dropdownError, setDropdownError] = useState(false);
-
-  const handleDropdownChange = (event: SelectChangeEvent<string>) => {
-    setSelectedOption(event.target.value);
-    setDropdownError(false);
-  };
 
   // Handle slider change
   const handleSliderChange =
@@ -83,33 +59,6 @@ const Rankings: React.FC<ResultsProps> = ({ results, setResults }) => {
         [category]: newValue as number,
       }));
     };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (loading) {
-      return;
-    }
-
-    // Check if dropdown is selected
-    if (!selectedOption) {
-      setDropdownError(true);
-      return; // Stop submission
-    }
-    const fullUserData = { ...formData, ...rankings, selectedOption };
-    console.log(planCost);
-
-    setLoading(true);
-    // success = true, if form upload worked someone handle that..
-    const results = await sendInputData(fullUserData, files, planCost);
-    setLoading(false);
-
-    if (results.length === 0) {
-      console.log("FAILED");
-      return;
-    }
-    setResults(results);
-    //navigate("/results");
-  };
 
   return (
     <div>
