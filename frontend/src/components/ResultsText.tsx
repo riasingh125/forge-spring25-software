@@ -81,7 +81,6 @@ export default function TextBox({
                     backgroundColor: bgColor
                 }}>
                     <h6>{rank + 1}. {title}</h6>
-                    <br></br>
                     <div className="inner-box">
                         <SpiderChart scores={result}
                                      color={bgColor}></SpiderChart>
