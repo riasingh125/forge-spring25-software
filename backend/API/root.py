@@ -70,7 +70,7 @@ async def upload_pdfs(form_data: str = Form(...),
 	# upload to s3 and textract
 	# { "name": filename, "text": "TEXT RESULTS " }
 	results = await upload_and_extract(plans)
-
+	print(results)
 
 	# The weights:
 	weight = user_input['weights']
@@ -96,7 +96,6 @@ async def upload_pdfs(form_data: str = Form(...),
 		total_score = ranking_instance.total_scores()
 		summary = PlanSummaries(plan_content, user_input['age'], user_input['budget'])
 		short_summary = await summary.get_short_summary()
-
 		return plan_name, unweighted_scores, weighted_scores, total_score, short_summary, plan_content
 
 	tasks = [process_plan(name, content[0], content[1]) for name, content in results.items()]
@@ -117,7 +116,7 @@ async def upload_pdfs(form_data: str = Form(...),
 
 		to_frontend.append({
 			"name": name,
-			"weightedScores": weighted_scores,
+			"weightedScores": unweighted_scores,
 			"totalScore": total_score,
 			"shortSummary": short_summary
 		})

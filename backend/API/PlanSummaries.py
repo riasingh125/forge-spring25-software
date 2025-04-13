@@ -26,7 +26,7 @@ class PlanSummaries:
 				f"Summarize the following healthcare insurance plan for a {self.user_age} year old with a budget of {self.user_budget}."
 				f"Given the plan content here. Talk professionally, as though you are an HR representative briefly summarizing the "
 				f"plan for an employee. Try to note the key points in 3-4 sentences. Consider the co-payments that are listed for each benefit, and"
-				f"be sure to explain any abnormalities.  Note that this is not an interactive chat, thus"
+				f"be sure to explain any abnormalities. Note the benefits that are expected to be covered, but are not. Note that this is not an interactive chat, thus"
 				f"maintain that your responses are not open ended. Do not note reception of this message. Always end with the sentence: '"
 				f"If you have more questions, or require a longer summary, please consult with the included chatbot. Here is the plan to summarize."
 				f"'\n\n{self.plan_content}"
