@@ -30,7 +30,7 @@ export default function SpiderChart({ scores, color }: SpiderChartProps) {
                 <PolarAngleAxis dataKey="factor" tickSize={20}/>
                 <PolarRadiusAxis angle={90} domain={[0, 10]} tickCount={10}/>
                 <Tooltip />
-                <Radar name={scores.name} dataKey="value" stroke={color} fill={color} fillOpacity={0.6} />
+                <Radar dataKey="value" stroke={color} fill={color} fillOpacity={0.6} />
             </RadarChart>
         </ResponsiveContainer>
     );

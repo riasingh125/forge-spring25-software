@@ -63,43 +63,12 @@ export default function TextBox({
                                          color={bgColor}></SpiderChart>
                         </div>
                         <div className="score-card">
-                            <h2 style={{
-                                fontSize: "1.7vw",
-                                fontWeight: 400,
-                                lineHeight: "1.5"
-                            }}>
-                                ⭐ overall rating: {result.totalScore}
-                                <div className="line"></div>
-                                affordability: {result.weightedScores.affordability}
-                                <br></br>
-                                personalized
-                                coverage: {result.weightedScores.personalized_coverage}
-                                <br></br>
-                                emergency
-                                coverage: {result.weightedScores.emergency_coverage}
-                                <br></br>
-                                flexibility: {result.weightedScores.flexibility_of_coverage}
-                                <br></br>
-                                geographic
-                                coverage: {result.weightedScores.geographic_coverage}
-                                <br></br>
-                                coverage of all
-                                benefits: {result.weightedScores.coverage_of_all_benefits}
-                                <br></br>
-                                convenience: {result.weightedScores.convenience_of_coverage}
-                            </h2>
+                            <b style={{paddingBottom: "3%"}}>⭐ Overall Rating: {result.totalScore}</b>
+                            <div className="line"></div>
+                         <div style={{padding: "2%", fontSize: "80%"}}>{result.shortSummary}</div>
                         </div>
                     </div>
                     <br></br>
-                    <div className="score-and-summary">
-                    <Collapsible trigger={
-                        <span className="score-tag">
-                            learn more
-                        </span>}>
-                            <div className="line"></div>
-                            {result.shortSummary}
-                        </Collapsible>
-                    </div>
                 </div>
                 <br></br>
             </div>
@@ -121,10 +90,13 @@ export default function TextBox({
                     <div className="score-and-summary">
                     <Collapsible trigger={
                         <span className="score-tag">
-                    ⭐ overall rating: {result.totalScore}
+                            ⭐ Overall Rating: {result.totalScore}&nbsp;
+                            <div style={{opacity: "70%", fontWeight: "normal", fontStyle: "italic", fontSize: "80%", alignSelf: "center"}}>
+                                (click to learn more)
+                            </div>
                         </span>}>
                             <div className="line"></div>
-                            {result.shortSummary}
+                            <div style={{paddingBottom: "2%"}}>{result.shortSummary}</div>
                         </Collapsible>
                     </div>
                 </div>
