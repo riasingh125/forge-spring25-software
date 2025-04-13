@@ -8,7 +8,7 @@ import json
 
 # import function to upload files to s3
 from .upload_extract import upload_and_extract
-# import function to get chabot response
+# import function to get chatbot response
 from ..Chatbot.chatbot import get_chatbot_response
 import asyncio
 
@@ -66,7 +66,6 @@ async def upload_pdfs(form_data: str = Form(...),
     # upload to s3 and textract
     # { "name": filename, "text": "TEXT RESULTS " }
     results = await upload_and_extract(plans)
-    print(results)
 
     # The weights:
     weight = user_input['weights']
@@ -95,7 +94,7 @@ async def upload_pdfs(form_data: str = Form(...),
         weighted_scores = ranking_instance.pair_keys()
         total_score = ranking_instance.total_scores()
         summary = PlanSummaries(plan_content, user_input['age'],
-                                user_input['budget'])
+                                user_input['budget'], user_input['individual_bool'])
         short_summary = await summary.get_short_summary()
         return plan_name, unweighted_scores, weighted_scores, total_score, short_summary, plan_content
 
