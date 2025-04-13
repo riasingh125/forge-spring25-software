@@ -20,12 +20,13 @@ class UnweightedPlanRankings:
 		self.plan = user_plan
 
 	# Assigns a 1-10 score to the plan based on the coverage of all benefits in the plan. Is effectively a void method, returns None, but updates a __rankings dictionary.
-	async def assign_benefit_rankings(self):
+	async def assign_benefit_rankings(self, individual: bool):
 		response = await self.client.aio.models.generate_content(
 			model=self.model,
 			config=types.GenerateContentConfig(
 				system_instruction="Evaluate the provided healthcare insurance plan as an expert and assign a score based on both state and nationwide benchmarks."
-								   "# Instructions- Review the healthcare insurance plan details."
+								   "# Instructions- Review the healthcare insurance plan details.  We are evaluating this plan for either an individual or a family, given a boolean"
+								   f"where True is individual and False is family. This boolean is given here: {individual}."
 								   "- Evaluate the plan's benefits and costs relative to current state and nationwide insurance benchmarks."
 								   "- Note that there is no reason to artificially inflate or deflate the score, as accuracy is critical."
 								   "- Assign a score from 1 to 10, with 1 being the lowest and 10 the highest, based on this evaluation."
@@ -42,12 +43,13 @@ class UnweightedPlanRankings:
 		return None
 
 	# Evaluates affordability of the plan in the greater context of the plan's premium and user budget, compared to what plans of this caliber should typically cost.
-	async def assign_cost_rankings(self, cost: float, budget: Budget):
+	async def assign_cost_rankings(self, cost: float, budget: Budget, individual: bool):
 		response = await self.client.aio.models.generate_content(
 			model=self.model,
 			config=types.GenerateContentConfig(
 				system_instruction=f"Compared to the monthly premium of ${cost} per month and a user given budget given as {budget} where the desired budget is in the range of {budget.value} "
-								   f", evaluate the cost of the healthcare insurance plan."
+								   f", evaluate the cost of the healthcare insurance plan. We are evaluating this plan for either an individual or a family, given a boolean"
+								   f"where True is individual and False is family. This boolean is given here: {individual}."
 								   f"The object of this is to not evaluate the benefits, but the cost of the plan in the wider context of the plan premium."
 								   f"Thus, this plan should be compared to what plans with these benefit costs would typically cost for their premium. "
 								   f"Note that there is no reason to artificially inflate or deflate the score, as accuracy is critical."
