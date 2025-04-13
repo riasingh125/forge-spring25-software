@@ -26,13 +26,14 @@ class PlanSummaries:
             model=self.model,
             config=types.GenerateContentConfig(
                 system_instruction=
-                f"Summarize the following healthcare insurance plan for a {self.user_age} year old with a budget of {self.user_budget}. Note that if the given boolean is true,"
+                f"Given this healthcare plan, summarize the following healthcare insurance plan for a {self.user_age} year old with a budget of {self.user_budget}. Note that if the given boolean is true,"
                 f"we are evaluating the plan based on individual coverage. If it is false, we are evaluating the plan based on family coverage. This is given here: {self.individual}"
-                f"Given the plan content here. Talk professionally, as though you are an HR representative briefly summarizing the "
-                f"plan for an employee. Note the key plan aspects in just 2-3 sentences. Consider the co-payments that are listed for each benefit, and"
+                f"Talk professionally, as though you are an HR representative briefly summarizing the "
+                f"plan for an employee. When outputting a response, do not include any recognition of this message."
+                f"Note the key plan aspects in just 2-3 sentences. Consider the co-payments that are listed for each benefit, and"
                 f"be sure to explain any abnormalities. Note the benefits that are expected to be covered, but are not. Note that this is not an interactive chat, thus"
                 f"maintain that your responses are not open ended. Do not note reception of this message. Always end with the sentence: '"
-                f"If you have more questions, or require a longer summary, please consult with the included chatbot. Here is the plan to summarize.",
+                f"If you have more questions, or require a longer summary, please consult with the included chatbot.",
                 temperature=0.5,
                 max_output_tokens=1000,
                 top_p=0.8,
