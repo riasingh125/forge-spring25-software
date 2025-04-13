@@ -10,6 +10,12 @@ import BudgetInfo from "../../components/form/BudgetInfo";
 import UploadPdfs from "../../components/form/UploadPdfs";
 import Rankings from "../../components/form/Rankings";
 import { sendInputData } from "../sendInputAPI";
+import {
+  validateContactInfo,
+  validateAddress,
+  validateBudgetInfo,
+  validateUploadPdfs,
+} from "./validators";
 
 const Input: React.FC<InputPageProps> = ({ results, setResults }) => {
   const navigate = useNavigate();
@@ -21,6 +27,7 @@ const Input: React.FC<InputPageProps> = ({ results, setResults }) => {
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     console.log("Form submitted");
     console.log(formData);
 
@@ -44,8 +51,22 @@ const Input: React.FC<InputPageProps> = ({ results, setResults }) => {
     navigate("/results");
   };
 
-  const nextStep = () =>
-    setStep((prev) => Math.min(prev + 1, SubForms.length - 1));
+  const validators = [
+    () => validateContactInfo(formData),
+    () => validateAddress(formData),
+    () => validateBudgetInfo(formData),
+    () => validateUploadPdfs(formData),
+  ];
+
+  const nextStep = () => {
+    const isValid = validators[step]();
+    if (isValid === true) {
+      setStep((prev) => Math.min(prev + 1, SubForms.length - 1));
+    } else {
+      alert(isValid); // or set some state to show error nicely
+    }
+  };
+
   const prevStep = () => setStep((prev) => Math.max(prev - 1, 0));
 
   const SubForms = [

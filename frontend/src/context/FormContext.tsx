@@ -4,7 +4,7 @@ type RankingsType = {
   [key: string]: number;
 };
 
-interface FormDataType {
+export interface FormDataType {
   firstName: string;
   lastName: string;
   email: string;
