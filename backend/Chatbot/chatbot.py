@@ -6,23 +6,16 @@ from google.genai import types
 load_dotenv()
 api_key = os.getenv("GEMINI_API_KEY")
 
-def get_chatbot_response(question: str, history: dict) -> str:
+
+
+
+def get_chatbot_response(question: str, session_history: dict) -> str:
     client = genai.Client(api_key=api_key)
-    # Combine plan textract stuff
 
-    combined_plans_text = ""
-
-    for key, value in history.items():
-        combined_plans_text += f"---\nPlan: {key}\n\n{value['text']}\n"
-
-
+    query = session_history["prompt"]
 
     # Prompting type
-    prompt = f"""You are a healthcare plan assistant. Only use the text provided to answer user questions.
-
-    Below is the text for multiple plans:
-    {combined_plans_text}
-    
+    query += f"""You are a healthcare plan assistant. Only use the text provided to answer user questions.
     Answer the following question ONLY from the text above:
     
     Question: {question}
@@ -30,7 +23,7 @@ def get_chatbot_response(question: str, history: dict) -> str:
 
     response = client.models.generate_content(
         model="gemini-2.0-flash",
-        contents=[prompt],
+        contents=[query],
     )
 
     # 5) Return the text response

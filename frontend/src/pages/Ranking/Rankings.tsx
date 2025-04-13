@@ -12,7 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import {SelectChangeEvent} from "@mui/material/Select";
 import {ResultsProps} from "../../App";
 
-import {sendInputData} from "../sendInputAPI.ts";
+import {getSessionID, sendInputData} from "../sendInputAPI.ts";
 import {getResults} from "../resultsAPI.ts";
 import styles from "./rankings.module.css";
 import {useFlow} from "../../context/FlowContext.tsx";
@@ -94,16 +94,11 @@ const Rankings: React.FC<ResultsProps> = ({results, setResults}) => {
         }
         setHasCompletedRankings(true);
         const fullUserData = {...formData, ...rankings, selectedOption};
-        console.log(planCost)
 
-        // success = true, if form upload worked someone handle that..
-        const success = await sendInputData(fullUserData, files, planCost);
 
         navigate("/results");
 
-        getResults().then((newResults) => {
-            setResults(newResults);
-        });
+
     };
 
     return (

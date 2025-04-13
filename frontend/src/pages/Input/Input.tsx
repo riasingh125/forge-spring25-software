@@ -9,7 +9,7 @@ import Address from "../../components/form/Address";
 import BudgetInfo from "../../components/form/BudgetInfo";
 import UploadPdfs from "../../components/form/UploadPdfs";
 import Rankings from "../../components/form/Rankings";
-import { sendInputData } from "../sendInputAPI";
+import {getSessionID, sendInputData} from "../sendInputAPI";
 
 const Input: React.FC<InputPageProps> = ({ results, setResults }) => {
   const navigate = useNavigate();
@@ -29,15 +29,21 @@ const Input: React.FC<InputPageProps> = ({ results, setResults }) => {
     }
     setLoading(true);
     const { files, costs, ...formDataWithoutFilesAndCosts } = formData;
+
+    setLoading(false);
+    setHasSubmittedInput(true);
+    // get session id and store it
+    const sessionId = await getSessionID();
+    localStorage.setItem("sessionId", sessionId);
+
+    // success = true, if form upload worked someone handle that..
     const results = await sendInputData(
       formDataWithoutFilesAndCosts,
       files,
-      costs
+      costs,sessionId
     );
-    setLoading(false);
-    setHasSubmittedInput(true);
     if (results.length === 0) {
-      console.log("FAILED");
+      console.log("GOT 0 RESULTS");
       return;
     }
     setResults(results);

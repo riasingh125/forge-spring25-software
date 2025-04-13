@@ -16,8 +16,10 @@ const Chatbot: React.FC<ChatbotProps> = ({messages, setMessages}) => {
     setMessages((prev) => [...prev, { message: input, sender: "user" }]);
 
     try {
+      // get the session id
+      const sessionId = localStorage.getItem("sessionId");
       // Replace with your AI API (e.g., OpenAI, Rasa, Dialogflow, etc.)
-      const response = await fetch("http://127.0.0.1:8000/chat/message", {
+      const response = await fetch("http://127.0.0.1:8000/chat/message/"+sessionId, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: input }),

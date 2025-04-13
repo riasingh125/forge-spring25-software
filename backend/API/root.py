@@ -12,6 +12,9 @@ from .upload_extract import upload_and_extract
 from ..Chatbot.chatbot import get_chatbot_response
 import asyncio
 
+from uuid import uuid4 # for getting session id
+
+
 app = FastAPI()
 
 from fastapi.middleware.cors import CORSMiddleware
@@ -31,21 +34,28 @@ app.add_middleware(
 
 history = {}
 
+chat_history = {}
 
 
 @app.get("/")
 def root():
     return {"FastAPI Running!!!!!"}
 
-@app.post("/chat/message")
-async def send_message(data: ChatBotMessage):
+@app.get("/session")
+def get_session_id():
+	session_id = str(uuid4())
+	chat_history[session_id] = {}  # Optional: initialize chat history
+	print("session id made: "+session_id)
+	return {"sessionId" : session_id}
 
-    response = get_chatbot_response(data.message, history)
+@app.post("/chat/message/{session_id}")
+async def send_message(session_id: str, data: ChatBotMessage):
+    response = get_chatbot_response(data.message, chat_history[session_id])
     return {"received": data.message, "response": response}
 
 
-@app.post("/form/submit")
-async def upload_pdfs(form_data: str = Form(...),
+@app.post("/form/submit/{session_id}")
+async def upload_pdfs(session_id: str, form_data: str = Form(...),
 					  files: List[UploadFile] = File(...)):
 	# Process form data into dictionary
 	form_dict = json.loads(form_data)
@@ -59,13 +69,10 @@ async def upload_pdfs(form_data: str = Form(...),
 		if file.content_type != 'application/pdf':
 			return {"error": "file is not of type pdf"}
 
-
 	plans = {}
 	premiums = user_input['premium']
 	for i, j in zip(premiums, files):
 		plans[j] = i
-
-
 
 	# upload to s3 and textract
 	# { "name": filename, "text": "TEXT RESULTS " }
@@ -106,6 +113,8 @@ async def upload_pdfs(form_data: str = Form(...),
 
 	to_frontend = []
 
+	prompt = ""
+
 	# Store the results in the history
 	for name, unweighted_scores, weighted_scores, total_score, short_summary, plan_content in results:
 		# {'file_name': 'weighted_scores: dict, 'total_score': float, 'text': str}
@@ -121,6 +130,14 @@ async def upload_pdfs(form_data: str = Form(...),
 			"totalScore": total_score,
 			"shortSummary": short_summary
 		})
+		prompt += f"\n\nPlan Name: {name}\nTotal Score: {total_score}\nPlan Text: {short_summary}\n"
+
+	prompt += ("Please justify the ranking of each plan based on its strengths and weaknesses using the information above "
+			   "Explain each plan clearly, highlighting what makes it better or worse compared to the others.\n")
+
+	session_history = chat_history.setdefault(session_id, {})
+	session_history["prompt"] = prompt
+
 
 	return to_frontend
 

@@ -63,7 +63,8 @@ function structureToJSON(data: FormDataInput, planCost: number[]) {
 async function sendInputData(
   data: FormDataInput,
   files: File[],
-  planCost: number[]
+  planCost: number[],
+  sessionId: string
 ) {
   console.log("Post request");
   console.log("DATA CHECK:");
@@ -73,8 +74,7 @@ async function sendInputData(
     // add the user form data
     const jsonData = structureToJSON(data, planCost);
 
-    console.log("JSON DATA CHECK:");
-    console.log(jsonData);
+
 
     formData.append("form_data", JSON.stringify(jsonData));
     // add all the uploaded files
@@ -82,8 +82,9 @@ async function sendInputData(
       formData.append("files", file);
       formData.append("plan_cost", String(planCost[files.indexOf(file)]));
     });
+    console.log("backend making request with sessionId:"+sessionId);
     const response = await axios.post(
-      "http://127.0.0.1:8000/form/submit",
+      "http://127.0.0.1:8000/form/submit/" + sessionId,
       formData
     );
     console.log("Server response:", response.data);
@@ -94,4 +95,18 @@ async function sendInputData(
   }
 }
 
-export { sendInputData };
+
+async function getSessionID() {
+  try {
+    const response = await axios.get("http://127.0.0.1:8000/session");
+    console.log("GET SESSION ID:", response.data);
+    const data =  response.data;
+
+    return data["sessionId"];
+  } catch (error) {
+    return null;
+  }
+}
+
+
+export { sendInputData, getSessionID};

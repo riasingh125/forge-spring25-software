@@ -1,0 +1,10 @@
+{
+  "session_id" : {
+    "query" : "some string in format",
+    "history": [
+      { "role": "user",  "parts": ["Hello"] },
+      { "role": "model", "parts": ["Hi there! How can I help you today?"] },
+      { "role": "user",  "parts": ["Tell me about my plan benefits."] }
+    ]
+  }
+}
