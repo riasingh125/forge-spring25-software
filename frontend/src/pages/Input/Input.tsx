@@ -89,8 +89,9 @@ const Input: React.FC<InputPageProps> = ({ results, setResults }) => {
               type="button"
               onClick={handleSubmit}
               className={styles.submitButton}
+              disabled={loading}
             >
-              Submit
+              {loading ? "Submitting..." : "Submit"}
             </button>
           )}
         </div>
