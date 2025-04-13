@@ -2,6 +2,13 @@ import './TextBoxStyles.css';
 import SpiderChart from './SpiderChart';
 import {Result} from '../App';
 import results from "../pages/Results/Results.tsx";
+import React from 'react';
+import _Collapsible from 'react-collapsible';
+import type { FC } from 'react';
+import Tooltip from "@mui/material/Tooltip";
+
+const Collapsible = _Collapsible as unknown as FC<any>;
+
 
 interface TextBoxProps {
     rank: number;
@@ -47,7 +54,6 @@ export default function TextBox({
             <div>
                 <div className="box-container" style={{
                     width: "80vw",
-                    minHeight: "600vh",
                     backgroundColor: bgColor
                 }}>
                     <h6>{rank + 1}. {title}</h6>
@@ -57,40 +63,12 @@ export default function TextBox({
                                          color={bgColor}></SpiderChart>
                         </div>
                         <div className="score-card">
-                            <h2 style={{
-                                fontFamily: "Georgia",
-                                fontSize: "25px",
-                                fontWeight: 400,
-                                lineHeight: "1.5"
-                            }}>
-                                <br></br>
-                                ⭐ overall rating: ${result.totalScore}
-                                <div className="line"></div>
-                                affordability: {result.weightedScores.affordability}
-                                <br></br>
-                                personalized
-                                coverage: {result.weightedScores.personalized_coverage}
-                                <br></br>
-                                emergency
-                                coverage: {result.weightedScores.emergency_coverage}
-                                <br></br>
-                                flexibility: {result.weightedScores.flexibility_of_coverage}
-                                <br></br>
-                                geographic
-                                coverage: {result.weightedScores.geographic_coverage}
-                                <br></br>
-                                coverage of all
-                                benefits: {result.weightedScores.coverage_of_all_benefits}
-                                <br></br>
-                                convenience: {result.weightedScores.convenience_of_coverage}
-                            </h2>
+                            <b style={{paddingBottom: "3%"}}>⭐ Overall Rating: {result.totalScore}</b>
+                            <div className="line"></div>
+                         <div style={{padding: "2%", fontSize: "80%"}}>{result.shortSummary}</div>
                         </div>
                     </div>
-                    <div className="plan-summary">
-                        <h2 style={{fontFamily: "Georgia", fontSize: "11px", fontWeight: 400}}>
-                            not_quite_sure: {result.shortSummary}
-                        </h2>
-                    </div>
+                    <br></br>
                 </div>
                 <br></br>
             </div>
@@ -100,22 +78,26 @@ export default function TextBox({
             <div>
                 <div className="box-container" style={{
                     width: "50vw",
-                    height: "600px",
                     backgroundColor: bgColor
                 }}>
                     <h6>{rank + 1}. {title}</h6>
+                    <br></br>
                     <div className="inner-box">
                         <SpiderChart scores={result}
                                      color={bgColor}></SpiderChart>
                     </div>
                     <br></br>
-                    <div className="score-tag">
-                        <h2 style={{fontSize: "20px", fontWeight: 400}}>
-                            ⭐ overall rating: {result.totalScore}
-                        </h2>
-                    </div>
-                    <div className="short-summary">
-                        Plan Overview: {result.shortSummary}
+                    <div className="score-and-summary">
+                    <Collapsible trigger={
+                        <span className="score-tag">
+                            ⭐ Overall Rating: {result.totalScore}&nbsp;
+                            <div style={{opacity: "70%", fontWeight: "normal", fontStyle: "italic", fontSize: "80%", alignSelf: "center"}}>
+                                (click to learn more)
+                            </div>
+                        </span>}>
+                            <div className="line"></div>
+                            <div style={{paddingBottom: "2%"}}>{result.shortSummary}</div>
+                        </Collapsible>
                     </div>
                 </div>
                 <br></br>

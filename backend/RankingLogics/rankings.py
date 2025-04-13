@@ -8,11 +8,12 @@ import copy
 # Weighted Ranking Logic for a plan
 class WeightedPlanRanking:
 	# Constructs ranking logic object given a set of weights and a corpus
-	def __init__(self, weights: dict, corpus: str, user_input: dict, premium: float = 150.):
+	def __init__(self, weights: dict, corpus: str, user_input: dict, premium: float, individual_bool: bool):
 		self.weights = weights
 		self.corpus = corpus
 		self.user_input = user_input
 		self.premium= premium
+		self.individual = individual_bool
 		self.scores = dict.fromkeys(self.weights.keys())
 		self.weighted_scores = dict.fromkeys(self.weights.keys())
 		self.total_score = 0
@@ -23,9 +24,9 @@ class WeightedPlanRanking:
 		budget_class = Budget.classify_budget(k)
 		# Implement that stuff here
 		await asyncio.gather(
-			self.assign_ranks.assign_benefit_rankings(),
+			self.assign_ranks.assign_benefit_rankings(self.individual),
 			self.assign_ranks.assign_cost_rankings(
-				self.premium, budget_class),
+				self.premium, budget_class, self.individual),
 			self.assign_ranks.assign_plan_viability_in_emergency(),
 			self.assign_ranks.assign_personalized_rankings(
 				self.user_input['health_concerns']),

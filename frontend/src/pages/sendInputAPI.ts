@@ -10,6 +10,7 @@ interface FormDataInput {
   email: string;
   phone: string;
   city: string;
+  numHousehold: string;
   state: string;
   country: string;
   zip: string;
@@ -25,7 +26,7 @@ function structureToJSON(data: FormDataInput, planCost: number[]) {
     income: parseFloat(data.salary) || 0,
     budget: parseFloat(data.budget) || 0,
     coverage: {
-      ages_of_people_needing_coverage: [1, 2, 3, 4, 5],
+      household_size: parseInt(data.numHousehold) || 1,
       personal_health_concerns: data.concerns || "",
       budget: parseFloat(data.budget) || 0,
     },
@@ -40,16 +41,16 @@ function structureToJSON(data: FormDataInput, planCost: number[]) {
       zip_code: data.zip || "",
     },
     weights: {
-      affordability: parseFloat(weights["Affordability"]) || 0,
+      affordability: parseFloat(weights["Affordability"]) || 1,
       coverage_of_all_benefits:
-        parseFloat(weights["Coverage of All Benefits"]) || 0,
+        parseFloat(weights["Coverage of All Benefits"]) || 1,
       personalized_coverage:
-        parseFloat(weights["Coverage of Personal Health Concerns"]) || 0,
-      flexibility_of_coverage: parseFloat(weights["Plan Flexibility"]) || 0,
-      emergency_coverage: parseFloat(weights["Coverage in Emergencies"]) || 0,
+        parseFloat(weights["Coverage of Personal Health Concerns"]) || 1,
+      flexibility_of_coverage: parseFloat(weights["Plan Flexibility"]) || 1,
+      emergency_coverage: parseFloat(weights["Coverage in Emergencies"]) || 1,
       convenience_of_coverage:
-        parseFloat(weights["Convenience of Accessing Benefits"]) || 0,
-      geographic_coverage: parseFloat(weights["Geographic coverage"]) || 0,
+        parseFloat(weights["Convenience of Accessing Benefits"]) || 1,
+      geographic_coverage: parseFloat(weights["Geographic coverage"]) || 1,
     },
     premium: planCost,
   };
