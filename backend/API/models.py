@@ -6,20 +6,24 @@ from typing import List
 class ChatBotMessage(BaseModel):
     message: str
 
+
 class Coverage(BaseModel):
-    ages_of_people_needing_coverage: List[int]
+    household_size: int
     personal_health_concerns: str
     budget: float
+
 
 class Contact(BaseModel):
     email: str
     number: int
+
 
 class Address(BaseModel):
     city: str
     state: str
     country: str
     zip_code: str
+
 
 class Weights(BaseModel):
     coverage_of_all_benefits: int

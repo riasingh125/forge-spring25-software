@@ -10,6 +10,7 @@ interface FormDataInput {
   email: string;
   phone: string;
   city: string;
+  numHousehold: string;
   state: string;
   country: string;
   zip: string;
@@ -25,7 +26,7 @@ function structureToJSON(data: FormDataInput, planCost: number[]) {
     income: parseFloat(data.salary) || 0,
     budget: parseFloat(data.budget) || 0,
     coverage: {
-      ages_of_people_needing_coverage: [1, 2, 3, 4, 5],
+      household_size: parseInt(data.numHousehold) || 1,
       personal_health_concerns: data.concerns || "",
       budget: parseFloat(data.budget) || 0,
     },
