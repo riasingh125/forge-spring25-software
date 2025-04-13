@@ -17,12 +17,12 @@ app = FastAPI()
 from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
-	CORSMiddleware,	#type: ignore
-	allow_origins=["http://localhost:5173"],
-	# Allow frontend in React to connect
-	allow_credentials=True,
-	allow_methods=["*"],  # Allow all methods
-	allow_headers=["*"],  # Allow all headers
+    CORSMiddleware,  # type: ignore
+    allow_origins=["http://localhost:5173"],
+    # Allow frontend in React to connect
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods
+    allow_headers=["*"],  # Allow all headers
 )
 
 # To run app:
@@ -32,95 +32,95 @@ app.add_middleware(
 history = {}
 
 
-
 @app.get("/")
 def root():
     return {"FastAPI Running!!!!!"}
 
+
 @app.post("/chat/message")
 async def send_message(data: ChatBotMessage):
-
     response = get_chatbot_response(data.message, history)
     return {"received": data.message, "response": response}
 
 
 @app.post("/form/submit")
 async def upload_pdfs(form_data: str = Form(...),
-					  files: List[UploadFile] = File(...)):
-	# Process form data into dictionary
-	form_dict = json.loads(form_data)
+                      files: List[UploadFile] = File(...)):
+    # Process form data into dictionary
+    form_dict = json.loads(form_data)
 
-	# Check against Pydantic Model
-	user_input = UserInputForm(**form_dict)
-	user_input = user_input.model_dump()
+    # Check against Pydantic Model
+    user_input = UserInputForm(**form_dict)
+    user_input = user_input.model_dump()
 
-	# check files for right type:
-	for file in files:
-		if file.content_type != 'application/pdf':
-			return {"error": "file is not of type pdf"}
+    # check files for right type:
+    for file in files:
+        if file.content_type != 'application/pdf':
+            return {"error": "file is not of type pdf"}
 
+    plans = {}
+    premiums = user_input['premium']
+    for i, j in zip(premiums, files):
+        plans[j] = i
 
-	plans = {}
-	premiums = user_input['premium']
-	for i, j in zip(premiums, files):
-		plans[j] = i
+    # upload to s3 and textract
+    # { "name": filename, "text": "TEXT RESULTS " }
+    results = await upload_and_extract(plans)
+    print(results)
 
+    # The weights:
+    weight = user_input['weights']
+    del user_input['weights']
 
+    coverage = user_input['coverage']
+    location = user_input['address']
 
-	# upload to s3 and textract
-	# { "name": filename, "text": "TEXT RESULTS " }
-	results = await upload_and_extract(plans)
+    user_input['health_concerns'] = coverage['personal_health_concerns']
+    user_input['budget'] = coverage['budget']
+    user_input['zip_code'] = location['zip_code']
+    user_input['city'] = location['city']
+    user_input['state'] = location['state']
+    user_input['household_size'] = coverage['household_size']
+    user_input['individual_bool'] = (coverage['household_size'] == 1)
 
+    weights = {k: v / 10 for k, v in weight.items()}
 
-	# The weights:
-	weight = user_input['weights']
-	del user_input['weights']
+    # The premiums:
+    async def process_plan(plan_name: str, plan_content: str,
+                           plan_premium: float):
+        ranking_instance = WeightedPlanRanking(weights, plan_content,
+                                               user_input, plan_premium,
+                                               user_input['individual_bool'])
+        unweighted_scores = await ranking_instance.ranking_logics()
+        weighted_scores = ranking_instance.pair_keys()
+        total_score = ranking_instance.total_scores()
+        summary = PlanSummaries(plan_content, user_input['age'],
+                                user_input['budget'])
+        short_summary = await summary.get_short_summary()
+        return plan_name, unweighted_scores, weighted_scores, total_score, short_summary, plan_content
 
-	coverage = user_input['coverage']
-	location = user_input['address']
+    tasks = [process_plan(name, content[0], content[1]) for name, content in
+             results.items()]
 
-	user_input['health_concerns'] = coverage['personal_health_concerns']
-	user_input['budget'] = coverage['budget']
-	user_input['zip_code'] = location['zip_code']
-	user_input['city'] = location['city']
-	user_input['state'] = location['state']
+    # Run all tasks concurrently
+    results = await asyncio.gather(*tasks)
 
-	weights = {k: v/10 for k, v in weight.items()}
+    to_frontend = []
 
-	# The premiums:
-	async def process_plan(plan_name: str, plan_content: str, plan_premium: float):
-		ranking_instance = WeightedPlanRanking(weights, plan_content,
-											   user_input, plan_premium)
-		unweighted_scores = await ranking_instance.ranking_logics()
-		weighted_scores = ranking_instance.pair_keys()
-		total_score = ranking_instance.total_scores()
-		summary = PlanSummaries(plan_content, user_input['age'], user_input['budget'])
-		short_summary = await summary.get_short_summary()
+    # Store the results in the history
+    for name, unweighted_scores, weighted_scores, total_score, short_summary, plan_content in results:
+        # {'file_name': 'weighted_scores: dict, 'total_score': float, 'text': str}
+        history[name] = {
+            "weighted_scores": weighted_scores,
+            "total_score": total_score,
+            "text": plan_content
+        }
 
-		return plan_name, unweighted_scores, weighted_scores, total_score, short_summary, plan_content
+        to_frontend.append({
+            "name": name,
+            "weightedScores": unweighted_scores,
+            "totalScore": total_score,
+            "shortSummary": short_summary
+        })
 
-	tasks = [process_plan(name, content[0], content[1]) for name, content in results.items()]
-
-	# Run all tasks concurrently
-	results = await asyncio.gather(*tasks)
-
-	to_frontend = []
-
-	# Store the results in the history
-	for name, unweighted_scores, weighted_scores, total_score, short_summary, plan_content in results:
-		# {'file_name': 'weighted_scores: dict, 'total_score': float, 'text': str}
-		history[name] = {
-			"weighted_scores": weighted_scores,
-			"total_score": total_score,
-			"text": plan_content
-		}
-
-		to_frontend.append({
-			"name": name,
-			"weightedScores": weighted_scores,
-			"totalScore": total_score,
-			"shortSummary": short_summary
-		})
-
-	return to_frontend
-
+    return to_frontend
