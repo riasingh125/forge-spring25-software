@@ -43,6 +43,7 @@ input {
   text-align: left;
   font-weight: 500;
   font-size: 1.2em;
+  padding-right: 3%;
 }
 
 /* Group each section (label + inputs) */

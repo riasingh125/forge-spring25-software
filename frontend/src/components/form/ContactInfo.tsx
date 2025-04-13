@@ -82,7 +82,7 @@ const ContactInfo: React.FC = () => {
         <br></br>
         <div className={styles.formGroup}>
           <div className={styles.formLabelGroup}>
-            Select your level of familiarity with healthcare jargon
+            Select your level of familiarity with health insurance plans:
           </div>
           <div className={styles.formInputGroup}>
             <div className={styles.inputsNextToEachOther}>

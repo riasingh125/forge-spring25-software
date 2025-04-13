@@ -36,7 +36,7 @@ const BudgetInfo: React.FC = () => {
               />
               <input
                 type="number"
-                placeholder="# People in Household"
+                placeholder="# of Dependents"
                 name="numHousehold"
                 value={formData.numHousehold}
                 onChange={handleChange}

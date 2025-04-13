@@ -40,16 +40,16 @@ function structureToJSON(data: FormDataInput, planCost: number[]) {
       zip_code: data.zip || "",
     },
     weights: {
-      affordability: parseFloat(weights["Affordability"]) || 0,
+      affordability: parseFloat(weights["Affordability"]) || 1,
       coverage_of_all_benefits:
-        parseFloat(weights["Coverage of All Benefits"]) || 0,
+        parseFloat(weights["Coverage of All Benefits"]) || 1,
       personalized_coverage:
-        parseFloat(weights["Coverage of Personal Health Concerns"]) || 0,
-      flexibility_of_coverage: parseFloat(weights["Plan Flexibility"]) || 0,
-      emergency_coverage: parseFloat(weights["Coverage in Emergencies"]) || 0,
+        parseFloat(weights["Coverage of Personal Health Concerns"]) || 1,
+      flexibility_of_coverage: parseFloat(weights["Plan Flexibility"]) || 1,
+      emergency_coverage: parseFloat(weights["Coverage in Emergencies"]) || 1,
       convenience_of_coverage:
-        parseFloat(weights["Convenience of Accessing Benefits"]) || 0,
-      geographic_coverage: parseFloat(weights["Geographic coverage"]) || 0,
+        parseFloat(weights["Convenience of Accessing Benefits"]) || 1,
+      geographic_coverage: parseFloat(weights["Geographic coverage"]) || 1,
     },
     premium: planCost,
   };
