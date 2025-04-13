@@ -46,7 +46,7 @@ const BudgetInfo: React.FC = () => {
             <div className={styles.inputsNextToEachOther}>
               <input
                 type="number"
-                placeholder="Budget"
+                placeholder="Monthly Budget"
                 name="budget"
                 value={formData.budget}
                 onChange={handleChange}
@@ -54,7 +54,7 @@ const BudgetInfo: React.FC = () => {
               />
               <input
                 type="number"
-                placeholder="age"
+                placeholder="Age"
                 name="age"
                 value={formData.age}
                 onChange={handleChange}

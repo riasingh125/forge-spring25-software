@@ -36,7 +36,7 @@ export default function ResultsModal({ isOpen, handleClose, setNoOpenOnClick, re
               You can hover over the vertexes of each chart to see exact numbers for each plan, or close the 
               chatbot to view a list of all the individual scores. (Feel free to play around with the sample chart below)
               <br></br>
-              <div style={{width: "100%", height: "40%", marginTop: "20px"}}>
+              <div style={{width: "100%", height: "30%", marginTop: "20px"}}>
                 <SpiderChart scores={result} color={"gray"}/>
               </div>
               <br></br> 

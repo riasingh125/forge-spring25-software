@@ -65,7 +65,7 @@ export default function TextBox({
                         <div className="score-card">
                             <b style={{paddingBottom: "3%"}}>⭐ Overall Rating: {result.totalScore}</b>
                             <div className="line"></div>
-                         <div style={{padding: "2%", fontSize: "80%"}}>{result.shortSummary}</div>
+                         <div style={{padding: "2%", fontSize: "80%", paddingTop: "2%"}}>{result.shortSummary}</div>
                         </div>
                     </div>
                     <br></br>
