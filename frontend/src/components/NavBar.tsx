@@ -23,7 +23,12 @@ const Navbar: React.FC<NavbarProps> = () => {
     >
       <div className="logo">
         <img src={logo} alt="logo" style={{ width: "40px", height: "40px" }} />
-        <h1
+        <Link
+          to="/"
+          className="enabled"
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          <h1
           style={{
             fontSize: "25px",
             fontFamily: "Georgia",
@@ -33,6 +38,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         >
           parcel
         </h1>
+        </Link>
       </div>
       <div
         className="pages"

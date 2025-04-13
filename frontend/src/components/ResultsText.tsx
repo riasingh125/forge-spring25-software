@@ -65,7 +65,7 @@ export default function TextBox({
                         <div className="score-card">
                             <b style={{paddingBottom: "3%"}}>⭐ Overall Rating: {result.totalScore}</b>
                             <div className="line"></div>
-                         <div style={{padding: "2%", fontSize: "80%"}}>{result.shortSummary}</div>
+                         <div style={{padding: "2%", fontSize: "80%", paddingTop: "2%"}}>{result.shortSummary}</div>
                         </div>
                     </div>
                     <br></br>
@@ -81,7 +81,6 @@ export default function TextBox({
                     backgroundColor: bgColor
                 }}>
                     <h6>{rank + 1}. {title}</h6>
-                    <br></br>
                     <div className="inner-box">
                         <SpiderChart scores={result}
                                      color={bgColor}></SpiderChart>
