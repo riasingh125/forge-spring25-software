@@ -7,15 +7,10 @@ interface SpiderChartProps {
     color: string;
 }
 
-
-
-
-
-
 export default function SpiderChart({ scores, color }: SpiderChartProps) {
 
     const chartData = useMemo(() => {
-        if (!scores) return {}; // handle null/undefined safely
+        if (!scores) return []; // handle null/undefined safely
 
         return [
           { factor: "Affordability", value: scores.weightedScores.affordability },
@@ -27,11 +22,6 @@ export default function SpiderChart({ scores, color }: SpiderChartProps) {
           { factor: "Convenience", value: scores.weightedScores.convenience_of_coverage },
         ];
     }, [scores]);
-
-
-
-
-
 
     return (
         <ResponsiveContainer width="100%" height="100%">
