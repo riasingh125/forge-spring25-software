@@ -8,7 +8,7 @@ import json
 
 # import function to upload files to s3
 from .upload_extract import upload_and_extract
-# import function to get chabot response
+# import function to get chatbot response
 from ..Chatbot.chatbot import get_chatbot_response
 import asyncio
 

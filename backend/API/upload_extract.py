@@ -68,7 +68,7 @@ async def upload_and_extract(files: dict):
 	for file, premium in files.items():
 		job_map[file.filename] = premium
 		job = asyncio.to_thread(upload_to_s3, file, S3_BUCKET_NAME,
-								file.filename);
+								file.filename)
 		upload_jobs.append(job)
 	await asyncio.gather(*upload_jobs)
 
