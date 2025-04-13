@@ -25,41 +25,39 @@ def start_textract_job(bucket: str, key: str) -> str:
 	)
 	return response["JobId"]
 
+
 # GET TEXTRACT RESULTS
 def get_textract_result(job_id: str) -> str:
-	# Poll for job completion
+	# Wait for the job to finish
 	while True:
 		response = textract.get_document_text_detection(JobId=job_id)
 		status = response["JobStatus"]
 		if status in ["SUCCEEDED", "FAILED"]:
 			break
-		time.sleep(5)  # Wait before polling again
-
-		if status == "FAILED":
-			raise Exception("Textract job failed")
-
-		# Aggregate text from all pages
+		time.sleep(1)  # Optional: Add a delay to avoid excessive polling
+	if status == "FAILED":
+		raise Exception("Textract job failed")
+	# Initialize a list to accumulate lines and handle pagination
 	all_lines = []
-	next_token = None
-
-	while True:
-		if next_token:
-			response = textract.get_document_text_detection(JobId=job_id,
-															NextToken=next_token)
-		else:
-			response = textract.get_document_text_detection(JobId=job_id)
-
-		# Extract text blocks from the current response
-		all_lines.extend([
+	# Process the first batch
+	lines = [
+		block["Text"]
+		for block in response["Blocks"]
+		if block["BlockType"] == "LINE"
+	]
+	all_lines.extend(lines)
+	# Check for pagination
+	next_token = response.get("NextToken")
+	while next_token:
+		response = textract.get_document_text_detection(JobId=job_id,
+														NextToken=next_token)
+		lines = [
 			block["Text"]
 			for block in response["Blocks"]
 			if block["BlockType"] == "LINE"
-		])
-
+		]
+		all_lines.extend(lines)
 		next_token = response.get("NextToken")
-		if not next_token:
-			break
-
 	return "\n".join(all_lines)
 
 
