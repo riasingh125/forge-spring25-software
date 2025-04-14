@@ -23,8 +23,7 @@ def get_chatbot_response(question: str, history: dict) -> str:
     Below is the text for multiple plans:
     {combined_plans_text}
     
-    Answer the following question using the primarily the text above, but guess the answer if you have to :
-    
+    Answer the following question, primarily using the text above, but guess the answer if necessary:
     Question: {question}
     
     Try not to respond with "I don't know" or "The test doesn't state" or something similar. Use outside context if the answer isn't present in the provided text.
