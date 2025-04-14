@@ -27,7 +27,7 @@ def get_chatbot_response(question: str, history: dict) -> str:
     
     Question: {question}
     
-    Try not to response with "I don't know" or "The test doesn't state" or something similar. Use outside context if the answer isn't present in the provided text.
+    Try not to respond with "I don't know" or "The test doesn't state" or something similar. Use outside context if the answer isn't present in the provided text.
     """
 
     response = client.models.generate_content(
